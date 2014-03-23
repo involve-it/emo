@@ -1,3 +1,4 @@
+// emo$ server:
 {
   var __dirname = './source/' ;
   var __portNumber = 8889;
@@ -7,6 +8,7 @@
   ).listen(__portNumber);
   console.log('New Emo$ server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
 }
+// data server:
 {
   // install express package: 'npm install express'
   var __dirname = './data',
@@ -32,32 +34,4 @@
 
   http.createServer(app).listen(__portNumber);
   console.log('New Data server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
-}
-{
-  var __dirname = './data/' ;
-  var __portNumber = 8877;
-  var http = require("http");
-  var connect = require('connect');
-
-  var app = connect()
-    .use(connect.logger('dev'))
-    //.use(connect.static(__dirname))
-    .use(function(req, res){
-      console.log('2' );
-
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      //res.header("Access-Control-Allow-Origin", "*");
-      //res.header("Access-Control-Allow-Headers", "X-Requested-With");
-      //console.log('2' + res.header('Access-Control-Allow-Headers'));
-
-      //req.setHeader("Access-Control-Allow-Origin", "*");
-      //res.end('hello world\n');
-      //next();
-      res.sendfile(__dirname + '/' + req);
-    });
-
-  var server = http.createServer(app);
-  server.listen(__portNumber, function () {
-    console.log('server is listening');
-  });
 }
