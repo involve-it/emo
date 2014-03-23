@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "_sketch_.js",
+  "sourceRoot": "",
+  "sources": [
+    "_sketch_.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAM,IAAI,CAAC,GAAG,CAAC;wBAAf;;kBAAA;;MAAA,CAAA;;AAAA,EACA,MAAA,CAAO,CACL,gBADK,CAAP,EAEG,SAAA,GAAA,CAFH,CADA,CAAA;AAAA"
+}

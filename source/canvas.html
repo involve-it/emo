@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    div { background: -webkit-canvas(squares); width:600px; height:600px; border:2px solid black }
+  </style>
+  <script type="text/javascript" data-main="main" src="./libs/require/require-2.1.8.js"></script>
+
+  <script type="application/x-javascript">
+    draw = function draw(w, h) {
+      ctx = document.getCSSCanvasContext("2d", "squares", w, h);
+
+      ctx.fillStyle = "rgb(200,0,0)";
+      ctx.fillRect (10, 10, 55, 50);
+
+      ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+      ctx.fillRect (30, 30, 55, 50);
+    }
+  </script>
+
+  <TITLE>
+    Main Page
+  </TITLE>
+</head>
+<body onload="draw(300, 300)">
+<div id="canvas" style="width: 300px; height: 400px;"></div>
+</body>
+
+</html>

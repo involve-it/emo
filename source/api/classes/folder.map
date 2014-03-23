@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "folder.js",
+  "sourceRoot": "",
+  "sources": [
+    "folder.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,MAAA,YAAA;;AAAA,EAAM;8BACJ;;AAAA,IAAA,MAAA,CAAO,CACL,SADK,CAAP,EAEG,SAAC,OAAD,GAAA,CAFH,CAAA,CAAA;;wBAAA;;MADF,CAAA;AAAA"
+}
