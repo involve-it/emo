@@ -8,7 +8,7 @@
         this.$textArea = $textArea;
         this.$butt = $butt;
         that = this;
-        this.empathyPanel = new emo$.Gui.EmpathyPanel(100, emo$.Engine.Emotion.SynesthesiatorEmotion, $canvas);
+        this.empathyPanel = new emo$.Gui.EmpathyPanel(100, emo$.Engine.Emotion.SynesthesiatorEmotion, 'Synemania', $canvas);
         this.$textArea.keypress(function(e) {
           var text;
           if (e.which === 13) {
@@ -21,6 +21,10 @@
           text = that.$textArea.val().trim();
           return that.empathyPanel.fireSynesthesiator(text);
         });
+        setInterval(function() {
+          var results;
+          return results = that.empathyPanel.applet.draw();
+        }, 1000);
       }
 
       EmpathyBox.prototype.getAppCanvas = function() {

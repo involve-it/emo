@@ -16,6 +16,22 @@
         return value;
       };
 
+      Emotion.prototype.getType = function() {
+        return this.type;
+      };
+
+      Emotion.prototype.setType = function(type) {
+        this.type = type;
+      };
+
+      Emotion.prototype.getWeight = function() {
+        return this.weight;
+      };
+
+      Emotion.prototype.setWeight = function(weight) {
+        this.weight = weight;
+      };
+
       Emotion.prototype.toString = function() {
         return "Type number: " + this.type + ", weight: " + this.weight;
       };

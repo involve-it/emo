@@ -3,16 +3,15 @@
 # todo: make this abstract
 define [], () ->
   class emo$.Engine.Synesthesiator
-    constructor:()->
-      @updateMethod = () ->
+    constructor:(@parent)->
+      @updateMethod = parent.synesketchUpdate
+      @updateMethod ?= () ->
+        throw 'abstract method!'
         console.log 'this is update method'
+
     notifyPApplet:(state) ->
       if (@updateMethod != null and !_.isUndefined(@updateMethod))
-        try
-          @updateMethod(state);
-        catch e
-          e.printStackTrace();
-          @updateMethod = null;
+        @updateMethod.call(@parent, state);
       @
 
     synesthesise:(text) -> throw 'abstract-has to be overriden!';

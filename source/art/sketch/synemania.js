@@ -3,14 +3,163 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define([], function() {
-    var NeutralParticle;
-    emo$.art.sketch.Synemania = (function() {
-      var angries, currentEmotionalState, currentParticles, currentText, dim, disgusties, fearies, happies, maxAngries, maxDisgusties, maxFearies, maxHappies, maxNeutrals, maxSaddies, maxSurprises, neutrals, palette, sadTheta, saddies, saturationFactor, surprises, syne;
+  define(['art/utils/_utils_.js'], function() {
+
+    /*
+     Classes which describe emotion-specific particles, that is visual representation of each emotion.
+     */
+    var TWO_PI, ctx, dim, palette;
+    dim = 500;
+    TWO_PI = 6.28;
+    palette = new emo$.art.utils.SynesketchPalette('standard');
+    ctx = null;
+    emo$.art.sketch.Particle = (function() {
+      Particle.prototype.color = null;
+
+      Particle.prototype.x = null;
+
+      Particle.prototype.y = null;
+
+      Particle.prototype.vx = null;
+
+      Particle.prototype.vy = null;
+
+      Particle.prototype.theta = null;
+
+      Particle.prototype.speed = null;
+
+      Particle.prototype.speedD = null;
+
+      Particle.prototype.thetaD = null;
+
+      Particle.prototype.thetaDD = null;
+
+      function Particle() {
+        this.x = dim / 2;
+        this.y = dim / 2;
+      }
+
+      Particle.prototype.collide = function() {
+        throw 'abstract';
+      };
+
+      Particle.prototype.move = function() {
+        throw 'abstract';
+      };
+
+      return Particle;
+
+    })();
+    emo$.art.sketch.NeutralParticle = (function(_super) {
+      __extends(NeutralParticle, _super);
+
+      NeutralParticle.prototype.gray = null;
+
+      function NeutralParticle() {
+        NeutralParticle.__super__.constructor.call(this);
+        this.gray = Math.random() * 255;
+      }
+
+      NeutralParticle.prototype.collide = function() {
+        var _results;
+        this.x = dim / 2;
+        this.y = dim / 2;
+        this.theta = Math.random() * TWO_PI;
+        this.speed = Math.randomRange(0.5, 3.5);
+        this.speedD = Math.randomRange(0.996, 1.001);
+        this.thetaD = 0;
+        this.thetaDD = 0;
+        _results = [];
+        while (Math.abs(this.thetaDD) < 0.00001) {
+          _results.push(this.thetaDD = Math.randomRange(-0.001, 0.001));
+        }
+        return _results;
+      };
+
+      NeutralParticle.prototype.move = function() {
+        ctx.fillStyle = this.gray.toString(16);
+        ctx.fillRect(this.x, this.y - 1, 1, 1);
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vx = this.speed * Math.sin(this.theta);
+        this.vy = this.speed * Math.sin(this.theta);
+
+        /*if(@x>0)
+          debugger
+         */
+        if ((Math.random() * 1000) > 990) {
+          this.x = dim / 2;
+          this.y = dim / 2;
+          this.collide();
+        }
+        if ((this.x < -dim) || (this.x > dim * 2) || (this.y < -dim) || (this.y > dim * 2)) {
+          this.x = dim / 2;
+          this.y = dim / 2;
+          return this.collide();
+        }
+      };
+
+      return NeutralParticle;
+
+    })(emo$.art.sketch.Particle);
+    emo$.art.sketch.HappyParticle = (function(_super) {
+      __extends(HappyParticle, _super);
+
+      function HappyParticle() {
+        return HappyParticle.__super__.constructor.apply(this, arguments);
+      }
+
+      HappyParticle.prototype.collide = function() {
+        this.x = dim / 2;
+        this.y = dim / 2;
+        this.theta = Math.random() * TWO_PI;
+        this.speed = Math.randomRange(0.5, 3.5);
+        this.speedD = Math.randomRange(0.996, 1.001);
+        this.thetaD = 0;
+        this.thetaDD = 0;
+        while (Math.abs(this.thetaDD) < 0.00001) {
+          this.thetaDD = Math.randomRange(-0.001, 0.001);
+        }
+        return this.color = palette.getRandomHappinessColor();
+      };
+
+      HappyParticle.prototype.move = function() {
+        if ((this.color != null)) {
+          ctx.fillStyle = this.color.toString(16);
+          ctx.fillRect(this.x, this.y - 1, 1, 1);
+          ctx.fillStyle = '#000000';
+          ctx.fillRect(0, this.y + 1, 1, 1);
+          $('textarea').css('background-color', '#' + this.color.toString(16));
+          $('div').css('background-color', '#' + this.color.toString(16));
+        }
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vx = this.speed * Math.sin(this.theta);
+        this.vy = this.speed * Math.sin(this.theta);
+        this.theta += this.thetaD;
+        this.thetaD += this.thetaDD;
+        this.speed *= this.speedD;
+        if ((Math.random() * 1000) > 997) {
+          this.speedD = 1.0;
+          this.thetaDD = 0.00001;
+          if (Math.random() * 100 > 70) {
+            this.x = dim / 2;
+            this.y = dim / 2;
+            this.collide();
+          }
+        }
+        if ((this.x < -dim) || (this.x > dim * 2) || (this.y < -dim) || (this.y > dim * 2)) {
+          return this.collide();
+        }
+      };
+
+      return HappyParticle;
+
+    })(emo$.art.sketch.Particle);
+    return emo$.art.sketch.Synemania = (function() {
+      var angries, currentEmotionalState, currentParticles, currentText, disgusties, fearies, happies, maxAngries, maxDisgusties, maxFearies, maxHappies, maxNeutrals, maxSaddies, maxSurprises, neutrals, sadTheta, saddies, saturationFactor, surprises, syne;
 
       Synemania.serialVersionUID = '1L';
-
-      dim = 400;
 
       maxHappies = 500;
 
@@ -28,44 +177,45 @@
 
       currentEmotionalState = new emo$.Engine.Emotion.EmotionalState();
 
-      palette = new emo$.art.utils.SynesketchPalette('standard');
-
       syne = null;
 
-      neutrals = new NeutralParticle[maxNeutrals];
+      neutrals = [];
 
-      happies = new HappyParticle[maxHappies];
+      happies = [];
 
-      saddies = new SadParticle[maxSaddies];
+      saddies = [];
 
-      angries = new AngryParticle[maxAngries];
+      angries = [];
 
-      surprises = new SupriseParticle[maxSurprises];
+      surprises = [];
 
-      fearies = new FearParticle[maxFearies];
+      fearies = [];
 
-      disgusties = new DisgustParticle[maxDisgusties];
+      disgusties = [];
 
       currentParticles = [];
 
       sadTheta = null;
 
-      saturationFactor = '1.0f';
+      saturationFactor = 1.0;
 
       currentText = null;
 
-      function Synemania(dim) {
+      function Synemania($el, dim) {
+        this.$el = $el;
         this.dim = dim;
-        Synemania.__super__.constructor.call(this);
+        this.setup();
       }
 
       Synemania.prototype.setup = function() {
-        var e, x, _i, _j, _k, _l, _m, _n, _o, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
-        size(dim, dim, P3D);
-        background(255);
-        noStroke();
+        var x, _i, _j, _k, _l, _m, _n, _o, _ref, _ref1, _ref2, _ref3, _ref4, _ref5, _ref6;
+        if (this.$el != null) {
+          this.$el.css('width', dim);
+          this.$el.css('height', dim);
+        }
+        ctx = this.$el[0].getContext("2d");
         for (x = _i = 0, _ref = maxNeutrals - 1; _i < _ref; x = _i += 1) {
-          neutrals[x] = new NeutralParticle();
+          neutrals[x] = new emo$.art.sketch.NeutralParticle();
         }
 
         /*for x in [0...maxSaddies-1] by 1
@@ -87,36 +237,36 @@
           disgusties[x] = new DisgustParticle()
          */
         for (x = _j = 0, _ref1 = maxSaddies - 1; _j < _ref1; x = _j += 1) {
-          saddies[x] = new NeutralParticle();
+          saddies[x] = new emo$.art.sketch.NeutralParticle();
         }
         for (x = _k = 0, _ref2 = maxHappies - 1; _k < _ref2; x = _k += 1) {
-          happies[x] = new NeutralParticle();
+          happies[x] = new emo$.art.sketch.HappyParticle();
         }
         for (x = _l = 0, _ref3 = maxAngries - 1; _l < _ref3; x = _l += 1) {
-          angries[x] = new NeutralParticle();
+          angries[x] = new emo$.art.sketch.NeutralParticle();
         }
         for (x = _m = 0, _ref4 = maxSurprises - 1; _m < _ref4; x = _m += 1) {
-          surprises[x] = new NeutralParticle();
+          surprises[x] = new emo$.art.sketch.NeutralParticle();
         }
         for (x = _n = 0, _ref5 = maxFearies - 1; _n < _ref5; x = _n += 1) {
-          fearies[x] = new NeutralParticle();
+          fearies[x] = new emo$.art.sketch.NeutralParticle();
         }
         for (x = _o = 0, _ref6 = maxDisgusties - 1; _o < _ref6; x = _o += 1) {
-          disgusties[x] = new NeutralParticle();
+          disgusties[x] = new emo$.art.sketch.NeutralParticle();
         }
-        sadTheta = random(TWO_PI);
-        currentParticles = neutrals;
-        try {
-          return syne = new SynesthetiatorEmotion(this);
-        } catch (_error) {
-          e = _error;
-          return e.printStackTrace();
-        }
+        sadTheta = Math.random() * TWO_PI;
+        return currentParticles = neutrals;
+
+        /*try
+          syne = new SynesthetiatorEmotion(@)
+        catch e
+          e.printStackTrace()
+         */
       };
 
       Synemania.prototype.synesketchUpdate = function(state) {
         currentEmotionalState = state;
-        return currentParticles = getCurrentParticles(currentEmotionalState.getStrongestEmotion());
+        return currentParticles = this.getCurrentParticles(currentEmotionalState.getStrongestEmotion());
       };
 
       Synemania.prototype.draw = function() {
@@ -153,8 +303,8 @@
       };
 
       Synemania.prototype.saturate = function(color) {
-        colorMode(HSB, '1.0f');
-        color = color(hue(color), saturation(color) * '0.98f', brightness(color));
+        colorMode(HSB, 1.0);
+        color = color(hue(color), saturation(color) * 0.98, brightness(color));
         colorMode(RGB, 255);
         return color;
       };
@@ -162,100 +312,6 @@
       return Synemania;
 
     })();
-
-    /*
-     Classes which describe emotion-specific particles, that is visual representation of each emotion.
-     */
-    emo$.art.sketch.Particle = (function() {
-      var color, speed, speedD, theta, thetaD, thetaDD, vx, vy, x, y;
-
-      color = null;
-
-      x = null;
-
-      y = null;
-
-      vx = null;
-
-      vy = null;
-
-      theta = null;
-
-      speed = null;
-
-      speedD = null;
-
-      thetaD = null;
-
-      thetaDD = null;
-
-      function Particle() {
-        x = dim / 2;
-        y = dim / 2;
-      }
-
-      Particle.prototype.collide = function() {
-        throw 'abstract';
-      };
-
-      Particle.prototype.move = function() {
-        throw 'abstract';
-      };
-
-      return Particle;
-
-    })();
-    return NeutralParticle = (function(_super) {
-      var gray;
-
-      __extends(NeutralParticle, _super);
-
-      gray = null;
-
-      function NeutralParticle() {
-        NeutralParticle.__super__.constructor.call(this);
-        gray = Math.floor(Math.random() * 255);
-      }
-
-      NeutralParticle.prototype.collide = function() {
-        var speed, speedD, theta, thetaD, thetaDD, x, y, _results;
-        x = dim / 2;
-        y = dim / 2;
-        theta = random(TWO_PI);
-        speed = random('0.5f', '3.5f');
-        speedD = random('0.996f', '1.001f');
-        thetaD = 0;
-        thetaDD = 0;
-        _results = [];
-        while (abs(thetaDD) < 0.00001) {
-          _results.push(thetaDD = random('-0.001f', '0.001f'));
-        }
-        return _results;
-      };
-
-      NeutralParticle.prototype.move = function() {
-        var vx, vy, x, y;
-        stroke(gray, 28);
-        point(x, y - 1);
-        x += vx;
-        y += vy;
-        vx = speed * sin(theta);
-        vy = speed * cos(theta);
-        if (random(1000) > 990) {
-          x = dim / 2;
-          y = dim / 2;
-          collide();
-        }
-        if ((x < -dim) || (x > dim * 2) || (y < -dim) || (y > dim * 2)) {
-          x = dim / 2;
-          y = dim / 2;
-          return collide();
-        }
-      };
-
-      return NeutralParticle;
-
-    })(Particle);
   });
 
 }).call(this);

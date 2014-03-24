@@ -5,37 +5,38 @@
 
   define([], function() {
     return emo$.Engine.Emotion.EmotionalState = (function(_super) {
-      var emotions, generalWeight, previous, valence;
+      var _emotions, _generalWeight, _previous, _valence;
 
       __extends(EmotionalState, _super);
 
-      generalWeight = 0.0;
+      _generalWeight = 0.0;
 
-      valence = 0;
+      _valence = 0;
 
-      previous = null;
+      _previous = null;
 
-      emotions = null;
+      _emotions = [];
 
       function EmotionalState(text, emotions, generalWeight, valence) {
         EmotionalState.__super__.constructor.call(this, text);
-        emotions = emotions || [];
-        this.valence = valence;
-        if (emotions.length === 0) {
-          emotions.push(new emo$.Engine.Emotion.Emotion(1.0, emo$.Engine.Emotion.Emotion.NEUTRAL));
+        _emotions = emotions || _emotions;
+        _generalWeight = generalWeight;
+        _valence = valence;
+        if (_emotions.length === 0) {
+          _emotions.push(new emo$.Engine.Emotion.Emotion(1.0, emo$.Engine.Emotion.Emotion.NEUTRAL));
         }
         this;
       }
 
       EmotionalState.prototype.getStrongestEmotion = function() {
-        return emotions[0];
+        return _emotions[0];
       };
 
       EmotionalState.prototype.getFirstStrongestEmotions = function(stop) {
         var e, value, _i, _len;
         value = [];
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (stop <= 0) {
             break;
           }
@@ -48,8 +49,8 @@
       EmotionalState.prototype.getHappiness = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.HAPPINESS);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.HAPPINESS) {
             value = e;
           }
@@ -64,8 +65,8 @@
       EmotionalState.prototype.getSadness = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.SADNESS);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.SADNESS) {
             value = e;
           }
@@ -80,8 +81,8 @@
       EmotionalState.prototype.getFear = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.FEAR);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.FEAR) {
             value = e;
           }
@@ -96,8 +97,8 @@
       EmotionalState.prototype.getAnger = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.ANGER);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.ANGER) {
             value = e;
           }
@@ -112,8 +113,8 @@
       EmotionalState.prototype.getDisgust = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.DISGUST);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.DISGUST) {
             value = e;
           }
@@ -128,8 +129,8 @@
       EmotionalState.prototype.getSurprise = function() {
         var e, value, _i, _len;
         value = new Emotion(0.0, Emotion.SURPRISE);
-        for (_i = 0, _len = emotions.length; _i < _len; _i++) {
-          e = emotions[_i];
+        for (_i = 0, _len = _emotions.length; _i < _len; _i++) {
+          e = _emotions[_i];
           if (e.getType() === Emotion.SURPRISE) {
             value = e;
           }
@@ -145,8 +146,8 @@
         return this.previous;
       };
 
-      EmotionalState.prototype.setPrevious = function(previous) {
-        return this.previous = previous;
+      EmotionalState.prototype.setPrevious = function(_previous) {
+        return this.previous = _previous;
       };
 
       EmotionalState.prototype.getValence = function() {
@@ -154,12 +155,12 @@
       };
 
       EmotionalState.prototype.getGeneralWeight = function() {
-        return generalWeight;
+        return _generalWeight;
       };
 
       EmotionalState.prototype.toString = function() {
         var ret;
-        return ret = "Text: " + text + "\nGeneral weight: " + generalWeight + "\nValence: " + valence + "\nHappiness weight: " + getHappinessWeight() + "\nSadness weight: " + getSadnessWeight() + "\nAnger weight: " + getAngerWeight() + "\nFear weight: " + getFearWeight() + "\nDisgust weight: " + getDisgustWeight() + "\nSurprise weight: " + getSurpriseWeight() + "\n";
+        return ret = "Text: " + text + "\nGeneral weight: " + _generalWeight + "\nValence: " + _valence + "\nHappiness weight: " + getHappinessWeight() + "\nSadness weight: " + getSadnessWeight() + "\nAnger weight: " + getAngerWeight() + "\nFear weight: " + getFearWeight() + "\nDisgust weight: " + getDisgustWeight() + "\nSurprise weight: " + getSurpriseWeight() + "\n";
       };
 
       return EmotionalState;

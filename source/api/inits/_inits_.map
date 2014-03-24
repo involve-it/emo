@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "_inits_.js",
+  "sourceRoot": "",
+  "sources": [
+    "_inits_.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAM,IAAI,CAAC,GAAG,CAAC;uBAAf;;iBAAA;;MAAA,CAAA;;AAAA,EACA,MAAA,CAAO,CACL,iBADK,CAAP,EAEG,SAAA,GAAA,CAFH,CADA,CAAA;AAAA"
+}

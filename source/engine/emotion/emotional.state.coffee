@@ -1,24 +1,25 @@
 define [], () ->
   class emo$.Engine.Emotion.EmotionalState extends emo$.Engine.SynesketchState
     #pravates:
-    generalWeight = 0.0;
-    valence = 0;
-    previous = null
-    emotions = null
+    _generalWeight = 0.0;
+    _valence = 0;
+    _previous = null
+    _emotions = []
     constructor: (text, emotions, generalWeight, valence) ->
       super text
-      emotions = emotions or []
-      @valence = valence
-      if emotions.length is 0
-        emotions.push(new emo$.Engine.Emotion.Emotion(1.0, emo$.Engine.Emotion.Emotion.NEUTRAL))
+      _emotions = emotions || _emotions
+      _generalWeight = generalWeight
+      _valence = valence
+      if _emotions.length is 0
+        _emotions.push(new emo$.Engine.Emotion.Emotion(1.0, emo$.Engine.Emotion.Emotion.NEUTRAL))
       @
 
     getStrongestEmotion:() ->
-      emotions[0]
+      _emotions[0]
 
     getFirstStrongestEmotions: (stop) ->
       value = []
-      for e in emotions
+      for e in _emotions
         if stop <= 0
           break
         value.push e
@@ -27,7 +28,7 @@ define [], () ->
 
     getHappiness: () ->
       value = new Emotion 0.0, Emotion.HAPPINESS
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.HAPPINESS
           value = e
       value
@@ -37,7 +38,7 @@ define [], () ->
 
     getSadness:() ->
       value = new Emotion(0.0, Emotion.SADNESS)
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.SADNESS
           value = e
       value
@@ -47,7 +48,7 @@ define [], () ->
 
     getFear : () ->
       value = new Emotion(0.0, Emotion.FEAR)
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.FEAR
           value = e
       return value
@@ -56,7 +57,7 @@ define [], () ->
       return getFear().getWeight()
     getAnger : () ->
       value = new Emotion(0.0, Emotion.ANGER)
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.ANGER
           value = e
       return value
@@ -66,7 +67,7 @@ define [], () ->
 
     getDisgust : () ->
       value = new Emotion(0.0, Emotion.DISGUST)
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.DISGUST
           value = e
 
@@ -77,7 +78,7 @@ define [], () ->
 
     getSurprise : () ->
       value = new Emotion(0.0, Emotion.SURPRISE)
-      for e in emotions
+      for e in _emotions
         if e.getType() == Emotion.SURPRISE
           value = e
       return value
@@ -88,14 +89,14 @@ define [], () ->
     getPrevious : () ->
       return @previous
 
-    setPrevious : (previous) ->
-      @previous = previous
+    setPrevious : (_previous) ->
+      @previous = _previous
 
     getValence : () ->
       return @valence
 
     getGeneralWeight : () ->
-      return generalWeight
+      return _generalWeight
 
     toString : () ->
-      ret = "Text: " + text + "\nGeneral weight: " + generalWeight + "\nValence: " + valence + "\nHappiness weight: " + getHappinessWeight() + "\nSadness weight: " + getSadnessWeight() + "\nAnger weight: " + getAngerWeight() + "\nFear weight: " + getFearWeight() + "\nDisgust weight: " + getDisgustWeight() + "\nSurprise weight: " + getSurpriseWeight() + "\n"
+      ret = "Text: " + text + "\nGeneral weight: " + _generalWeight + "\nValence: " + _valence + "\nHappiness weight: " + getHappinessWeight() + "\nSadness weight: " + getSadnessWeight() + "\nAnger weight: " + getAngerWeight() + "\nFear weight: " + getFearWeight() + "\nDisgust weight: " + getDisgustWeight() + "\nSurprise weight: " + getSurpriseWeight() + "\n"

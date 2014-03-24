@@ -6,6 +6,12 @@ define [], () ->
       if (value == 0)
         return 1
       return value
+    getType : ->
+      @type
+    setType : (@type) ->
+    getWeight : ->
+      @weight
+    setWeight : (@weight) ->
     toString: () ->
       "Type number: " + @type + ", weight: " + @weight
 # Static:

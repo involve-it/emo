@@ -5,7 +5,7 @@
   FolderLoader = (function() {
     function FolderLoader() {}
 
-    define(['require'], function(require) {});
+    define([], function() {});
 
     return FolderLoader;
 

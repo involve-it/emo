@@ -16,7 +16,7 @@ require.config({
 window.emo$ = {}
 require([
   '/libs/_libs_.js',
-
+  '/api/_api_.js',
   '/engine/_engine_.js',
   '/gui/_gui_.js',
   '/art/_art_.js'

@@ -1,8 +1,11 @@
 define [], () ->
   class emo$.Gui.EmpathyPanel
-    constructor:(appletSize, SynClass, $el)->
+    appletClassNamePrefix = 'emo$.art.sketch.'
+
+    constructor:(appletSize, SynClass, artType, $el)->
       @$el = $el
-      @synesthesiator = new SynClass()
-      @synesthesiator.updateMethod(@$el)
+      appletClass = eval(appletClassNamePrefix + artType)
+      @applet = new appletClass($el)
+      @synesthesiator = new SynClass(@applet)
     fireSynesthesiator: (text) ->
       @synesthesiator.synesthesize(text)

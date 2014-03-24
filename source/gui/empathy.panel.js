@@ -2,10 +2,16 @@
 (function() {
   define([], function() {
     return emo$.Gui.EmpathyPanel = (function() {
-      function EmpathyPanel(appletSize, SynClass, $el) {
+      var appletClassNamePrefix;
+
+      appletClassNamePrefix = 'emo$.art.sketch.';
+
+      function EmpathyPanel(appletSize, SynClass, artType, $el) {
+        var appletClass;
         this.$el = $el;
-        this.synesthesiator = new SynClass();
-        this.synesthesiator.updateMethod(this.$el);
+        appletClass = eval(appletClassNamePrefix + artType);
+        this.applet = new appletClass($el);
+        this.synesthesiator = new SynClass(this.applet);
       }
 
       EmpathyPanel.prototype.fireSynesthesiator = function(text) {

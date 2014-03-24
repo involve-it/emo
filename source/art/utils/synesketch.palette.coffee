@@ -1,3 +1,4 @@
+dataServerAddr = 'http://localhost:8899'
 define [], () ->
   class emo$.art.utils.SynesketchPalette
     fearColors = []
@@ -9,7 +10,7 @@ define [], () ->
     randomiser = null
 
     constructor : (paletteName) ->
-      pm = new emo$.Engine.Utils.PropertiesManager('/data/palette/' + paletteName.toLowerCase() + '.xml')
+      pm = new emo$.Engine.Utils.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
       happinessColors = pm.getIntArrayProperty('happiness.palette')
       sadnessColors = pm.getIntArrayProperty('sadness.palette')
       angerColors = pm.getIntArrayProperty('anger.palette')
@@ -42,4 +43,3 @@ define [], () ->
       disgustColors[Math.floor(Math.random() * disgustColors.length)]
     getRandomSurpriseColor : ->
       surpriseColors[Math.floor(Math.random() * surpriseColors.length)]
-

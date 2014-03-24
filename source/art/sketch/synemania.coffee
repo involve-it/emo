@@ -1,7 +1,113 @@
-define [],() ->
+define [
+  'art/utils/_utils_.js'
+],() ->
+  ###
+ Classes which describe emotion-specific particles, that is visual representation of each emotion.
+###
+  dim = 500
+  TWO_PI = 6.28
+  palette = new emo$.art.utils.SynesketchPalette('standard');
+  ctx = null
+
+  class  emo$.art.sketch.Particle
+    @::color = null
+    @::x = null
+    @::y = null
+    @::vx = null
+    @::vy = null
+    @::theta = null
+    @::speed = null
+    @::speedD = null
+    @::thetaD = null
+    @::thetaDD = null
+
+    constructor : ->
+      @x = dim/2
+      @y = dim/2
+    collide : ->
+      throw 'abstract'
+    move : ->
+      throw 'abstract'
+
+  class emo$.art.sketch.NeutralParticle extends emo$.art.sketch.Particle
+    @::gray = null
+    constructor : ->
+      super()
+      @gray = Math.random() * 255
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+    move : ->
+      #stroke(gray, 28)
+      #point(x, y-1)
+      ctx.fillStyle = @gray.toString(16)
+      ctx.fillRect(@x,@y-1,1,1)
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.sin(@theta)
+      ###if(@x>0)
+        debugger###
+      if (Math.random() * 1000) > 990
+        @x = dim/2
+        @y = dim/2
+        @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @x = dim/2
+        @y = dim/2
+        @collide()
+  class emo$.art.sketch.HappyParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomHappinessColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.sin(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+
   class emo$.art.sketch.Synemania
     @serialVersionUID = '1L'
-    dim = 400
     maxHappies = 500
     maxSaddies = 800
     maxAngries = 800
@@ -11,36 +117,39 @@ define [],() ->
     maxNeutrals = 750
 
     currentEmotionalState = new emo$.Engine.Emotion.EmotionalState()
-    palette = new emo$.art.utils.SynesketchPalette('standard');
 
     syne = null
 
-    neutrals = new NeutralParticle[maxNeutrals]
-    happies = new HappyParticle[maxHappies]
-    saddies = new SadParticle[maxSaddies]
-    angries = new AngryParticle[maxAngries]
-    surprises = new SupriseParticle[maxSurprises]
-    fearies = new FearParticle[maxFearies]
-    disgusties = new DisgustParticle[maxDisgusties]
-
+    neutrals = []
+    happies = []
+    saddies = []
+    angries = []
+    surprises = []
+    fearies = []
+    disgusties = []
     currentParticles = []
 
     sadTheta = null
 
-    saturationFactor = '1.0f'
+    saturationFactor = 1.0
 
     currentText = null
 
-    constructor: (@dim) ->
-      super()
+    constructor: (@$el, @dim) ->
+      #super()
+      @setup()
     setup : ->
-      size(dim, dim, P3D)
-      background(255)
-      noStroke()
+      if @$el?
+        @$el.css('width', dim)
+        @$el.css('height', dim)
+        #size(dim, dim, P3D)
+        #background(255)
+        #noStroke()
+
+      ctx = @$el[0].getContext("2d")
 
       for x in [0...maxNeutrals-1] by 1
-        neutrals[x] = new NeutralParticle()
-
+        neutrals[x] = new emo$.art.sketch.NeutralParticle()
       ###for x in [0...maxSaddies-1] by 1
         saddies[x] = new SadParticle()
 
@@ -59,33 +168,33 @@ define [],() ->
       for x in [0...maxDisgusties-1] by 1
         disgusties[x] = new DisgustParticle()###
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new NeutralParticle()
+        saddies[x] = new emo$.art.sketch.NeutralParticle()
 
       for x in [0...maxHappies-1] by 1
-        happies[x] = new NeutralParticle()
+        happies[x] = new emo$.art.sketch.HappyParticle()
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new NeutralParticle()
+        angries[x] = new emo$.art.sketch.NeutralParticle()
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new NeutralParticle()
+        surprises[x] = new emo$.art.sketch.NeutralParticle()
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new NeutralParticle()
+        fearies[x] = new emo$.art.sketch.NeutralParticle()
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new NeutralParticle()
+        disgusties[x] = new emo$.art.sketch.NeutralParticle()
 
-      sadTheta = random(TWO_PI); #todo change to js
+      sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals
-      try
+      ###try
         syne = new SynesthetiatorEmotion(@)
       catch e
-        e.printStackTrace()
+        e.printStackTrace()###
 
     synesketchUpdate : (state) ->
       currentEmotionalState = state
-      currentParticles = getCurrentParticles(currentEmotionalState.getStrongestEmotion())
+      currentParticles = @getCurrentParticles(currentEmotionalState.getStrongestEmotion())
     draw : ->
       strongest = currentEmotionalState.getStrongestEmotion()
       weight = strongest.getWeight()
@@ -109,63 +218,10 @@ define [],() ->
         return surprises
       else
         return neutrals
-
     saturate : (color) ->
-      colorMode(HSB, '1.0f')
-      color = color(hue(color), saturation(color) * '0.98f', brightness(color))
+      colorMode(HSB, 1.0)
+      color = color(hue(color), saturation(color) * 0.98, brightness(color))
       colorMode(RGB, 255)
       return color
 
-  ###
-   Classes which describe emotion-specific particles, that is visual representation of each emotion.
-  ###
-  class  emo$.art.sketch.Particle
-    color = null
-    x = null
-    y = null
-    vx = null
-    vy = null
-    theta = null
-    speed = null
-    speedD = null
-    thetaD = null
-    thetaDD = null
 
-    constructor : ->
-      x = dim/2
-      y = dim/2
-    collide : ->
-      throw 'abstract'
-    move : ->
-      throw 'abstract'
-
-  class NeutralParticle extends Particle
-    gray = null
-    constructor : ->
-      super()
-      gray = Math.floor(Math.random() * 255)
-    collide : ->
-      x = dim/2
-      y = dim/2
-      theta = random(TWO_PI);
-      speed = random('0.5f', '3.5f')
-      speedD = random('0.996f', '1.001f')
-      thetaD = 0
-      thetaDD = 0
-      while (abs(thetaDD)<0.00001)
-        thetaDD = random('-0.001f', '0.001f')
-    move : ->
-      stroke(gray, 28)
-      point(x, y-1)
-      x += vx
-      y += vy
-      vx = speed * sin(theta)
-      vy = speed * cos(theta)
-      if random(1000) > 990
-        x = dim/2
-        y = dim/2
-        collide()
-      if (x<-dim) || (x>dim*2) || (y<-dim) || (y>dim*2)
-        x = dim/2
-        y = dim/2
-        collide()

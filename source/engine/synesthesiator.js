@@ -2,22 +2,20 @@
 (function() {
   define([], function() {
     return emo$.Engine.Synesthesiator = (function() {
-      function Synesthesiator() {
-        this.updateMethod = function() {
-          return console.log('this is update method');
-        };
+      function Synesthesiator(parent) {
+        this.parent = parent;
+        this.updateMethod = parent.synesketchUpdate;
+        if (this.updateMethod == null) {
+          this.updateMethod = function() {
+            throw 'abstract method!';
+            return console.log('this is update method');
+          };
+        }
       }
 
       Synesthesiator.prototype.notifyPApplet = function(state) {
-        var e;
         if (this.updateMethod !== null && !_.isUndefined(this.updateMethod)) {
-          try {
-            this.updateMethod(state);
-          } catch (_error) {
-            e = _error;
-            e.printStackTrace();
-            this.updateMethod = null;
-          }
+          this.updateMethod.call(this.parent, state);
         }
         return this;
       };

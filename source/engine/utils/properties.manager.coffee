@@ -19,3 +19,12 @@ define [
       for prop in properties
         if prop['_key'] == key
           return prop['__text']
+
+    getIntArrayProperty : (key) ->
+      line = @getProperty(key)
+      strings = line.split(', ')
+      values = []
+      for string in strings
+        values.push(parseInt(string, 16))
+      values
+

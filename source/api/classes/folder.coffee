@@ -1,4 +1,2 @@
 class FolderLoader
-  define [
-    'require'
-  ], (require) ->
+  define [], () ->
