@@ -1,8 +1,8 @@
 ({
   //appDir: "../source/engine",
-  dir: "appdirectory-build",
-  baseUrl: "../../source/engine",
-  name: "_engine_.js",
+  //dir: "appdirectory-build",
+  baseUrl: "./",
+  name: "./_engine_.js",
   out: "engine-build.js",
 
   optimize : "none",

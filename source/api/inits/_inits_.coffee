@@ -1,4 +1,5 @@
 class emo$.api.inits
 define [
-  './javascript.js'
+  './javascript.js',
+  './jquery.js'
 ], () ->

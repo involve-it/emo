@@ -5,3 +5,4 @@ define [
   './synesketch.state.js',
   './synesthesiator.js'
 ], () ->
+emo$.Engine

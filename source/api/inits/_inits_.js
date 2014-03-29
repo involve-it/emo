@@ -7,7 +7,7 @@
 
   })();
 
-  define(['./javascript.js'], function() {});
+  define(['./javascript.js', './jquery.js'], function() {});
 
 }).call(this);
 

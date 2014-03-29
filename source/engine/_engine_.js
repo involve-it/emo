@@ -9,6 +9,8 @@
 
   define(['./utils/_utils_.js', './emotion/_emotion_.js', './synesketch.state.js', './synesthesiator.js'], function() {});
 
+  return emo$.Engine;
+
 }).call(this);
 
 //# sourceMappingURL=_engine_.map
