@@ -82,7 +82,7 @@
         this.x += this.vx;
         this.y += this.vy;
         this.vx = this.speed * Math.sin(this.theta);
-        this.vy = this.speed * Math.sin(this.theta);
+        this.vy = this.speed * Math.cos(this.theta);
 
         /*if(@x>0)
           debugger
@@ -135,7 +135,7 @@
         this.x += this.vx;
         this.y += this.vy;
         this.vx = this.speed * Math.sin(this.theta);
-        this.vy = this.speed * Math.sin(this.theta);
+        this.vy = this.speed * Math.cos(this.theta);
         this.theta += this.thetaD;
         this.thetaD += this.thetaDD;
         this.speed *= this.speedD;

@@ -24,7 +24,7 @@
         setInterval(function() {
           var results;
           return results = that.empathyPanel.applet.draw();
-        }, 1000);
+        }, 10);
       }
 
       EmpathyBox.prototype.getAppCanvas = function() {

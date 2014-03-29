@@ -53,7 +53,7 @@ define [
       @x += @vx
       @y += @vy
       @vx = @speed * Math.sin(@theta)
-      @vy = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
       ###if(@x>0)
         debugger###
       if (Math.random() * 1000) > 990
@@ -92,7 +92,7 @@ define [
       @x += @vx
       @y += @vy
       @vx = @speed * Math.sin(@theta)
-      @vy = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
       @theta += @thetaD;
       @thetaD += @thetaDD;
       @speed *= @speedD;

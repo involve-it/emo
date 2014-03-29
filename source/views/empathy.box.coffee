@@ -14,7 +14,7 @@ define [], () ->
         that.empathyPanel.fireSynesthesiator text
       setInterval(->
         results = that.empathyPanel.applet.draw()
-      , 1000)
+      , 10)
     getAppCanvas: ->
       @empathyPanel # ?= new EmpathyCanvas(100, SynesthesiatorEmotion)
     getTextArea: () ->

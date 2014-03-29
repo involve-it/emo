@@ -23,13 +23,11 @@ require([
 
 ], function (underscore, synesketchState, synesthesiator) {
   require([
-    '/app/empathy.box.js'
-  ], function(EmpathyBox) {
-    empathyBox = new EmpathyBox($('#canvas'), $('#textArea'), $('#butt'));
+    '/views/empathy.box.js'
+  ], function(EmpathyBoxView) {
+    empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'));
     // testing only:
     $('#butt').trigger('click');
-    //aw1 = new synesketch.emotion.AffectWord('word1');
-    //e1 = new engine.emotion.Emotion(0.6, 2);
   });
 
 });
