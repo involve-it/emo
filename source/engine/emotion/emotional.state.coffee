@@ -1,25 +1,25 @@
 define [], () ->
   class emo$.Engine.Emotion.EmotionalState extends emo$.Engine.SynesketchState
     #pravates:
-    _generalWeight = 0.0;
-    _valence = 0;
-    _previous = null
-    _emotions = []
-    constructor: (text, emotions, generalWeight, valence) ->
+    _Emotion = emo$.Engine.Emotion.Emotion
+    @::_generalWeight = 0.0;
+    @::_valence = 0;
+    @::_previous = null
+    @::_emotions = []
+    constructor: (text, _emotions, @_generalWeight, @_valence) ->
       super text
-      _emotions = emotions || _emotions
-      _generalWeight = generalWeight
-      _valence = valence
-      if _emotions.length is 0
-        _emotions.push(new emo$.Engine.Emotion.Emotion(1.0, emo$.Engine.Emotion.Emotion.NEUTRAL))
+      debugger
+      @_emotions = _emotions || @_emotions
+      if @_emotions.length is 0
+        @_emotions.push(new _Emotion(1.0, _Emotion.NEUTRAL))
       @
 
     getStrongestEmotion:() ->
-      _emotions[0]
+      @_emotions[0]
 
     getFirstStrongestEmotions: (stop) ->
       value = []
-      for e in _emotions
+      for e in @_emotions
         if stop <= 0
           break
         value.push e
@@ -27,76 +27,79 @@ define [], () ->
       value
 
     getHappiness: () ->
-      value = new Emotion 0.0, Emotion.HAPPINESS
-      for e in _emotions
-        if e.getType() == Emotion.HAPPINESS
+      value = new _Emotion 0.0, _Emotion.HAPPINESS
+      for e in @_emotions
+        if e.getType() == _Emotion.HAPPINESS
           value = e
       value
 
     getHappinessWeight:() ->
-      getHappiness().getWeight()
+      @getHappiness().getWeight()
 
     getSadness:() ->
-      value = new Emotion(0.0, Emotion.SADNESS)
-      for e in _emotions
-        if e.getType() == Emotion.SADNESS
+      value = new _Emotion(0.0, _Emotion.SADNESS)
+      for e in @_emotions
+        if e.getType() == _Emotion.SADNESS
           value = e
       value
 
     getSadnessWeight : () ->
-      return getSadness().getWeight()
+      @getSadness().getWeight()
 
     getFear : () ->
-      value = new Emotion(0.0, Emotion.FEAR)
-      for e in _emotions
-        if e.getType() == Emotion.FEAR
+      value = new _Emotion(0.0, _Emotion.FEAR)
+      for e in @_emotions
+        if e.getType() == _Emotion.FEAR
           value = e
-      return value
+      value
 
     getFearWeight : () ->
-      return getFear().getWeight()
+      @getFear().getWeight()
+
     getAnger : () ->
-      value = new Emotion(0.0, Emotion.ANGER)
-      for e in _emotions
-        if e.getType() == Emotion.ANGER
+      value = new _Emotion(0.0, _Emotion.ANGER)
+      for e in @_emotions
+        if e.getType() == _Emotion.ANGER
           value = e
-      return value
+      value
 
     getAngerWeight : () ->
-      return getAnger().getWeight()
+      @getAnger().getWeight()
 
     getDisgust : () ->
-      value = new Emotion(0.0, Emotion.DISGUST)
-      for e in _emotions
-        if e.getType() == Emotion.DISGUST
+      value = new _Emotion(0.0, _Emotion.DISGUST)
+      for e in @_emotions
+        if e.getType() == _Emotion.DISGUST
           value = e
 
-      return value;
+      value;
 
     getDisgustWeight : () ->
-      return getDisgust().getWeight()
+      @getDisgust().getWeight()
 
     getSurprise : () ->
-      value = new Emotion(0.0, Emotion.SURPRISE)
-      for e in _emotions
-        if e.getType() == Emotion.SURPRISE
+      value = new _Emotion(0.0, _Emotion.SURPRISE)
+      for e in @_emotions
+        if e.getType() == _Emotion.SURPRISE
           value = e
-      return value
+      value
 
     getSurpriseWeight : () ->
-      return getSurprise().getWeight()
+      @getSurprise().getWeight()
 
     getPrevious : () ->
-      return @previous
+      @previous
 
     setPrevious : (_previous) ->
       @previous = _previous
 
     getValence : () ->
-      return @valence
+      debugger
+      @_valence
 
     getGeneralWeight : () ->
-      return _generalWeight
+      @_generalWeight
 
     toString : () ->
-      ret = "Text: " + text + "\nGeneral weight: " + _generalWeight + "\nValence: " + _valence + "\nHappiness weight: " + getHappinessWeight() + "\nSadness weight: " + getSadnessWeight() + "\nAnger weight: " + getAngerWeight() + "\nFear weight: " + getFearWeight() + "\nDisgust weight: " + getDisgustWeight() + "\nSurprise weight: " + getSurpriseWeight() + "\n"
+      ret = "Text: " + @text + "\nGeneral weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
+      "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"

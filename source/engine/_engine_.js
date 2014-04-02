@@ -9,7 +9,7 @@
 
   define(['./utils/_utils_.js', './emotion/_emotion_.js', './synesketch.state.js', './synesthesiator.js'], function() {});
 
-  return emo$.Engine;
+  emo$.Engine;
 
 }).call(this);
 
