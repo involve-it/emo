@@ -1,0 +1,18 @@
+initial installation:
+
+1. npm install grunt
+2. npm install -g grunt-cli
+3. git>npm install -g grunt-init
+//https://github.com/gruntjs/grunt-init-gruntfile
+4. git clone https://github.com/gruntjs/grunt-init-gruntfile.git %USERPROFILE%\.grunt-init\gruntfile
+5. grunt-init gruntfile
+6. npm install ...
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-qunit": "~0.3.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7"
+
+
+to run :
+grunt
