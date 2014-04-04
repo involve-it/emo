@@ -108,13 +108,13 @@ define [
 
   class emo$.art.sketch.Synemania
     @serialVersionUID = '1L'
-    maxHappies = 500
+    maxHappies = 600
     maxSaddies = 800
     maxAngries = 800
-    maxSurprises = 100
-    maxFearies = 200
-    maxDisgusties = 800
-    maxNeutrals = 750
+    maxSurprises = 200
+    maxFearies = 400
+    maxDisgusties = 900
+    maxNeutrals = 30
 
     currentEmotionalState = new emo$.Engine.Emotion.EmotionalState()
 

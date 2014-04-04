@@ -9,7 +9,7 @@ define [], () ->
     emoticons = null
     negations = null
     intensityModifiers = null
-    normalisator = 0.75
+    normalisator = 1
 
     constructor : () ->
       #affectWords = []
@@ -84,11 +84,26 @@ define [], () ->
     isNegation : (word) ->
       ret = negations.indexOf(word) > -1
 
-    hasNegation : (sentence) ->
+    ###hasNegation : (sentence) ->
       for negation in negations
         if sentence.indexOf(negation) > -1
           return true
-      return false
+      return false###
 
     isIntensityModifier : (word) ->
       ret = intensityModifiers.indexOf(word) > -1
+
+    inTheSamePartOfTheSentence : (negation, word, sentence) ->
+      i = sentence.indexOf(negation)
+      j = sentence.indexOf(word)
+      if (i < j)
+        i += negation.length
+      else
+        tmp = i
+        i = j + word.length
+        j = tmp
+      for k in [i...j] by 1
+        if ((sentence[k] == ',') || (sentence[k] == '.') || (sentence[k] == ';') || (sentence[k] == ':') || (sentence[k] == '-'))
+          return false
+      return true
+

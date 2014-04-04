@@ -26,21 +26,34 @@
       };
 
       EmpathyScope.prototype.feel = function(text) {
-        var affectWords, capsLockCoef, emoWord, emoticonCoef, exclaminationQoef, hasNegation, modifierCoef, previousWord, ret, sentence, sentences, splittedWord, splittedWords, word, words, _i, _j, _k, _len, _len1, _len2;
+        var affectWords, capsLockCoef, emoWord, emoWordSurprise, emoticonCoef, exclaminationQoef, hasNegation, modifierCoef, negation, previousWord, ret, sentence, sentences, splittedWord, splittedWords, word, words, _i, _j, _k, _len, _len1, _len2;
         text = text.replace('\n', ' ');
         affectWords = [];
         sentences = emo$.Engine.Emotion.Helpers.Parsing.parseSentences(text);
         for (_i = 0, _len = sentences.length; _i < _len; _i++) {
           sentence = sentences[_i];
-          hasNegation = emo$.Engine.Emotion.Helpers.Heuristics.hasNegation(sentence.toLowerCase());
+          console.log('- ' + sentence);
           exclaminationQoef = emo$.Engine.Emotion.Helpers.Heuristics.computeExclaminationQoef(sentence.toLowerCase());
+          if (emo$.Engine.Emotion.Helpers.Heuristics.hasExclaminationQuestionMarks(sentence)) {
+            emoWordSurprise = new emo$.Engine.Emotion.AffectWord("?!");
+            emoWordSurprise.setSurpriseWeight(1.0);
+            affectWords.push(emoWordSurprise);
+          }
+          hasNegation = false;
           splittedWords = emo$.Engine.Emotion.Helpers.Parsing.splitWords(sentence, ' ');
           previousWord = '';
+          negation = '';
           for (_j = 0, _len1 = splittedWords.length; _j < _len1; _j++) {
             splittedWord = splittedWords[_j];
             emoWord = lexUtil.getEmoticonAffectWord(splittedWord);
+            if (emoWord === null) {
+              emoWord = lexUtil.getEmoticonAffectWord(splittedWord.toLowerCase());
+            }
             if (emoWord !== null) {
               emoticonCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeEmoticonCoef(splittedWord, emoWord);
+              if (emoticonCoef === 1.0) {
+                emoticonCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeEmoticonCoef(splittedWord.toLowerCase(), emoWord);
+              }
               emoWord.adjustWeights(exclaminationQoef * emoticonCoef);
               affectWords.push(emoWord);
             } else {
@@ -48,18 +61,25 @@
             }
             for (_k = 0, _len2 = words.length; _k < _len2; _k++) {
               word = words[_k];
-              emoWord = lexUtil.getAffectWord(word.toLowerCase());
-            }
-            if (emoWord !== null) {
-              capsLockCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeCapsLockQoef(word);
-              modifierCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeModifier(previousWord);
-              if (hasNegation) {
-                emoWord.flipValence();
+              if (emo$.Engine.Emotion.Helpers.Heuristics.isNegation(word.toLowerCase())) {
+                negation = word;
+                hasNegation = true;
               }
-              emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef);
-              affectWords.push(emoWord);
+              emoWord = lexUtil.getAffectWord(word.toLowerCase());
+              if (emoWord === null) {
+                emoWord = lexUtil.getEmoticonAffectWord(word.toLowerCase());
+              }
+              if (emoWord !== null) {
+                capsLockCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeCapsLockQoef(word);
+                modifierCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeModifier(previousWord);
+                if (hasNegation && lexUtil.inTheSamePartOfTheSentence(negation, emoWord.getWord(), sentence)) {
+                  emoWord.flipValence();
+                }
+                emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef);
+                affectWords.push(emoWord);
+              }
+              previousWord = word;
             }
-            previousWord = word;
           }
         }
         return ret = this.createEmotionalState(text, affectWords);

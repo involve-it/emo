@@ -19,28 +19,59 @@ define [], () ->
       affectWords = []
       sentences = emo$.Engine.Emotion.Helpers.Parsing.parseSentences(text);
       for sentence in sentences
-        hasNegation = emo$.Engine.Emotion.Helpers.Heuristics.hasNegation(sentence.toLowerCase())
+        console.log('- ' + sentence)
+        #hasNegation = emo$.Engine.Emotion.Helpers.Heuristics.hasNegation(sentence.toLowerCase())
         exclaminationQoef = emo$.Engine.Emotion.Helpers.Heuristics.computeExclaminationQoef(sentence.toLowerCase())
+
+        # an exclamination mark next to a question mark => emotion of surprise
+        if (emo$.Engine.Emotion.Helpers.Heuristics.hasExclaminationQuestionMarks(sentence))
+          emoWordSurprise = new emo$.Engine.Emotion.AffectWord("?!")
+          emoWordSurprise.setSurpriseWeight(1.0)
+          affectWords.push(emoWordSurprise)
+        hasNegation = false
+
         splittedWords = emo$.Engine.Emotion.Helpers.Parsing.splitWords(sentence, ' ')
         previousWord = ''
+        negation = ''
+
         for splittedWord in splittedWords
           emoWord = lexUtil.getEmoticonAffectWord(splittedWord)
+
+
+          if (emoWord == null)
+            emoWord = lexUtil.getEmoticonAffectWord(splittedWord.toLowerCase())
+
           if emoWord != null
             emoticonCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeEmoticonCoef(splittedWord, emoWord)
+
+            if (emoticonCoef == 1.0)
+              emoticonCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeEmoticonCoef(splittedWord.toLowerCase(), emoWord);
+
+
             emoWord.adjustWeights(exclaminationQoef * emoticonCoef)
             affectWords.push(emoWord)
           else
             words = emo$.Engine.Emotion.Helpers.Parsing.parseWords(splittedWord)
           for word in words
+            # (4) negation in a sentence =>
+            # flip valence of the affect words in it
+            if (emo$.Engine.Emotion.Helpers.Heuristics.isNegation(word.toLowerCase()))
+              negation = word
+              hasNegation = true
+
             emoWord = lexUtil.getAffectWord word.toLowerCase()
-          if emoWord != null
-            capsLockCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeCapsLockQoef word
-            modifierCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeModifier previousWord
-            if hasNegation
-              emoWord.flipValence()
-            emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef)
-            affectWords.push emoWord
-          previousWord = word
+
+            if (emoWord == null)
+              emoWord = lexUtil.getEmoticonAffectWord(word.toLowerCase())
+
+            if emoWord != null
+              capsLockCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeCapsLockQoef word
+              modifierCoef = emo$.Engine.Emotion.Helpers.Heuristics.computeModifier previousWord
+              if hasNegation && lexUtil.inTheSamePartOfTheSentence(negation, emoWord.getWord(), sentence)
+                emoWord.flipValence()
+              emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef)
+              affectWords.push emoWord
+            previousWord = word
       ret = @createEmotionalState(text, affectWords)
 
     createEmotionalState : (text, affectWords) ->

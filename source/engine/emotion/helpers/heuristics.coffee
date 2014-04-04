@@ -40,8 +40,8 @@ define [], () ->
       else
         return 1.0;
 
-    @hasNegation : (sentence) ->
-      return emo$.Engine.Emotion.Helpers.Lexical.getInstance().hasNegation(sentence)
+    @isNegation : (sentence) ->
+      return emo$.Engine.Emotion.Helpers.Lexical.getInstance().isNegation(sentence)
 
     @computeModifier : (word) ->
       if isIntensityModifier(word)
@@ -57,3 +57,30 @@ define [], () ->
 
     @computeExclaminationQoef : (text) ->
       return 1.0 + (0.2 * countChars(text, '!'))
+
+    ###
+    * Returns is there a "!?" or a "?!" in a sentece.
+    *
+    * @param text {@link String} representing the sentence
+    * @return boolean representing the existance of a "!?" or a "?!"
+    ###
+    @hasExclaminationQuestionMarks : (text) ->
+      if ((text.indexOf('?!') > -1) || (text.indexOf('!?') > -1))
+        return true
+      return false
+
+    isCapsLock : (word) ->
+      if (word.toUpperCase() == word)
+        return true
+      else
+        return false
+
+    isIntensityModifier : (word) ->
+      return emo$.Engine.Emotion.Helpers.Lexical.getInstance().isIntensityModifier(word)
+
+    countChars : (arg, c) ->
+      count = 0
+      for i in [0...arg.length] by 1
+        if (arg[i] == c)
+          count++
+      return count

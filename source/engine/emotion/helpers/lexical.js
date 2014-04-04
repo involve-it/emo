@@ -22,7 +22,7 @@
 
       intensityModifiers = null;
 
-      normalisator = 0.75;
+      normalisator = 1;
 
       function Lexical() {
         var pm;
@@ -134,20 +134,36 @@
         return ret = negations.indexOf(word) > -1;
       };
 
-      Lexical.prototype.hasNegation = function(sentence) {
-        var negation, _i, _len;
-        for (_i = 0, _len = negations.length; _i < _len; _i++) {
-          negation = negations[_i];
-          if (sentence.indexOf(negation) > -1) {
-            return true;
-          }
-        }
-        return false;
-      };
+
+      /*hasNegation : (sentence) ->
+        for negation in negations
+          if sentence.indexOf(negation) > -1
+            return true
+        return false
+       */
 
       Lexical.prototype.isIntensityModifier = function(word) {
         var ret;
         return ret = intensityModifiers.indexOf(word) > -1;
+      };
+
+      Lexical.prototype.inTheSamePartOfTheSentence = function(negation, word, sentence) {
+        var i, j, k, tmp, _i;
+        i = sentence.indexOf(negation);
+        j = sentence.indexOf(word);
+        if (i < j) {
+          i += negation.length;
+        } else {
+          tmp = i;
+          i = j + word.length;
+          j = tmp;
+        }
+        for (k = _i = i; _i < j; k = _i += 1) {
+          if ((sentence[k] === ',') || (sentence[k] === '.') || (sentence[k] === ';') || (sentence[k] === ':') || (sentence[k] === '-')) {
+            return false;
+          }
+        }
+        return true;
       };
 
       return Lexical;

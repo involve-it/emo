@@ -7,7 +7,10 @@
       Parsing.parseSentences = function(text) {
         var value;
         value = [];
-        value.push(text);
+        value = text.split('.');
+        value = value.filter(function(val) {
+          return val.trim() !== '';
+        });
         return value;
       };
 

@@ -23,7 +23,6 @@
         this._generalWeight = _generalWeight;
         this._valence = _valence;
         EmotionalState.__super__.constructor.call(this, text);
-        debugger;
         this._emotions = _emotions || this._emotions;
         if (this._emotions.length === 0) {
           this._emotions.push(new _Emotion(1.0, _Emotion.NEUTRAL));
@@ -169,9 +168,14 @@
         return this._generalWeight;
       };
 
-      EmotionalState.prototype.toString = function() {
+      EmotionalState.prototype.toString = function(separator) {
         var ret;
-        return ret = "Text: " + this.text + "\nGeneral weight: " + this.getGeneralWeight() + "\nValence: " + this.getValence() + "\nHappiness weight: " + this.getHappinessWeight() + "\nSadness weight: " + this.getSadnessWeight() + "\nAnger weight: " + this.getAngerWeight() + "\nFear weight: " + this.getFearWeight() + "\nDisgust weight: " + this.getDisgustWeight() + "\nSurprise weight: " + this.getSurpriseWeight() + "\n";
+        if (separator) {
+          ret = this.text + separator + this.getGeneralWeight() + separator + this.getValence() + separator + this.getHappinessWeight() + separator + this.getSadnessWeight() + separator + this.getAngerWeight() + separator + this.getFearWeight() + separator + this.getDisgustWeight() + separator + this.getSurpriseWeight();
+        } else {
+          ret = "Text: " + this.text + "\nGeneral weight: " + this.getGeneralWeight() + "\nValence: " + this.getValence() + "\nHappiness weight: " + this.getHappinessWeight() + "\nSadness weight: " + this.getSadnessWeight() + "\nAnger weight: " + this.getAngerWeight() + "\nFear weight: " + this.getFearWeight() + "\nDisgust weight: " + this.getDisgustWeight() + "\nSurprise weight: " + this.getSurpriseWeight() + "\n";
+        }
+        return ret;
       };
 
       return EmotionalState;

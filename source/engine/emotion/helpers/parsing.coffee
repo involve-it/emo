@@ -2,7 +2,10 @@ define [], () ->
   class emo$.Engine.Emotion.Helpers.Parsing
     @parseSentences : (text) ->
       value = []
-      value.push text #this is temporary solution
+      value = text.split('.')
+      value = value.filter (val)->
+        return val.trim() != ''
+
       #boundary = BreakIterator.getSentenceInstance()
       #boundary.setText(text)
       #start = boundary.first()

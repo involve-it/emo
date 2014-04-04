@@ -7,4 +7,4 @@ define [],()->
   $.fn.emo$ = ()->
     @text()
   $.fn.feel$ = ()->
-    empathyScope.feel(@text())
+    empathyScope.feel(@val())

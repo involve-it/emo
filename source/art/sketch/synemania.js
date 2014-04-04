@@ -161,19 +161,19 @@
 
       Synemania.serialVersionUID = '1L';
 
-      maxHappies = 500;
+      maxHappies = 600;
 
       maxSaddies = 800;
 
       maxAngries = 800;
 
-      maxSurprises = 100;
+      maxSurprises = 200;
 
-      maxFearies = 200;
+      maxFearies = 400;
 
-      maxDisgusties = 800;
+      maxDisgusties = 900;
 
-      maxNeutrals = 750;
+      maxNeutrals = 30;
 
       currentEmotionalState = new emo$.Engine.Emotion.EmotionalState();
 

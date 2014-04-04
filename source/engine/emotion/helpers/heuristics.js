@@ -65,8 +65,8 @@
         }
       };
 
-      Heuristics.hasNegation = function(sentence) {
-        return emo$.Engine.Emotion.Helpers.Lexical.getInstance().hasNegation(sentence);
+      Heuristics.isNegation = function(sentence) {
+        return emo$.Engine.Emotion.Helpers.Lexical.getInstance().isNegation(sentence);
       };
 
       Heuristics.computeModifier = function(word) {
@@ -87,6 +87,44 @@
 
       Heuristics.computeExclaminationQoef = function(text) {
         return 1.0 + (0.2 * countChars(text, '!'));
+      };
+
+
+      /*
+      * Returns is there a "!?" or a "?!" in a sentece.
+      *
+      * @param text {@link String} representing the sentence
+      * @return boolean representing the existance of a "!?" or a "?!"
+       */
+
+      Heuristics.hasExclaminationQuestionMarks = function(text) {
+        if ((text.indexOf('?!') > -1) || (text.indexOf('!?') > -1)) {
+          return true;
+        }
+        return false;
+      };
+
+      Heuristics.prototype.isCapsLock = function(word) {
+        if (word.toUpperCase() === word) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      Heuristics.prototype.isIntensityModifier = function(word) {
+        return emo$.Engine.Emotion.Helpers.Lexical.getInstance().isIntensityModifier(word);
+      };
+
+      Heuristics.prototype.countChars = function(arg, c) {
+        var count, i, _i, _ref;
+        count = 0;
+        for (i = _i = 0, _ref = arg.length; _i < _ref; i = _i += 1) {
+          if (arg[i] === c) {
+            count++;
+          }
+        }
+        return count;
       };
 
       return Heuristics;

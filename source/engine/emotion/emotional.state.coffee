@@ -8,7 +8,6 @@ define [], () ->
     @::_emotions = []
     constructor: (text, _emotions, @_generalWeight, @_valence) ->
       super text
-      debugger
       @_emotions = _emotions || @_emotions
       if @_emotions.length is 0
         @_emotions.push(new _Emotion(1.0, _Emotion.NEUTRAL))
@@ -100,6 +99,11 @@ define [], () ->
     getGeneralWeight : () ->
       @_generalWeight
 
-    toString : () ->
-      ret = "Text: " + @text + "\nGeneral weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
-      "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"
+    toString : (separator) ->
+      if (separator)
+        ret = @text + separator + @getGeneralWeight() + separator + @getValence() +
+        separator + @getHappinessWeight() + separator + @getSadnessWeight() + separator + @getAngerWeight() + separator + @getFearWeight() + separator + @getDisgustWeight() + separator + @getSurpriseWeight()
+      else
+        ret = "Text: " + @text + "\nGeneral weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
+        "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"
+      ret
