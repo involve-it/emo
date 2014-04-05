@@ -1,0 +1,2 @@
+// coffee + jQuery plugin + grunt:
+https://github.com/Sebobo/jquery.rondell

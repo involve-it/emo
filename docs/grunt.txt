@@ -15,4 +15,8 @@ initial installation:
 
 
 to run :
-grunt
+grunt OR grunt --force
+
+// requirejs:
+//https://github.com/gruntjs/grunt-contrib-requirejs
+npm install grunt-contrib-requirejs

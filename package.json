@@ -1,4 +1,15 @@
 {
+  "name": "emojs",
+  "title": "EmoJS",
+  "version": "0.0.1",
+  "description": "This is a plugin for parsing and displaying emotions of the page content.",
+  "author": "Ashot Arutyunyan",
+  "homepage": "https://github.com/involve-it/emo",
+  "license": " MIT (http://www.opensource.org/licenses/mit-license.php) license.",
+  "main": "index.html",
+  "directories": {
+    "grunt": "automation/grunt"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -8,6 +19,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-qunit": "~0.3.0",
     "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.7"
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-requirejs": "~0.4.3"
   }
 }
