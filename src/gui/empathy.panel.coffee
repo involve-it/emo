@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Gui.EmpathyPanel
     appletClassNamePrefix = 'emo$.art.sketch.'
 

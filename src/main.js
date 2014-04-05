@@ -27,16 +27,10 @@ require.config({
     }
   },
   packages: [
-    // api:
     {
-      name : 'gui',
-      location : './gui/',
-      main : '_gui_'
-    },
-    {
-      name : 'engine',
-      location : './engine/',
-      main : '_engine_'
+      name : 'api',
+      location : 'api',
+      main : '_api_'
     },
     {
       name : 'art',
@@ -44,16 +38,26 @@ require.config({
       main : '_art_'
     },
     {
-      name : 'api',
-      location : './api/',
-      main : '_api_'
+      name : 'engine',
+      location : 'engine',
+      main : '_engine_'
+    },
+    {
+      name : 'gui',
+      location : 'gui',
+      main : '_gui_'
+    },
+    {
+      name : 'libs',
+      location : 'libs',
+      main : '_libs_'
     }
   ],
   timeout : 100
 });
 window.emo$ = {}
 require([
-  './libs/_libs_.js'
+  'libs'
 ], function(){
   require([
     'engine'

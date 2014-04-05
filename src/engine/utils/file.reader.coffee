@@ -1,8 +1,9 @@
-define [
-  #'cs!controller'
-  #'cs!view'
-  #'regular'
-], () ->
+  ###define [
+    #'cs!controller'
+    #'cs!view'
+    #'regular'
+  ], () ->###
+
   class emo$.Engine.Utils.FileReader
     @readFile : (fileName) ->
       file = null

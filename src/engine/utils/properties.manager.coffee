@@ -1,8 +1,8 @@
-define [
-  #'cs!controller'
-  #'cs!view'
-  #'regular'
-], () ->
+  ###define [
+    #'cs!controller'
+    #'cs!view'
+    #'regular'
+  ], () ->###
   class emo$.Engine.Utils.PropertiesManager
     properties = null
     constructor : (fileName) ->

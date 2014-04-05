@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.Helpers.Parsing
     @parseSentences : (text) ->
       value = []

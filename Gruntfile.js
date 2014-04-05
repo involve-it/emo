@@ -20,9 +20,14 @@
           files: [
             {
               expand: true,
-              cwd: 'src/libs1/',
+              cwd: 'src/libs/',
               src: ['**/*.js'],
-              dest: 'dist/libs1'
+              dest: 'dist/libs'
+            }, {
+              expand: true,
+              cwd: 'src/views/',
+              src: ['**/*.js'],
+              dest: 'dist/views'
             }
           ]
         }

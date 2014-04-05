@@ -1,11 +1,4 @@
-###
-* Defines logic for transfering textual affect information -- emotional
-* manifestations recognised in text -- into visual output.
-*
-* @author Uros Krcadinac email: uros@krcadinac.com
-* @version 1.0
-###
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.EmpathyScope
     lexUtil = null
     @instance

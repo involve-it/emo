@@ -4,87 +4,85 @@
 
   dataServerAddr = 'http://localhost:8899';
 
-  define([], function() {
-    return emo$.art.utils.SynesketchPalette = (function() {
-      var angerColors, disgustColors, fearColors, happinessColors, randomiser, sadnessColors, surpriseColors;
+  emo$.art.utils.SynesketchPalette = (function() {
+    var angerColors, disgustColors, fearColors, happinessColors, randomiser, sadnessColors, surpriseColors;
 
-      fearColors = [];
+    fearColors = [];
 
-      angerColors = [];
+    angerColors = [];
 
-      disgustColors = [];
+    disgustColors = [];
 
-      happinessColors = [];
+    happinessColors = [];
 
-      sadnessColors = [];
+    sadnessColors = [];
 
-      surpriseColors = [];
+    surpriseColors = [];
 
-      randomiser = null;
+    randomiser = null;
 
-      function SynesketchPalette(paletteName) {
-        var pm;
-        pm = new emo$.Engine.Utils.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml');
-        happinessColors = pm.getIntArrayProperty('happiness.palette');
-        sadnessColors = pm.getIntArrayProperty('sadness.palette');
-        angerColors = pm.getIntArrayProperty('anger.palette');
-        fearColors = pm.getIntArrayProperty('fear.palette');
-        disgustColors = pm.getIntArrayProperty('disgust.palette');
-        surpriseColors = pm.getIntArrayProperty('surprise.palette');
-      }
+    function SynesketchPalette(paletteName) {
+      var pm;
+      pm = new emo$.Engine.Utils.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml');
+      happinessColors = pm.getIntArrayProperty('happiness.palette');
+      sadnessColors = pm.getIntArrayProperty('sadness.palette');
+      angerColors = pm.getIntArrayProperty('anger.palette');
+      fearColors = pm.getIntArrayProperty('fear.palette');
+      disgustColors = pm.getIntArrayProperty('disgust.palette');
+      surpriseColors = pm.getIntArrayProperty('surprise.palette');
+    }
 
-      SynesketchPalette.prototype.getAngerColors = function() {
-        return angerColors;
-      };
+    SynesketchPalette.prototype.getAngerColors = function() {
+      return angerColors;
+    };
 
-      SynesketchPalette.prototype.getDisgustColors = function() {
-        return disgustColors;
-      };
+    SynesketchPalette.prototype.getDisgustColors = function() {
+      return disgustColors;
+    };
 
-      SynesketchPalette.prototype.getFearColors = function() {
-        return fearColors;
-      };
+    SynesketchPalette.prototype.getFearColors = function() {
+      return fearColors;
+    };
 
-      SynesketchPalette.prototype.getHappinessColors = function() {
-        return happinessColors;
-      };
+    SynesketchPalette.prototype.getHappinessColors = function() {
+      return happinessColors;
+    };
 
-      SynesketchPalette.prototype.getSadnessColors = function() {
-        return sadnessColors;
-      };
+    SynesketchPalette.prototype.getSadnessColors = function() {
+      return sadnessColors;
+    };
 
-      SynesketchPalette.prototype.getSurpriseColors = function() {
-        return surpriseColors;
-      };
+    SynesketchPalette.prototype.getSurpriseColors = function() {
+      return surpriseColors;
+    };
 
-      SynesketchPalette.prototype.getRandomHappinessColor = function() {
-        return happinessColors[Math.floor(Math.random() * happinessColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomHappinessColor = function() {
+      return happinessColors[Math.floor(Math.random() * happinessColors.length)];
+    };
 
-      SynesketchPalette.prototype.getRandomSadnessColor = function() {
-        return sadnessColors[Math.floor(Math.random() * sadnessColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomSadnessColor = function() {
+      return sadnessColors[Math.floor(Math.random() * sadnessColors.length)];
+    };
 
-      SynesketchPalette.prototype.getRandomAngerColor = function() {
-        return angerColors[Math.floor(Math.random() * angerColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomAngerColor = function() {
+      return angerColors[Math.floor(Math.random() * angerColors.length)];
+    };
 
-      SynesketchPalette.prototype.getRandomFearColor = function() {
-        return fearColors[Math.floor(Math.random() * fearColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomFearColor = function() {
+      return fearColors[Math.floor(Math.random() * fearColors.length)];
+    };
 
-      SynesketchPalette.prototype.getRandomDisgustColor = function() {
-        return disgustColors[Math.floor(Math.random() * disgustColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomDisgustColor = function() {
+      return disgustColors[Math.floor(Math.random() * disgustColors.length)];
+    };
 
-      SynesketchPalette.prototype.getRandomSurpriseColor = function() {
-        return surpriseColors[Math.floor(Math.random() * surpriseColors.length)];
-      };
+    SynesketchPalette.prototype.getRandomSurpriseColor = function() {
+      return surpriseColors[Math.floor(Math.random() * surpriseColors.length)];
+    };
 
-      return SynesketchPalette;
+    return SynesketchPalette;
 
-    })();
-  });
+  })();
 
 }).call(this);
 

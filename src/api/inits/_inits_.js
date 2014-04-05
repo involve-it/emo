@@ -7,7 +7,13 @@
 
   })();
 
-  define(['./javascript.js', './jquery.js'], function() {});
+
+  /*
+  define [
+    './javascript.js',
+    './jquery.js'
+  ], () ->
+   */
 
 }).call(this);
 

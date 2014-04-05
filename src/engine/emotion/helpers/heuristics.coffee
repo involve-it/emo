@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.Helpers.Heuristics
     #  privates:
     isCapsLock = (word) ->

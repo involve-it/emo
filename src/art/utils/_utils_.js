@@ -7,7 +7,11 @@
 
   })();
 
-  define(['./synesketch.palette.js'], function() {});
+
+  /*define [
+    './synesketch.palette.js'
+  ], () ->
+   */
 
 }).call(this);
 

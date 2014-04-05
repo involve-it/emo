@@ -7,7 +7,13 @@
 
   })();
 
-  define(['./heuristics.js', './lexical.js', './parsing.js'], function() {});
+
+  /*define [
+    './heuristics.js',
+    './lexical.js',
+    './parsing.js',
+  ], () ->
+   */
 
 }).call(this);
 

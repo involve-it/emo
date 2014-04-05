@@ -1,7 +1,7 @@
 #Defines common behavior for transfering textual information into visual output and notifying
 #Processing applet (PApplet) about that new information.
 # todo: make this abstract
-define [], () ->
+#define [], () ->
   class emo$.Engine.Synesthesiator
     constructor:(@parent)->
       @updateMethod = parent.synesketchUpdate

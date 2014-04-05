@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.Emotion
     constructor:(@weight, @type) ->
     compareTo:(arg0) ->

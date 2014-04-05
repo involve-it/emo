@@ -1,2 +1,6 @@
 # ignore dist folder:
 dist/
+src/**/*.js
+src/**/*.map
+!src/lib
+!src/main.js

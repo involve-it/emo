@@ -7,7 +7,11 @@
 
   })();
 
-  define(['./synemania.js'], function() {});
+
+  /*define [
+    './synemania.js'
+  ], () ->
+   */
 
 }).call(this);
 

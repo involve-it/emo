@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.Helpers.Lexical
     instance = null
     dataServerAddr = 'http://localhost:8899'

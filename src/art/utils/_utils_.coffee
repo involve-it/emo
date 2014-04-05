@@ -1,4 +1,4 @@
 class emo$.art.utils
-define [
+###define [
   './synesketch.palette.js'
-], () ->
+], () ->###

@@ -13,16 +13,22 @@ module.exports = (grunt) ->
       static_mappings:
         files: [
           {src: 'src/main.js', dest: 'dist/main.js'},
-          {src: 'src/index.html', dest: 'dist/index.html'},
-          #{src: 'src/lib/*', dest: 'dist/lib'},
-          #{src: 'lib/subdir/d.js', dest: 'build/subdir/d.min.js'},
+          {src: 'src/index.html', dest: 'dist/index.html'}
         ]
       dynamic_mappings:
         files: [
-          expand: true,
-          cwd: 'src/libs1/',
-          src: ['**/*.js'],
-          dest: 'dist/libs1'
+          {
+            expand: true,
+            cwd: 'src/libs/',
+            src: ['**/*.js'],
+            dest: 'dist/libs'
+          },
+          {
+            expand : true,
+            cwd : 'src/views/',
+            src : ['**/*.js'],
+            dest: 'dist/views'
+          }
           #ext: '.min.js',
           #extDot: 'first'
         ]

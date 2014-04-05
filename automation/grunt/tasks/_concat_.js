@@ -2,16 +2,20 @@
 (function() {
   module.exports = function(grunt) {
     return grunt.registerTask('_concat_', "concatenates all js files in a directory into _dirName_.js", function() {
-      return grunt.file.expand("./modules/*").forEach(function(dir) {
+      grunt.file.recurse("./src", function(abspath, rootdir, subdir, filename) {
         var concat;
         concat = grunt.config.get('concat') || {};
-        concat[dir] = {
-          src: ['/modules/' + dir + '/js/*.js', '!/modules/' + dir + '/js/compiled.js'],
-          dest: '/modules/' + dir + '/js/compiled.js'
-        };
-        grunt(config.set('concat', concat));
-        return grunt.task.run('concat');
+        if (typeof subdir !== 'undefined' && subdir !== '' && !concat[subdir] && subdir.indexOf('libs') === -1) {
+          console.log('dir is: ' + subdir);
+          console.dir(arguments);
+          concat[subdir] = {
+            src: ['src/' + subdir + '/*.js'],
+            dest: 'dist/' + subdir + '/_' + subdir.split('/').reverse()[0] + '_.js'
+          };
+        }
+        return grunt.config.set('concat', concat);
       });
+      return grunt.task.run('concat');
     });
   };
 

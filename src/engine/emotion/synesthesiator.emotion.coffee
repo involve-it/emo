@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.SynesthesiatorEmotion extends emo$.Engine.Synesthesiator
     emotionalStates = []
     empathyScope = null

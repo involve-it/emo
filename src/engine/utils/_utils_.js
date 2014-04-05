@@ -7,7 +7,7 @@
 
   })();
 
-  define(['./properties.manager.js', './file.reader.js']);
+  define([]);
 
 }).call(this);
 

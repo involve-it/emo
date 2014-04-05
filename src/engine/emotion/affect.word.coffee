@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.AffectWord
     @::word = null
     @::generalWeight = 0.0

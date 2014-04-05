@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class emo$.Engine.Emotion.EmotionalState extends emo$.Engine.SynesketchState
     #pravates:
     _Emotion = emo$.Engine.Emotion.Emotion

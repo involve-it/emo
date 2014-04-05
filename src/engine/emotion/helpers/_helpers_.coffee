@@ -1,6 +1,6 @@
 class emo$.Engine.Emotion.Helpers
-define [
+###define [
   './heuristics.js',
   './lexical.js',
   './parsing.js',
-], () ->
+], () ->###
