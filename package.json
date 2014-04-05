@@ -8,7 +8,12 @@
   "license": " MIT (http://www.opensource.org/licenses/mit-license.php) license.",
   "main": "index.html",
   "directories": {
-    "grunt": "automation/grunt"
+    "grunt": "automation/grunt",
+    "build" : {
+      "dir" : "builds/dist",
+      "prod" : "builds/prod"
+    },
+    "source" : "src"
   },
   "engines": {
     "node": ">= 0.10.0"

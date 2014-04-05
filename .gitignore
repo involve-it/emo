@@ -1,5 +1,8 @@
 # ignore dist folder:
+builds/
 dist/
+prod/
+
 src/**/*.js
 src/**/*.map
 src/libs/_libs_.js

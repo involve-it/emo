@@ -1,2 +1,5 @@
 // getters:
 https://gist.github.com/reversepanda/5814547
+
+// compile all files in dir1 to dir2
+coffee --compile --output builds/dist/ src/

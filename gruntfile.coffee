@@ -12,22 +12,22 @@ module.exports = (grunt) ->
     concat:
       static_mappings:
         files: [
-          {src: 'src/main.js', dest: 'dist/main.js'},
-          {src: 'src/index.html', dest: 'dist/index.html'}
+          {src: '<%= pkg.directories.source %>/main.js', dest: '<%= pkg.directories.build.prod %>/main.js'},
+          {src: '<%= pkg.directories.source %>/index.html', dest: '<%= pkg.directories.build.prod %>/index.html'}
         ]
       dynamic_mappings:
         files: [
           {
             expand: true,
-            cwd: 'src/libs/',
+            cwd: '<%= pkg.directories.source %>/libs/',
             src: ['**/*.js'],
-            dest: 'dist/libs'
+            dest: '<%= pkg.directories.build.prod %>/libs'
           },
           {
             expand : true,
-            cwd : 'src/views/',
+            cwd : '<%= pkg.directories.build.dir %>/views/',
             src : ['**/*.js'],
-            dest: 'dist/views'
+            dest: '<%= pkg.directories.build.prod %>/views'
           }
           #ext: '.min.js',
           #extDot: 'first'
@@ -114,7 +114,7 @@ module.exports = (grunt) ->
   # Default task which watches jade, sass and coffee.
   #grunt.registerTask 'default', ['watch']
   #grunt.registerTask('default', ['concat']);
-  grunt.registerTask('default', ['_concat_']);
+  grunt.registerTask('default', ['_concat_2']);
   #grunt.registerTask('default', [ 'uglify']);
   #grunt.registerTask('default', ['requirejs', 'concat', 'uglify']);
   ## Release task to run tests then minify js and css
