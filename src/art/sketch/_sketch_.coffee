@@ -1,4 +1,4 @@
 class emo$.art.sketch
-###define [
+define [
   './synemania.js'
-], () ->###
+], () ->

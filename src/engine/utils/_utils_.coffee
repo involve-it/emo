@@ -1,5 +1,5 @@
 class emo$.Engine.Utils
 define [
-  #'./properties.manager.js',
-  #'./file.reader.js'
+  './properties.manager.js',
+  './file.reader.js'
 ]

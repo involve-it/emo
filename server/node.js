@@ -1,6 +1,6 @@
 // emo$ server:
 {
-  var __dirname = './builds/prod/' ;
+  var __dirname = './builds/src/' ;
   var __portNumber = 8889;
   var connect = require('connect');
   connect.createServer(

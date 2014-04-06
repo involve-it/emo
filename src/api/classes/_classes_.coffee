@@ -1,4 +1,2 @@
 class emo$.api.classes
-define [
-], () ->
-
+define [], () ->

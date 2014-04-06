@@ -10,6 +10,7 @@
   "directories": {
     "grunt": "automation/grunt",
     "build" : {
+      "source" : "builds/src",
       "dir" : "builds/dist",
       "prod" : "builds/prod"
     },
