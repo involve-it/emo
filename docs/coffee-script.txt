@@ -6,3 +6,6 @@ coffee --compile --output builds/src/ src/
 
 // js2coffee translator:
 http://js2coffee.org/
+
+//CS command line options:
+http://coffeescript.org/documentation/docs/command.html

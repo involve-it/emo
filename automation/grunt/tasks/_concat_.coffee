@@ -6,7 +6,6 @@ module.exports = (grunt) ->
       concat = grunt.config.get('concat') || {};
       if(typeof subdir != 'undefined' && subdir != '' && !concat[subdir] && subdir.indexOf('libs') == -1 )
         console.log('dir is: ' + subdir)
-        #console.dir(arguments)
         concat[subdir] =
         {
           src: ['<%= pkg.directories.build.dir %>/' + subdir + '/*.js'],

@@ -1,31 +1,25 @@
-require.config({
-  paths: {
+require.config
+  paths:
     'underscore' : './libs/underscore-1.6.0',
     'jquery' : './libs/jquery-2.1.0',
     'xml2json' : './libs/xml2json'
-  },
-  shim : {
-    'underscore': {
+  shim :
+    'underscore':
       exports: ['_']
-    },
-    'gui' : {
+    'gui' :
       deps : [
         'engine'
       ],
       exports: ['emo$.e']
-    },
-    'art' : {
+    'art' :
       deps : [
         'engine',
         'api'
       ]
-    },
-    'api' : {
+    'api' :
       deps : [
         'engine'
       ]
-    }
-  },
   packages: [
     {
       name : 'api',
@@ -54,27 +48,20 @@ require.config({
     }
   ],
   timeout : 100
-});
 window.emo$ = {}
-require([
+require [
   'libs'
-], function(){
-  require([
+], () ->
+  require [
     'engine'
-  ], function(){
-    require([
+  ], () ->
+    require [
       'api',
-      //'/engine/engine-build.js',
       'gui',
       'art'
-    ], function (underscore, synesketchState, synesthesiator) {
-      require([
+    ], (underscore, synesketchState, synesthesiator) ->
+      require [
         './views/empathy.box.js'
-      ], function(EmpathyBoxView) {
-        empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'));
-        // testing only:
-        $('#butt').trigger('click');
-      });
-    });
-  });
-});
+      ], (EmpathyBoxView) ->
+        empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'))
+        $('#butt').trigger('click')

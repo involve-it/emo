@@ -68,8 +68,7 @@ module.exports = (grunt) ->
   #run this for production (builds/dist->builds/prod):
   #grunt.registerTask('default', ['_concat_2', 'uglify']);
 
-
-
+#
   #grunt.registerTask('default', [ 'uglify']);
   #grunt.registerTask('default', ['requirejs', 'concat', 'uglify']);
   ## Release task to run tests then minify js and css
