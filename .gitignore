@@ -3,6 +3,8 @@ builds/
 dist/
 prod/
 
+data/lex/rus/
+
 src/**/*.js
 src/**/*.map
 src/libs/_libs_.js

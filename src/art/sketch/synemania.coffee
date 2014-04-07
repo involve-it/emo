@@ -8,6 +8,7 @@ define [
   TWO_PI = 6.28
   palette = new emo$.art.utils.SynesketchPalette('standard');
   ctx = null
+  #window.testParticles = []
 
   class  emo$.art.sketch.Particle
     @::color = null
@@ -24,6 +25,7 @@ define [
     constructor : ->
       @x = dim/2
       @y = dim/2
+      #testParticles.push(@)
     collide : ->
       throw 'abstract'
     move : ->
@@ -33,7 +35,8 @@ define [
     @::gray = null
     constructor : ->
       super()
-      @gray = Math.random() * 255
+      @gray = 0xFFFFFF
+      #@gray = (Math.random()*0xFFFFFF<<0).toString(16)
     collide : ->
       @x = dim/2
       @y = dim/2
@@ -76,6 +79,211 @@ define [
       while (Math.abs(@thetaDD) < 0.00001)
         @thetaDD = Math.randomRange(-0.001, 0.001)
       @color = palette.getRandomHappinessColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+  class emo$.art.sketch.SadParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomSadnessColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+  class emo$.art.sketch.AngryParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomAngerColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+  class emo$.art.sketch.SupriseParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomSurpriseColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+  class emo$.art.sketch.FearParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomFearColor()
+    move : ->
+      #stroke(red(color), green(color), blue(color), 30*saturationFactor);
+      #point(x,y-1);
+      #stroke(0, 25*saturationFactor);
+      #point(x,y+1);
+      if (@color?)
+        ctx.fillStyle = @color.toString(16)
+        ctx.fillRect(@x, @y - 1,1,1)
+        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        ctx.fillRect(0, @y + 1,1,1)
+        $('textarea').css('background-color', '#' + @color.toString(16))
+        $('div').css('background-color', '#' + @color.toString(16))
+
+      @x += @vx
+      @y += @vy
+      @vx = @speed * Math.sin(@theta)
+      @vy = @speed * Math.cos(@theta)
+      @theta += @thetaD;
+      @thetaD += @thetaDD;
+      @speed *= @speedD;
+      if (Math.random() * 1000) > 997
+        @speedD = 1.0
+        @thetaDD = 0.00001
+        if Math.random() * 100 > 70
+          @x = dim/2
+          @y = dim/2
+          @collide()
+      if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
+        @collide()
+  class emo$.art.sketch.DisgustParticle extends emo$.art.sketch.Particle
+    collide : ->
+      @x = dim/2
+      @y = dim/2
+      @theta = Math.random() * TWO_PI
+      @speed = Math.randomRange(0.5, 3.5)
+      @speedD = Math.randomRange(0.996, 1.001)
+      @thetaD = 0
+      @thetaDD = 0
+      while (Math.abs(@thetaDD) < 0.00001)
+        @thetaDD = Math.randomRange(-0.001, 0.001)
+      @color = palette.getRandomDisgustColor()
     move : ->
       #stroke(red(color), green(color), blue(color), 30*saturationFactor);
       #point(x,y-1);
@@ -150,40 +358,23 @@ define [
 
       for x in [0...maxNeutrals-1] by 1
         neutrals[x] = new emo$.art.sketch.NeutralParticle()
-      ###for x in [0...maxSaddies-1] by 1
-        saddies[x] = new SadParticle()
-
-      for x in [0...maxHappies-1] by 1
-        happies[x] = new HappyParticle()
-
-      for x in [0...maxAngries-1] by 1
-        angries[x] = new AngryParticle()
-
-      for x in [0...maxSurprises-1] by 1
-        surprises[x] = new SupriseParticle()
-
-      for x in [0...maxFearies-1] by 1
-        fearies[x] = new FearParticle()
-
-      for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new DisgustParticle()###
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new emo$.art.sketch.NeutralParticle()
+        saddies[x] = new emo$.art.sketch.SadParticle()
 
       for x in [0...maxHappies-1] by 1
         happies[x] = new emo$.art.sketch.HappyParticle()
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new emo$.art.sketch.NeutralParticle()
+        angries[x] = new emo$.art.sketch.AngryParticle()
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new emo$.art.sketch.NeutralParticle()
+        surprises[x] = new emo$.art.sketch.SupriseParticle()
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new emo$.art.sketch.NeutralParticle()
+        fearies[x] = new emo$.art.sketch.FearParticle()
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new emo$.art.sketch.NeutralParticle()
+        disgusties[x] = new emo$.art.sketch.DisgustParticle()
 
       sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals

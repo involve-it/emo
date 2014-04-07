@@ -114,3 +114,5 @@
       if emotions.length == 0
         emotions.push(new emo$.Engine.Emotion.Emotion((0.2 + generalWeight) / 1.2, emo$.Engine.Emotion.Emotion.NEUTRAL))
       ret = new emo$.Engine.Emotion.EmotionalState(text, emotions, generalWeight, generalValence)
+      console.log(ret.toString())
+      ret

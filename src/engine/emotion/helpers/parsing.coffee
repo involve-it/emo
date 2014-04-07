@@ -15,8 +15,7 @@
       value
 
     @parseWords : (text) ->
-      value = []
-      value.push text
+      value = text.match(/[^\W]+/mig) || []
       value
       ###value = []
       boundary = BreakIterator.getWordInstance()
