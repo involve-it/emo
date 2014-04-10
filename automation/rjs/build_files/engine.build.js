@@ -1,17 +1,17 @@
 ({
   //appDir: "../source/engine",
   //dir: "appdirectory-build",
-  baseUrl: "../src/engine",
-  name: "./_engine_.js",
-  out: "engine-build.js",
+  baseUrl: "../../../builds/src/engine",
+  name: "_engine_",
+  out: "../../../builds/src/engine/_engine_1.js",
 
-  optimize : "none",
+  optimize : "none"
 
-  paths: {
+  /*paths: {
     'underscore' : './libs/underscore-1.6.0',
     'jquery' : './libs/jquery-2.1.0',
     'xml2json' : './libs/xml2json'
-  }
+  }*/
 })
 
 

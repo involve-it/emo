@@ -1,4 +1,7 @@
-#define [], () ->
+define [
+  'engine.SynesketchState'
+], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.EmotionalState')
   class emo$.Engine.Emotion.EmotionalState extends emo$.Engine.SynesketchState
     #pravates:
     _Emotion = emo$.Engine.Emotion.Emotion

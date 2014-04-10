@@ -1,3 +1,5 @@
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion')
+
 class emo$.Engine.Emotion
 define [
   './helpers/_helpers_.js',

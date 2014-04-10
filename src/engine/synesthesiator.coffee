@@ -2,6 +2,7 @@
 #Processing applet (PApplet) about that new information.
 # todo: make this abstract
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Synesthesiator')
   class emo$.Engine.Synesthesiator
     constructor:(@parent)->
       @updateMethod = parent.synesketchUpdate

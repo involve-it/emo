@@ -1,4 +1,6 @@
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.AffectWord')
+
   class emo$.Engine.Emotion.AffectWord
     @::word = null
     @::generalWeight = 0.0

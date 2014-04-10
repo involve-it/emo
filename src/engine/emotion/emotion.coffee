@@ -1,4 +1,6 @@
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Emotion')
+
   class emo$.Engine.Emotion.Emotion
     constructor:(@weight, @type) ->
     compareTo:(arg0) ->

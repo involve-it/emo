@@ -10,3 +10,6 @@
   Math.getRandomInt = (min, max) ->
     return Math.floor(Math.random() * (max - min + 1)) + min
 
+#
+  Function::property = (prop, desc) ->
+    Object.defineProperty @prototype, prop, desc

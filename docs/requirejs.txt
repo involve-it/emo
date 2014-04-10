@@ -1,0 +1,11 @@
+ optimizer / builder: {
+	r.js optimizer:
+	http://requirejs.org/docs/optimization.html
+	1. node r.js -o main.build.js (run from build dir)
+	2. node r.js -o app.build.js
+	3. change index.html to load 'main-built' instead of 'main' if need to have single-file app.
+	(!) optimizer will not include into the js.build file any require(file.js), that are in event handlers.
+}
+
+// this project:
+//node r.js -o build_files/engine.build.js

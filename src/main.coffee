@@ -32,6 +32,11 @@ require.config
       main : '_art_'
     },
     {
+      name : 'core',
+      location : 'core',
+      main : '_core_'
+    },
+    {
       name : 'engine',
       location : 'engine',
       main : '_engine_'
@@ -51,6 +56,7 @@ require.config
 window.emo$ = {}
 require [
   'libs'
+  'core'
 ], () ->
   require [
     'engine'

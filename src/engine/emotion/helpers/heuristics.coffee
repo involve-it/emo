@@ -1,4 +1,6 @@
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Helpers.Heuristics')
+
   class emo$.Engine.Emotion.Helpers.Heuristics
     #  privates:
     isCapsLock = (word) ->

@@ -3,6 +3,7 @@
     #'cs!view'
     #'regular'
   ], () ->###
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Utils.FileReader')
 
   class emo$.Engine.Utils.FileReader
     @readFile : (fileName) ->

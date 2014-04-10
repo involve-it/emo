@@ -1,4 +1,6 @@
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Helpers.Parsing')
+
   class emo$.Engine.Emotion.Helpers.Parsing
     @parseSentences : (text) ->
       value = []

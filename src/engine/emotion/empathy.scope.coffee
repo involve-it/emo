@@ -1,4 +1,5 @@
 #define [], () ->
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.EmpathyScope')
   class emo$.Engine.Emotion.EmpathyScope
     lexUtil = null
     @instance

@@ -1,8 +1,12 @@
-class emo$.Engine #extends Api.Classes.FolderLoader
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine')
+#class emo$.Engine #extends Api.Classes.FolderLoader
 define [
   './utils/_utils_.js',
   './emotion/_emotion_.js',
-  './synesketch.state',
+  './synesketch.state.js',
   './synesthesiator.js'
 ], () ->
-  emo$.Engine
+  require [
+
+  ]
+  #emo$.Engine

@@ -9,12 +9,21 @@
   "main": "index.html",
   "directories": {
     "grunt": "automation/grunt",
-    "build" : {
-      "source" : "builds/src",
-      "dir" : "builds/dist",
-      "prod" : "builds/prod"
+    "builds" : {
+      "src" : "builds/src",
+      "prod" : "builds/prod",
+      "dist" : "builds/dist"
     },
-    "source" : "src"
+    "source" : "src",
+    "automation" : {
+      "grunt" : {
+        "tasks" : "automation/grunt/tasks"
+      },
+      "rjs" : {
+        "build_files" : "automation/rjs/build-files"
+      }
+    }
+
   },
   "engines": {
     "node": ">= 0.10.0"

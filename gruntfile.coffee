@@ -1,5 +1,6 @@
 module.exports = (grunt) ->
   # Project configuration.
+  pkgGlobal = grunt.file.readJSON 'package.json'
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
@@ -9,47 +10,6 @@ module.exports = (grunt) ->
     '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
     '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;\n' +
     ' Licensed under the <%= pkg.license %> */\n',
-    concat:
-      static_mappings:
-        files: [
-          {src: '<%= pkg.directories.source %>/main.js', dest: '<%= pkg.directories.build.source %>/main.js'},
-          {src: '<%= pkg.directories.source %>/index.html', dest: '<%= pkg.directories.build.source %>/index.html'}
-        ]
-      dynamic_mappings:
-        files: [
-          {
-            expand: true,
-            cwd: '<%= pkg.directories.source %>/libs/',
-            src: ['**/*.js'],
-            dest: '<%= pkg.directories.build.source %>/libs'
-          },
-#          {
-#            expand : true,
-#            cwd : '<%= pkg.directories.build.dir %>/views/',
-#            src : ['**/*.js'],
-#            dest: '<%= pkg.directories.build.prod %>/views'
-#          }
-        ]
-    uglify:
-      dynamic_mappings:
-        files: [
-          {
-            expand : true,
-            cwd : '<%= pkg.directories.build.prod %>/',
-            dest: '<%= pkg.directories.build.prod %>/',
-            src : ['**/*.js'],
-            ext: '.js',
-            extDot: 'last'
-          }
-        ]
-#    qunit:
-#      files: ['tests/**/*.html']
-#    requirejs:
-#      compile:
-#        options:
-#          baseUrl: "builders/rjs",
-#          mainConfigFile: "<%= requirejs.compile.options.baseUrl %>/engine.build.js",
-#          out: "_engine_.js"
 
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -59,16 +19,18 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-requirejs'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-sass'
-  grunt.loadTasks('./automation/grunt/tasks')
-
+  grunt.loadTasks(pkgGlobal.directories.automation.grunt.tasks)
   # Default task which watches jade, sass and coffee.
+  #grunt.registerTask('default', ['concat', 'uglify']);
+  #grunt.registerTask('build-engine', ['_concat_']); # this questionable task takes all js files from [dir] and concatenates them into _[dir]_.js in the [dir] :)
   #run this for development (src->builds/src)
-  grunt.registerTask('default', ['concat']);
-
+  grunt.registerTask('default', ['concat:src', 'coffee:src']);
+  grunt.registerTask('build-src-coffee', ['concat:src', 'coffee:src']);
+  grunt.registerTask('build-engine-require', ['requirejs:engine']); # need to run 'coffee-build-src' first!
   #run this for production (builds/dist->builds/prod):
-  #grunt.registerTask('default', ['_concat_2', 'uglify']);
+  grunt.registerTask('build-prod-uglify', ['concat:prod', 'coffee:prod', 'uglify:prod']);
 
-#
+  #grunt.registerTask('default', ['_concat_2', 'uglify']);
   #grunt.registerTask('default', [ 'uglify']);
   #grunt.registerTask('default', ['requirejs', 'concat', 'uglify']);
   ## Release task to run tests then minify js and css

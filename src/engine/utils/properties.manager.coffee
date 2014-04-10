@@ -3,6 +3,7 @@
     #'cs!view'
     #'regular'
   ], () ->###
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Utils.PropertiesManager')
   class emo$.Engine.Utils.PropertiesManager
     properties = null
     constructor : (fileName) ->
