@@ -3,6 +3,7 @@ builds/
 dist/
 prod/
 
+
 data/lex/rus/
 
 src/**/*.js
@@ -13,3 +14,7 @@ src/libs/_libs_.map
 # include:
 !src/libs/**/*.js
 !src/main.js
+
+# ignore temp office files:
+~$*.xlsx
+~$*.docx

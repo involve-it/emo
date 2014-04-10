@@ -10,7 +10,7 @@
     randomiser = null
 
     constructor : (paletteName) ->
-      pm = new emo$.Engine.Utils.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
+      pm = new emo$.Core.Helpers.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
       happinessColors = pm.getIntArrayProperty('happiness.palette')
       sadnessColors = pm.getIntArrayProperty('sadness.palette')
       angerColors = pm.getIntArrayProperty('anger.palette')

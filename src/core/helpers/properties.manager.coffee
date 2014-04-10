@@ -1,10 +1,13 @@
-  ###define [
+###define [
     #'cs!controller'
     #'cs!view'
     #'regular'
   ], () ->###
-  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Utils.PropertiesManager')
-  class emo$.Engine.Utils.PropertiesManager
+#emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Core.Helpers.PropertiesManager')
+define [
+  './static.js'
+], () ->
+  class emo$.Core.Helpers.PropertiesManager
     properties = null
     constructor : (fileName) ->
       $.ajax({

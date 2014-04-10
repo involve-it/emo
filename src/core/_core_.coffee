@@ -1,4 +1,4 @@
 class emo$.Core
 define [
-  './helpers.js'
+  './helpers/_helpers_.js'
 ]

@@ -16,7 +16,7 @@
     constructor : () ->
       #affectWords = []
       emoticons = []
-      pm = new emo$.Engine.Utils.PropertiesManager(fileNameProperties)
+      pm = new emo$.Core.Helpers.PropertiesManager(fileNameProperties)
       negations = emo$.Engine.Emotion.Helpers.Parsing.splitWords(pm.getProperty('negations'), ', ')
       intensityModifiers = emo$.Engine.Emotion.Helpers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
       affectWords = @parseLexiconFile(fileNameLexicon)
@@ -29,7 +29,7 @@
 
     parseLexiconFile : (fileName) ->
       wordList = []
-      file = emo$.Engine.Utils.FileReader.readFile(fileName)
+      file = emo$.Core.Helpers.FileReader.readFile(fileName)
       lines = file.split('\n')
       for line in lines
         record = @parseLine(line)

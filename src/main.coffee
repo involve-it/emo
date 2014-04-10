@@ -10,7 +10,7 @@ require.config
       deps : [
         'engine'
       ],
-      exports: ['emo$.e']
+      #exports: ['emo$.e']
     'art' :
       deps : [
         'engine',
@@ -19,6 +19,10 @@ require.config
     'api' :
       deps : [
         'engine'
+      ]
+    'engine.emotion':
+      deps: [
+        'engine.emotion/helpers/_helpers_'
       ]
   packages: [
     {
@@ -39,6 +43,11 @@ require.config
     {
       name : 'engine',
       location : 'engine',
+      main : '_engine_'
+    },
+    {
+      name : 'engine.emotion',
+      location : 'engine/emotion',
       main : '_engine_'
     },
     {

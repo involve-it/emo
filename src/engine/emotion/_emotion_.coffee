@@ -1,6 +1,6 @@
 emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion')
-
-class emo$.Engine.Emotion
+###
+class emo$.Engine.Emotion###
 define [
   './helpers/_helpers_.js',
   './affect.word.js',
@@ -9,3 +9,4 @@ define [
   './empathy.scope.js',
   './synesthesiator.emotion.js'
 ], () ->
+  emo$.Engine.Emotion

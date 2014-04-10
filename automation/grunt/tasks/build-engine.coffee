@@ -24,6 +24,10 @@ module.exports = (grunt) ->
           #mainConfigFile: '<%= pkg.directories.automation.rjs.build_files %>/engine.build.js',
           out: 'engine/_engine_.js'
           #out: '<%= pkg.directories.builds.dist %>/engine/_engine_.js'
+    concat:
+      dynamic_mappings:
+        files:
+          []
 
   coffee = grunt.config.get('coffee') || {};
   coffee['engine'] = confObj.coffee.engine

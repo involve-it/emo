@@ -1,11 +1,13 @@
-  ###define [
+###define [
     #'cs!controller'
     #'cs!view'
     #'regular'
   ], () ->###
-  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Utils.FileReader')
-
-  class emo$.Engine.Utils.FileReader
+#emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Core.Helpers.FileReader')
+define [
+  './static.js'
+], () ->
+  class emo$.Core.Helpers.FileReader
     @readFile : (fileName) ->
       file = null
       $.ajax({
@@ -20,5 +22,3 @@
       file
     @parseLine : (line) ->
       ret = null
-
-
