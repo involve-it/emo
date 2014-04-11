@@ -1,4 +1,4 @@
-class emo$.Core.Helpers
+#class emo$.Core.Helpers
 define [
   './static.js',
   './properties.manager.js',
