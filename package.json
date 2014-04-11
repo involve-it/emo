@@ -12,7 +12,8 @@
     "builds" : {
       "src" : "builds/src",
       "prod" : "builds/prod",
-      "dist" : "builds/dist"
+      "dist" : "builds/dist",
+      "tmp" : "builds/tmp"
     },
     "source" : "src",
     "automation" : {

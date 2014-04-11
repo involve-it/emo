@@ -27,7 +27,8 @@ module.exports = (grunt) ->
             cwd: '<%= pkg.directories.source %>',
             src: ['**/*.coffee'],
             dest: '<%= pkg.directories.builds.prod %>/',
-            ext: '.js'
+            ext: '.js',
+            extDot: 'last'
           }
         ]
     uglify:

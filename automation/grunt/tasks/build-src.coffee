@@ -16,6 +16,9 @@ module.exports = (grunt) ->
 
     coffee: #https://github.com/gruntjs/grunt-contrib-coffee
       src:
+        options:
+          sourceMap: false,
+          bare: true,
         files: [
           {
             expand: true,

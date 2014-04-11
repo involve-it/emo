@@ -1,6 +1,1 @@
-class emo$.Engine.Emotion.Helpers
-define [
-  './heuristics.js',
-  './lexical.js',
-  './parsing.js',
-], () ->
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Helpers')

@@ -1,3 +1,7 @@
+https://github.com/involve-it
+involve-it
+InvolveMe13
+
 git clone https://github.com/involve-it/emo.git
 
 Create a new repository on the command line

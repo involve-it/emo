@@ -26,7 +26,7 @@ module.exports = (grunt) ->
   #run this for development (src->builds/src)
   grunt.registerTask('default', ['concat:src', 'coffee:src']);
   grunt.registerTask('build-src-coffee', ['concat:src', 'coffee:src']);
-  grunt.registerTask('build-engine-require', ['requirejs:engine']); # need to run 'coffee-build-src' first!
+  #grunt.registerTask('build-engine-concat', ['concat:engine']); # need to run 'coffee-build-src' first!
   #run this for production (builds/dist->builds/prod):
   grunt.registerTask('build-prod-uglify', ['concat:prod', 'coffee:prod', 'uglify:prod']);
 

@@ -1,7 +1,17 @@
-// emo$ server:
+// source emo$ server:
 {
   var __dirname = './builds/src/' ;
   var __portNumber = 8889;
+  var connect = require('connect');
+  connect.createServer(
+    connect.static(__dirname)
+  ).listen(__portNumber);
+  console.log('New Emo$ server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
+}
+// prod emo$ server:
+{
+  var __dirname = './builds/prod/' ;
+  var __portNumber = 8999;
   var connect = require('connect');
   connect.createServer(
     connect.static(__dirname)
