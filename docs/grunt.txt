@@ -20,3 +20,8 @@ grunt OR grunt --force
 // requirejs:
 //https://github.com/gruntjs/grunt-contrib-requirejs
 npm install grunt-contrib-requirejs
+
+
+// add same file to each file:
+http://stackoverflow.com/questions/12722855/using-grunt-concat-how-would-i-automate-the-concatenation-of-the-same-file-to-m/12749861#12749861
+http://stackoverflow.com/questions/12907678/im-trying-out-grunt-and-need-a-simple-way-to-concatenate-my-modules

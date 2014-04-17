@@ -1,2 +1,4 @@
 // online javascript tester:
 http://regex101.com/#javascript
+
+https://github.com/danheberden/yeoman-generator-requirejs

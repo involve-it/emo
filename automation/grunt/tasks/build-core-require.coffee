@@ -16,13 +16,16 @@ module.exports = (grunt) ->
         }
       ]
     requirejs:
-      compile:
-        options:
-          baseUrl: '<%= pkg.directories.builds.prod %>/core',
-          name: './_core_.js',
-          #mainConfigFile: '<%= pkg.directories.automation.rjs.build_files %>/engine.build.js',
-          out: 'core/_core_.js'
-          #out: '<%= pkg.directories.builds.dist %>/engine/_engine_.js'
+      options:
+        name: '_core_',
+        baseUrl: '<%= pkg.directories.builds.src %>/core/',
+        #mainConfigFile: '<%= pkg.directories.builds.prod %>/core/core.build.js',
+        #mainConfigFile: '<%= pkg.directories.builds.prod %>/core/_core_.js',
+        out: '<%= pkg.directories.builds.prod %>/core/_core_.js',
+        optimize: 'none'
+        #baseUrl: '<%= pkg.directories.builds.prod %>/core',
+        #out: '<%= pkg.directories.builds.dist %>/engine/_engine_.js',
+        #mainConfigFile: '<%= pkg.directories.automation.rjs.build_files %>/engine.build.js',
 
   coffee = grunt.config.get('coffee') || {};
   coffee['require_core'] = confObj.coffee
@@ -33,4 +36,5 @@ module.exports = (grunt) ->
   grunt.config.set('requirejs', requirejs)
 
   grunt.registerTask 'build-core-require', 'Builds concatenated _core_.js, puts it to production', () ->
-    grunt.task.run('coffee:require_core', 'requirejs:require_main')
+    grunt.task.run('requirejs:require_main')
+    #grunt.task.run('coffee:require_core', 'requirejs:require_main')

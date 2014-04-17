@@ -1,0 +1,3 @@
+// canvas -> el bgnd:
+url = canvas.toDataURL('image/jpeg');
+el.style.background = 'url(' + url + ')';

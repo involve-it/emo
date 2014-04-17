@@ -1,0 +1,72 @@
+Starting new branch:
+1. check on which branch we are now: git status , 1st line
+2. to create a new branch and switch to it
+(http://git-scm.com/book/en/Git-Branching-Basic-Branching-and-Merging)
+$ git checkout -b 'branch name'
+==
+$ git branch iss53
+$ git checkout iss53
+
+#get the latest code
+git pull
+
+// get list of local branches:
+git branch
+
+
+// get list of remote branches:
+git branch -dr
+
+// how to refresh complete repositary
+git remote prune origin
+
+// delete remote branch (mate-5.6):
+git push origin :mate-5.6
+// delete local branch:
+
+clone branch:
+git checkout -b mate-5.7
+git push origin mate-5.7
+
+// delete local branch:
+git branch -D mate-5.6.1
+
+// replace master with mate-5.6 branch:
+1.http://stackoverflow.com/questions/2862590/how-to-replace-master-branch-in-git-entirely-from-another-branch
+  git checkout mate-5.6
+  git merge -s ours master
+  git checkout master
+  git merge mate-5.6
+2. git push
+
+______________________________________________________________
+// Get specific branch:
+> git clone git@172.29.104.113:/home/git/mate_ui
+> git checkout -b mate-5.6.1 origin/mate-5.6.1
+> git branch -D master (optional)
+
+______________________________________________________________
+
+// commit and push Single change to multiple branchs:
+// http://stackoverflow.com/a/4024138/2873046
+// http://wiki.koha-community.org/wiki/Using_Git_Cherry_Pick
+
+// use cherry-pick:
+1. git checkout branchA
+2. <make changes> -> git commit -m '[commentA]
+3. git checkout branchB
+4. git cherry-pick branchA | [commit id] (latest commit in branchA | commit with specific id)
+<if there are conflicts during cherry-pick:
+4a. git status-><use IDE->rightclick on file->git->resolve conflicts OR clean manually modified files (in red)>
+4b. git commit -a (if commit msg is not provided, it will copy orig commit msg (commentA))
+<end if>
+3. git push --all OR push branches one-by-one.
+
+
+JUSTINCASE (delete me if annoying):
+git clone ssh://aarutyun@wwwin-git-sjc.cisco.com/git/wanorch/mate-ui.git
+
+.gitignore file:
+http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository#Ignoring-Files
+e.g. :
+builds/
