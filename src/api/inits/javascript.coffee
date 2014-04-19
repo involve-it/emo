@@ -1,4 +1,4 @@
-#define [],()->
+define [],()->
   ###
   * Returns a random number between min and max
   ###

@@ -1,2 +1,2 @@
 class FolderLoader
-  define [], () ->
+define [], () ->

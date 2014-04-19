@@ -1,4 +1,4 @@
-require.config
+requirejs.config
   paths:
     'underscore' : './libs/underscore-1.6.0',
     'jquery' : './libs/jquery-2.1.0',
@@ -24,40 +24,49 @@ require.config
       deps: [
         'engine.emotion/helpers/_helpers_'
       ]
+    'engine.emotion':
+      deps: [
+        'engine.abstract'
+      ]
   packages: [
     {
       name : 'api',
-      location : 'api',
+      location : './api',
       main : '_api_'
     },
     {
       name : 'art',
-      location : 'art',
+      location : './art',
       main : '_art_'
     },
     {
       name : 'core',
-      location : 'core',
+      location : './core',
       main : '_core_'
     },
     {
       name : 'engine',
-      location : 'engine',
+      location : './engine',
       main : '_engine_'
+    },
+    {
+      name : 'engine.abstract',
+      location : './engine/abstract',
+      main : '_abstract_'
     },
     {
       name : 'engine.emotion',
-      location : 'engine/emotion',
-      main : '_engine_'
+      location : './engine/emotion',
+      main : '_emotion_'
     },
     {
       name : 'gui',
-      location : 'gui',
+      location : './gui',
       main : '_gui_'
     },
     {
       name : 'libs',
-      location : 'libs',
+      location : './libs',
       main : '_libs_'
     }
   ],

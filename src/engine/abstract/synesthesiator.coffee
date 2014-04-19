@@ -1,6 +1,7 @@
 #Defines common behavior for transfering textual information into visual output and notifying
 #Processing applet (PApplet) about that new information.
 # todo: make this abstract
+define [],()->
   emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Abstract.Synesthesiator')
   class emo$.Engine.Abstract.Synesthesiator
     constructor:(@parent)->

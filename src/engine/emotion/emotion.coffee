@@ -1,4 +1,4 @@
-#define [], () ->
+define [], () ->
   emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Emotion')
 
   class emo$.Engine.Emotion.Emotion
@@ -16,7 +16,7 @@
     setWeight : (@weight) ->
     toString: () ->
       "Type number: " + @type + ", weight: " + @weight
-# Static:
+  # Static:
   emo$.Engine.Emotion.Emotion.NEUTRAL = -1
   emo$.Engine.Emotion.Emotion.HAPPINESS = 0
   emo$.Engine.Emotion.Emotion.SADNESS = 1

@@ -1,4 +1,6 @@
-#define [],()->
+define [
+  #'engine.emotion/empathy-scope.js'
+],()->
   ###
   * Returns a random number between min and max
   ###

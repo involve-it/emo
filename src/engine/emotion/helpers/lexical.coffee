@@ -1,4 +1,4 @@
-#define [], () ->
+define [], () ->
   emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.Helpers.Lexical')
 
   class emo$.Engine.Emotion.Helpers.Lexical
