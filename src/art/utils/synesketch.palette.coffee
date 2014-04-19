@@ -1,5 +1,5 @@
-  dataServerAddr = 'http://localhost:8899'
-#define [], () ->
+dataServerAddr = 'http://localhost:8899'
+define [], () ->
   class emo$.art.utils.SynesketchPalette
     fearColors = []
     angerColors = []
