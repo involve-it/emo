@@ -1,4 +1,4 @@
-class emo$.art.sketch
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.art.sketch')
 define [
-  './synemania'
+  'art.sketch/synemania'
 ], () ->

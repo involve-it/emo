@@ -1,5 +1,5 @@
-define [], () ->
-  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.SynesthesiatorEmotion')
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Emotion.SynesthesiatorEmotion')
+define ['engine.abstract/synesthesiator'], () ->
   class emo$.Engine.Emotion.SynesthesiatorEmotion extends emo$.Engine.Abstract.Synesthesiator
     emotionalStates = []
     empathyScope = null

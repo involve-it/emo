@@ -1,4 +1,4 @@
-class emo$.art.utils
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.art.utils')
 define [
-  './synesketch.palette'
+  'art.utils/synesketch.palette'
 ], () ->

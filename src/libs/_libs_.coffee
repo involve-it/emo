@@ -1,8 +1,9 @@
-class emo$.Libs #extends Api.Classes.FolderLoader
 define [
+  'core.helpers/static',
   'jquery',
   'underscore',
   'xml2json',
 ], () ->
-#some libs processing:
+  emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Libs')
+  #some libs processing:
   emo$.Libs.x2js = new X2JS()

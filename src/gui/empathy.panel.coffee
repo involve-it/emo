@@ -1,4 +1,5 @@
-#define [], () ->
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Gui.EmpathyPanel')
+define [], () ->
   class emo$.Gui.EmpathyPanel
     appletClassNamePrefix = 'emo$.art.sketch.'
 

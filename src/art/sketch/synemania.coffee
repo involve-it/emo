@@ -1,5 +1,5 @@
 define [
-  'art/utils/_utils_'
+  'art.utils/_utils_'
 ],() ->
   ###
  Classes which describe emotion-specific particles, that is visual representation of each emotion.

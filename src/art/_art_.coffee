@@ -1,4 +1,4 @@
-class emo$.art
+emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.art')
 ###confObj =
   shim:
     './sketch/_sketch_.js':
@@ -6,6 +6,6 @@ class emo$.art
 
 requirejs.config(confObj)###
 define [
-  './sketch/_sketch_',
-  './utils/_utils_'
+  'art.sketch/_sketch_',
+  'art.utils/_utils_'
 ], () ->

@@ -7,23 +7,32 @@ module.exports = (grunt) ->
   confObj =
     pkg : grunt.file.readJSON 'package.json'
     concat:
-      files: [
-        {src: srcDir + '/index.html', dest: destDir + '/index.html'},
-        {src: srcDir + '/main.js', dest: destDir + '/main.js'},
-        {
-          expand: true,
-          cwd: srcDir + '/libs/',
-          src: ['**/*.js'],
-          dest: destDir + '/libs'
-        }
-        {
-          expand: true,
-          cwd: srcDir + '/views/',
-          src: ['**/*.js'],
-          dest: destDir + '/views'
-        }
-      ]
+      pacreq:
+        files: [
+          {src: srcDir + '/index.html', dest: destDir + '/index.html'},
+          {src: srcDir + '/main.js', dest: destDir + '/main.js'},
+          {
+            expand: true,
+            cwd: srcDir + '/libs/',
+            src: ['**/*.js'],
+            dest: destDir + '/libs'
+          }
+          {
+            expand: true,
+            cwd: srcDir + '/views/',
+            src: ['**/*.js'],
+            dest: destDir + '/views'
+          }
+        ]
+
+      temp:
+        files: [
+          {src: destDir + '/engine/_engine_.js', dest: 'builds/temp1/js/_engine_.js'}
+          {src: destDir + '/core/_core_.js', dest: 'builds/temp1/js/_core_.js'}
+        ]
     requirejs:
+      options:
+        mainConfigFile: srcDir + '/main.js'
       api:
         options:
           name: 'api/_api_',
@@ -40,14 +49,12 @@ module.exports = (grunt) ->
         options:
           name: 'core/_core_',
           baseUrl: srcDir + '/',
-          mainConfigFile: destDir + '/main.js',
           out: destDir + '/core/_core_.js',
           optimize: optimizeConst
       engine:
         options:
           name: 'engine/_engine_',
           baseUrl: srcDir + '/',
-          mainConfigFile: destDir + '/main.js',
           out: destDir + '/engine/_engine_.js',
           optimize: optimizeConst
       gui:
@@ -58,7 +65,8 @@ module.exports = (grunt) ->
           optimize: optimizeConst
 
   concat = grunt.config.get('requirejs') || {};
-  concat['pacreq'] = confObj.concat
+  concat['pacreq'] = confObj.concat.pacreq
+  concat['temp'] = confObj.concat.temp
   grunt.config.set('concat', concat)
 
   #requirejs = grunt.config.get('requirejs') || {};
@@ -74,3 +82,4 @@ module.exports = (grunt) ->
     grunt.task.run('requirejs:core')
     grunt.task.run('requirejs:engine')
     grunt.task.run('requirejs:gui')
+    grunt.task.run('concat:temp')
