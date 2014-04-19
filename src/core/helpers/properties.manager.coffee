@@ -5,7 +5,7 @@
   ], () ->###
 #emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Core.Helpers.PropertiesManager')
 define [
-  './static.js'
+  'core.helpers/static'
 ], () ->
   class emo$.Core.Helpers.PropertiesManager
     properties = null

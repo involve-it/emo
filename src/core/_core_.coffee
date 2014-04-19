@@ -1,5 +1,4 @@
 class emo$.Core
-
 define [
-  './helpers/_helpers_'
+  'core.helpers'
 ]

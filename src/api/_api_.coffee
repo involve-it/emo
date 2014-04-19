@@ -1,5 +1,13 @@
 class emo$.api
+requirejs.config
+  packages : [
+    {
+      name : 'api.inits',
+      location : './api/inits',
+      main : '_api_'
+    }
+  ]
 define [
-  './inits/_inits_.js',
-  './classes/_classes_.js'
+  'api.inits',
+  'api.classes'
 ], () ->

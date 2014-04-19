@@ -26,33 +26,34 @@ module.exports = (grunt) ->
     requirejs:
       api:
         options:
-          name: '_api_',
-          baseUrl: srcDir + '/api/',
+          name: 'api/_api_',
+          baseUrl: srcDir + '/',
           out: destDir + '/api/_api_.js',
           optimize: optimizeConst
       art:
         options:
-          name: '_art_',
-          baseUrl: srcDir + '/art/',
+          name: 'art/_art_',
+          baseUrl: srcDir + '/',
           out: destDir + '/art/_art_.js',
           optimize: optimizeConst
       core:
         options:
-          name: '_core_',
-          baseUrl: srcDir + '/core/',
+          name: 'core/_core_',
+          baseUrl: srcDir + '/',
           mainConfigFile: destDir + '/main.js',
           out: destDir + '/core/_core_.js',
           optimize: optimizeConst
       engine:
         options:
-          name: '_engine_',
-          baseUrl: srcDir + '/engine/',
+          name: 'engine/_engine_',
+          baseUrl: srcDir + '/',
+          mainConfigFile: destDir + '/main.js',
           out: destDir + '/engine/_engine_.js',
           optimize: optimizeConst
       gui:
         options:
-          name: '_gui_',
-          baseUrl: srcDir + '/gui/',
+          name: 'gui/_gui_',
+          baseUrl: srcDir + '/',
           out: destDir + '/gui/_gui_.js',
           optimize: optimizeConst
 

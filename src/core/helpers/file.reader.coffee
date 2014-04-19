@@ -5,7 +5,7 @@
   ], () ->###
 #emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Core.Helpers.FileReader')
 define [
-  './static.js'
+  'core.helpers/static'
 ], () ->
   class emo$.Core.Helpers.FileReader
     @readFile : (fileName) ->

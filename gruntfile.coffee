@@ -28,6 +28,7 @@ module.exports = (grunt) ->
   grunt.registerTask('build-src-coffee', ['concat:src', 'coffee:src']);
   #run this for production (builds/dist->builds/prod):
   grunt.registerTask('build-prod-uglify', ['concat:prod', 'coffee:prod', 'uglify:prod']);
+  grunt.registerTask('build-prod-plain', ['concat:prod', 'coffee:prod']);
   #grunt.registerTask('build-prod-uglify', ['concat:prod', 'coffee:prod']);
 
   #grunt.registerTask('default', ['_concat_2', 'uglify']);

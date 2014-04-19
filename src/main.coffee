@@ -20,14 +20,6 @@ requirejs.config
       deps : [
         'engine'
       ]
-    'engine.emotion':
-      deps: [
-        'engine.emotion/helpers/_helpers_'
-      ]
-    'engine.emotion':
-      deps: [
-        'engine.abstract'
-      ]
   packages: [
     {
       name : 'api',
@@ -43,6 +35,11 @@ requirejs.config
       name : 'core',
       location : './core',
       main : '_core_'
+    },
+    {
+      name : 'core.helpers',
+      location : './core/helpers',
+      main : '_helpers_'
     },
     {
       name : 'engine',
