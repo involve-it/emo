@@ -1,0 +1,5 @@
+Modules needed for the project:
+server (not global):
+-connect
+-express
+
