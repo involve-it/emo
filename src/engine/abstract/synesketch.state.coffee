@@ -5,4 +5,4 @@ define [], () ->
     constructor: (@text) ->
     getText: ->
       @text
-  ns1 = SynesketchState
+  emo$.Engine.Abstract.SynesketchState  = SynesketchState

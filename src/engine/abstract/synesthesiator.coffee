@@ -3,7 +3,7 @@
 # todo: make this abstract
 define [],()->
   emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Engine.Abstract.Synesthesiator')
-  class emo$.Engine.Abstract.Synesthesiator
+  class Synesthesiator
     constructor:(@parent)->
       @updateMethod = parent.synesketchUpdate
       @updateMethod ?= () ->
@@ -16,3 +16,4 @@ define [],()->
       @
 
     synesthesise:(text) -> throw 'abstract-has to be overriden!';
+  emo$.Engine.Abstract.Synesthesiator = Synesthesiator
