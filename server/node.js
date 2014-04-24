@@ -28,6 +28,16 @@
   ).listen(__portNumber);
   console.log('New Emo$ server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
 }
+//emo$ server - tests, jasmine:
+{
+  var __dirname = './tests/jasmine/' ;
+  var __portNumber = 8804;
+  var connect = require('connect');
+  connect.createServer(
+    connect.static(__dirname)
+  ).listen(__portNumber);
+  console.log('New Emo$ server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
+}
 // data server:
 {
   // install express package: 'npm install express'

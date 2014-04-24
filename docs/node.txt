@@ -3,3 +3,5 @@ server (not global):
 -connect
 -express
 
+npm install -g bower
+// wip
