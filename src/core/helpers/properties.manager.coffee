@@ -6,6 +6,7 @@
 #emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Core.Helpers.PropertiesManager')
 define [
   'core.helpers/static'
+  'libs'
 ], () ->
   class emo$.Core.Helpers.PropertiesManager
     properties = null

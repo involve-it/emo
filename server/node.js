@@ -18,9 +18,9 @@
   ).listen(__portNumber);
   console.log('New Emo$ server is running, __dirname = ' + __dirname + ', port = ' + __portNumber);
 }
-// temp emo$ server:
+// distribution emo$ server, used in form of a CDN (live access to resources):
 {
-  var __dirname = './builds/temp1/' ;
+  var __dirname = './builds/dist/' ;
   var __portNumber = 8666;
   var connect = require('connect');
   connect.createServer(

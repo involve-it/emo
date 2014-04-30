@@ -27,8 +27,12 @@ module.exports = (grunt) ->
 
       temp:
         files: [
-          {src: destDir + '/engine/_engine_.js', dest: 'builds/temp1/js/_engine_.js'}
-          {src: destDir + '/core/_core_.js', dest: 'builds/temp1/js/_core_.js'}
+          {src: destDir + '/art/_art_.js', dest: 'builds/dist/js/_art_.js'}
+          {src: destDir + '/api/_api_.js', dest: 'builds/dist/js/_api_.js'}
+          {src: destDir + '/gui/_gui_.js', dest: 'builds/dist/js/_gui_.js'}
+          {src: destDir + '/engine/_engine_.js', dest: 'builds/dist/js/_engine_.js'}
+          {src: destDir + '/core/_core_.js', dest: 'builds/dist/js/_core_.js'}
+          {src: destDir + '/libs/_libs_.js', dest: 'builds/dist/js/_libs_.js'}
         ]
     requirejs:
       options:
@@ -62,6 +66,12 @@ module.exports = (grunt) ->
           name: 'gui/_gui_',
           baseUrl: srcDir + '/',
           out: destDir + '/gui/_gui_.js',
+          optimize: optimizeConst
+      libs:
+        options:
+          name: 'libs/_libs_',
+          baseUrl: srcDir + '/',
+          out: destDir + '/libs/_libs_.js',
           optimize: optimizeConst
 
   concat = grunt.config.get('requirejs') || {};

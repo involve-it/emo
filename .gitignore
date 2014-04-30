@@ -2,7 +2,7 @@
 builds/
 dist/
 prod/
-
+node_modules/
 
 data/lex/rus/
 
@@ -18,3 +18,5 @@ src/libs/_libs_.map
 # ignore temp office files:
 ~$*.xlsx
 ~$*.docx
+
+#very long comment is this one;
