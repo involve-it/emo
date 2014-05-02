@@ -28,3 +28,11 @@ define [], () ->
         global[shortcut] = retObj
         sc = retObj
       return retObj
+    @hexToR = (h) ->
+      parseInt((@cutHex(h)).substring(0,2),16)
+    @hexToG = (h) ->
+      parseInt((@cutHex(h)).substring(2,4),16)
+    @hexToB = (h) ->
+      parseInt((@cutHex(h)).substring(4,6),16)
+    @cutHex = (h) ->
+      if (h.charAt(0)=="#") then h.substring(1,7) else h

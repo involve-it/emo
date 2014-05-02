@@ -97,7 +97,6 @@ define [
         @previous = _previous
 
       getValence : () ->
-        debugger
         @_valence
 
       getGeneralWeight : () ->

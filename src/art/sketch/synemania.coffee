@@ -8,7 +8,7 @@ define [
   TWO_PI = 6.28
   palette = new emo$.art.utils.SynesketchPalette('standard');
   ctx = null
-  #window.testParticles = []
+  window.testParticles = []
 
   class  emo$.art.sketch.Particle
     @::color = null
@@ -25,7 +25,7 @@ define [
     constructor : ->
       @x = dim/2
       @y = dim/2
-      #testParticles.push(@)
+      testParticles.push(@)
     collide : ->
       throw 'abstract'
     move : ->
@@ -36,6 +36,9 @@ define [
     constructor : ->
       super()
       @gray = 0xFFFFFF
+      #new staff:
+      @count = 0
+
       #@gray = (Math.random()*0xFFFFFF<<0).toString(16)
     collide : ->
       @x = dim/2
@@ -50,7 +53,11 @@ define [
     move : ->
       #stroke(gray, 28)
       #point(x, y-1)
-      ctx.fillStyle = @gray.toString(16)
+      #ctx.fillStyle = @gray.toString(16)
+      col16 = @gray.toString(16)
+
+      ctx.fillStyle = 'rgba('+ emo$.Core.Helpers.hexToR(col16) + ',' + emo$.Core.Helpers.hexToG(col16) + ',' + emo$.Core.Helpers.hexToB(col16) + ',0.2)'
+
       ctx.fillRect(@x,@y-1,1,1)
 
       @x += @vx
@@ -85,9 +92,24 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        ctx.fillStyle = 'rgba('+ emo$.Core.Helpers.hexToR(col16) + ',' + emo$.Core.Helpers.hexToG(col16) + ',' + emo$.Core.Helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+          #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        #console.log(fillst)
+        ctx.fillStyle = fillst;
+
+        #console.log('speed: ' + @speed+ ', count: ' + @count)
+        if(@speed<0.01)
+          console.log('speed small now');
+
         ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
