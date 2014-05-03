@@ -18,5 +18,6 @@ src/libs/_libs_.map
 # ignore temp office files:
 ~$*.xlsx
 ~$*.docx
+.~*.odt#
 
 #very long comment is this one;
