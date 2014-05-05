@@ -17,3 +17,7 @@ Push an existing repository from the command line
 
 git remote add origin https://github.com/involve-it/emo.git
 git push -u origin master
+
+WIKI GIT:
+
+https://github.com/involve-it/emo.wiki.git
