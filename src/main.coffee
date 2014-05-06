@@ -88,7 +88,7 @@ requirejs.config
     }
   ],
   timeout : 100
-window.emo$ = {}
+window.tetamo = {}
 require [
   'libs'
   'core'
@@ -102,7 +102,30 @@ require [
       'art'
     ], (underscore, synesketchState, synesthesiator) ->
       require [
-        './views/empathy.box.js'
-      ], (EmpathyBoxView) ->
-        empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'))
-        $('#butt').trigger('click')
+        #'./views/empathy.box.js'
+      ], () ->
+
+        #empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'))
+        #$('#butt').trigger('click')
+        # moved here from emplathy.box view:
+        $('#butt').click (e)->
+          #input:
+          #emotion = tetamo('#textArea').tetamo('text').context().emotion(); # set context to element, and parse one emotion, w/o context
+          #or
+          emotion = $('#textArea').emotion() # <- jquery style
+          #or
+          emotion = new tetamo.input.text.dom.emotion('elementId') # <- pure vanila style
+
+          #processing:
+          emotion.
+          #@synesthesiator = new emo$.Engine.Emotion.SynesthesiatorEmotion()
+          #@synesthesiator.synesthesize(text)
+          #output:
+          #@applet = new emo$.art.sketch.synemania($canvas)
+
+          results = $canvas.emotion(emotion, 'applet')    # <- jquery style
+          #or:
+          outputObject = new tetamo.output.art.applet()  # <- pure vanila style
+          results = outputObject.draw();
+          #or
+          #results = @applet.draw()

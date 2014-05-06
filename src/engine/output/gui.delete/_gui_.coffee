@@ -1,6 +1,6 @@
 emo$.Core.Helpers.MakeGlobalNamespaceFromString('emo$.Gui')
 define [
-  'gui/empathy.panel'
+  '../../../builds/prod/gui/empathy.panel.js'
 ]
 
 
