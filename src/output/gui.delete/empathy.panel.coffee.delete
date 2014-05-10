@@ -1,0 +1,12 @@
+global.Core.Helpers.MakeGlobalNamespaceFromString('global.Gui.EmpathyPanel')
+define [], () ->
+  class global.Gui.EmpathyPanel
+    appletClassNamePrefix = 'global.art.sketch.'
+
+    constructor:(appletSize, SynClass, artType, $el)->
+      @$el = $el
+      appletClass = eval(appletClassNamePrefix + artType)
+      @applet = new appletClass($el)
+      @synesthesiator = new SynClass(@applet)
+    fireSynesthesiator: (text) ->
+      @synesthesiator.synesthesize(text)
