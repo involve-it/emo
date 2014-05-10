@@ -48,20 +48,19 @@ require [
     #$('#butt').trigger('click')
     # moved here from emplathy.box view:
     $('#butt').click (e)->
-      debugger
       #input:
       #emotion = tunder('#textArea').tunder('text').context().emotion(); # set context to element, and parse one emotion, w/o context
       #or
-      emotion = $('#textArea').emotion() # <- jquery style
+      emotion = $('#textArea').emo() # <- jquery style
       #or
-      emotion = new emo.input.Emotion('elementId') # <- pure vanila style
+      #emotion = new emo.input.Emotion('elementId') # <- pure vanila style
 
       #processing:
 
-      #@synesthesiator = new global.Engine.Emotion.SynesthesiatorEmotion()
+      #@synesthesiator = new global.core.api.SynesthesiatorEmotion()
       #@synesthesiator.synesthesize(text)
       #output:
-      #@applet = new global.art.sketch.synemania($canvas)
+      #@applet = new global.output.art.sketch.synemania($canvas)
 
       results = $canvas.emotion(emotion, 'applet')    # <- jquery style
       #or:

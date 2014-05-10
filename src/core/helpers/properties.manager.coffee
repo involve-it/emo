@@ -3,7 +3,7 @@
     #'cs!view'
     #'regular'
   ], () ->###
-#global.Core.Helpers.MakeGlobalNamespaceFromString('global.Core.Helpers.PropertiesManager')
+#global.core.helpers.MakeGlobalNamespaceFromString('global.core.helpers.PropertiesManager')
 define [
   'libs'
 ], () ->
@@ -32,5 +32,6 @@ define [
         values.push(parseInt(string, 16))
       values
 
-  #t_h.MakeGlobalNamespaceFromString('engine.core.helpers.properties_manager')
-  global.core.helpers.propertiesManager = PropertiesManager
+  global.core.helpers.MakeGlobalNamespaceAndObject
+    path : 'core.helpers.PropertiesManager'
+    object : PropertiesManager

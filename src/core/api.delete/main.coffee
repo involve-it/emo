@@ -1,5 +1,5 @@
 #class global.api
-global.Core.Helpers.MakeGlobalNamespaceFromString('global.api')
+global.core.helpers.MakeGlobalNamespaceFromString('global.api')
 
 ###requirejs.config
   packages : [

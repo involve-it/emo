@@ -1,5 +1,5 @@
 define [], () ->
-  ns1 = global.Core.Helpers.MakeGlobalNamespaceFromString('global.engine.core.abstract.inputEmotion')
+  ns1 = global.core.helpers.MakeGlobalNamespaceFromString('global.engine.core.abstract.inputEmotion')
 
   class InputEmotion
     constructor: (@val) ->

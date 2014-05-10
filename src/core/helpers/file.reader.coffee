@@ -3,7 +3,6 @@
     #'cs!view'
     #'regular'
   ], () ->###
-#global.Core.Helpers.MakeGlobalNamespaceFromString('global.Core.Helpers.FileReader')
 define [
 ], () ->
   class FileReader
@@ -21,5 +20,6 @@ define [
       file
     @parseLine : (line) ->
       ret = null
-  #t_h.MakeGlobalNamespaceFromString('core.helpers.file_reader')
-  global.core.helpers.file_reader = FileReader
+  global.core.helpers.MakeGlobalNamespaceAndObject
+    path : 'core.helpers.FileReader'
+    object : FileReader

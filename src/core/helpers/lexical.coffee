@@ -14,9 +14,9 @@ define [], () ->
     constructor : () ->
       #affectWords = []
       emoticons = []
-      pm = new global.Core.Helpers.PropertiesManager(fileNameProperties)
-      negations = global.Engine.Emotion.Helpers.Parsing.splitWords(pm.getProperty('negations'), ', ')
-      intensityModifiers = global.Engine.Emotion.Helpers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
+      pm = new global.core.helpers.PropertiesManager(fileNameProperties)
+      negations = global.core.helpers.Parsing.splitWords(pm.getProperty('negations'), ', ')
+      intensityModifiers = global.core.helpers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
       affectWords = @parseLexiconFile(fileNameLexicon)
       emoticons = @parseLexiconFile(fileNameEmoticons)
 
@@ -27,7 +27,7 @@ define [], () ->
 
     parseLexiconFile : (fileName) ->
       wordList = []
-      file = global.Core.Helpers.FileReader.readFile(fileName)
+      file = global.core.helpers.FileReader.readFile(fileName)
       lines = file.split('\n')
       for line in lines
         record = @parseLine(line)
@@ -46,7 +46,7 @@ define [], () ->
       fearWeight = parseFloat(text[5])
       disgustWeight = parseFloat(text[6])
       surpriseWeight = parseFloat(text[7])
-      value = new global.Engine.Emotion.AffectWord(word, generalWeight, happinessWeight, sadnessWeight, angerWeight, fearWeight, disgustWeight, surpriseWeight, normalisator)
+      value = new global.core.api.AffectWord(word, generalWeight, happinessWeight, sadnessWeight, angerWeight, fearWeight, disgustWeight, surpriseWeight, normalisator)
       return value
 
     getAffectWord : (word) ->
@@ -63,7 +63,7 @@ define [], () ->
       for affectWordEmoticon in emoticons
         do (affectWordEmoticon) ->
           emoticon = affectWordEmoticon.getWord();
-          if global.Engine.Emotion.Helpers.Parsing.containsFirst(word, emoticon)
+          if global.core.helpers.Parsing.containsFirst(word, emoticon)
             affectWordEmoticon.setStartsWithEmoticon(true)
             return affectWordEmoticon.clone()
       return null

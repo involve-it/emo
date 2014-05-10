@@ -1,14 +1,22 @@
+###*
+*  Classes which describe emotion-specific particles, that is visual representation of each emotion.
+*
+* @module Synemania
+*###
 define [
   'output/art/utils/main'
 ],() ->
-  ###
- Classes which describe emotion-specific particles, that is visual representation of each emotion.
-###
   dim = 500
   TWO_PI = 6.28
-  palette = new global.output.art.utils.synesketchPalette('standard');
+  palette = new global.output.art.utils.SynesketchPalette('standard');
   ctx = null
   window.testParticles = []
+  ###*
+  * Class representing a particle
+  *
+  * @namespace emo.output.art.sketch
+  * @class Particle
+  *###
   class Particle
     @::color = null
     @::x = null
@@ -54,7 +62,7 @@ define [
       #ctx.fillStyle = @gray.toString(16)
       col16 = @gray.toString(16)
 
-      ctx.fillStyle = 'rgba('+ global.Core.Helpers.hexToR(col16) + ',' + global.Core.Helpers.hexToG(col16) + ',' + global.Core.Helpers.hexToB(col16) + ',0.2)'
+      ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',0.2)'
 
       ctx.fillRect(@x,@y-1,1,1)
 
@@ -94,7 +102,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        ctx.fillStyle = 'rgba('+ global.Core.Helpers.hexToR(col16) + ',' + global.Core.Helpers.hexToG(col16) + ',' + global.Core.Helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -376,24 +384,24 @@ define [
       ctx = @$el[0].getContext("2d")
 
       for x in [0...maxNeutrals-1] by 1
-        neutrals[x] = new global.art.sketch.NeutralParticle()
+        neutrals[x] = new global.output.art.sketch.NeutralParticle()
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new global.art.sketch.SadParticle()
+        saddies[x] = new global.output.art.sketch.SadParticle()
 
       for x in [0...maxHappies-1] by 1
-        happies[x] = new global.art.sketch.HappyParticle()
+        happies[x] = new global.output.art.sketch.HappyParticle()
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new global.art.sketch.AngryParticle()
+        angries[x] = new global.output.art.sketch.AngryParticle()
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new global.art.sketch.SupriseParticle()
+        surprises[x] = new global.output.art.sketch.SupriseParticle()
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new global.art.sketch.FearParticle()
+        fearies[x] = new global.output.art.sketch.FearParticle()
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new global.art.sketch.DisgustParticle()
+        disgusties[x] = new global.output.art.sketch.DisgustParticle()
 
       sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals
@@ -414,17 +422,17 @@ define [
         currentParticles[x].move()
     getCurrentParticles : (e) ->
       currentEmotion = e.getType()
-      if currentEmotion == global.Engine.Emotion.Emotion.HAPPINESS
+      if currentEmotion == global.core.api.Emotion.HAPPINESS
         return happies
-      else if currentEmotion == global.Engine.Emotion.Emotion.SADNESS
+      else if currentEmotion == global.core.api.Emotion.SADNESS
         return saddies
-      else if currentEmotion == global.Engine.Emotion.Emotion.ANGER
+      else if currentEmotion == global.core.api.Emotion.ANGER
         return angries
-      else if currentEmotion == global.Engine.Emotion.Emotion.FEAR
+      else if currentEmotion == global.core.api.Emotion.FEAR
         return fearies
-      else if currentEmotion == global.Engine.Emotion.Emotion.DISGUST
+      else if currentEmotion == global.core.api.Emotion.DISGUST
         return disgusties
-      else if currentEmotion == global.Engine.Emotion.Emotion.SURPRISE
+      else if currentEmotion == global.core.api.Emotion.SURPRISE
         return surprises
       else
         return neutrals

@@ -99,19 +99,19 @@ define [], () ->
       else if valence < 0
         generalValence = -1
       if happinessWeight > 0
-        emotions.push(new global.core.api.Emotion(happinessWeight, global.core.api.Emotion.HAPPINESS))
+        emotions.push(new global.core.api.Emotion(happinessWeight, global.core.api.HAPPINESS))
       if sadnessWeight > 0
-        emotions.push(new global.core.api.Emotion(sadnessWeight, global.core.api.Emotion.SADNESS))
+        emotions.push(new global.core.api.Emotion(sadnessWeight, global.core.api.SADNESS))
       if angerWeight > 0
-        emotions.push(new global.core.api.Emotion(angerWeight, global.core.api.Emotion.ANGER))
+        emotions.push(new global.core.api.Emotion(angerWeight, global.core.api.ANGER))
       if fearWeight > 0
-        emotions.push(new global.core.api.Emotion(fearWeight, global.core.api.Emotion.FEAR))
+        emotions.push(new global.core.api.Emotion(fearWeight, global.core.api.FEAR))
       if disgustWeight > 0
-        emotions.push(new global.core.api.Emotion(disgustWeight, global.core.api.Emotion.DISGUST))
+        emotions.push(new global.core.api.Emotion(disgustWeight, global.core.api.DISGUST))
       if surpriseWeight > 0
-        emotions.push(new global.core.api.Emotion(surpriseWeight, global.core.api.Emotion.SURPRISE))
+        emotions.push(new global.core.api.Emotion(surpriseWeight, global.core.api.SURPRISE))
       if emotions.length == 0
-        emotions.push(new global.core.api.Emotion((0.2 + generalWeight) / 1.2, global.core.api.Emotion.NEUTRAL))
+        emotions.push(new global.core.api.Emotion((0.2 + generalWeight) / 1.2, global.core.api.NEUTRAL))
       ret = new global.core.api.EmotionState(text, emotions, generalWeight, generalValence)
       console.log(ret.toString())
       ret

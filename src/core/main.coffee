@@ -4,4 +4,5 @@ define [
   'core/helpers/main'
   'core/api/main'
   'core/abstract/main'
+  'core/inits/main'
 ]

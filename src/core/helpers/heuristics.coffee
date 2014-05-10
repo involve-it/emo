@@ -8,7 +8,7 @@ define [], () ->
       return true;
 
     isIntensityModifier = (word) ->
-      return global.Engine.Emotion.Helpers.Lexical.getInstance().isIntensityModifier(word)
+      return global.core.helpers.Lexical.getInstance().isIntensityModifier(word)
 
     countChars = (arg, c) ->
       count = 0;
@@ -19,7 +19,7 @@ define [], () ->
 
     # publics (statics)
     @computeEmoticonCoefForSentence : (sentence) ->
-      emoticons = global.Engine.Emotion.Helpers.Lexical.getInstance().getEmoticonWords(sentence);
+      emoticons = global.core.helpers.Lexical.getInstance().getEmoticonWords(sentence);
       value = 1.0
       for emot in emoticons
         do (emot) ->
@@ -41,7 +41,7 @@ define [], () ->
         return 1.0;
 
     @isNegation : (sentence) ->
-      return global.Engine.Emotion.Helpers.Lexical.getInstance().isNegation(sentence)
+      return global.core.helpers.Lexical.getInstance().isNegation(sentence)
 
     @computeModifier : (word) ->
       if isIntensityModifier(word)
@@ -76,7 +76,7 @@ define [], () ->
         return false
 
     isIntensityModifier : (word) ->
-      return global.Engine.Emotion.Helpers.Lexical.getInstance().isIntensityModifier(word)
+      return global.core.helpers.Lexical.getInstance().isIntensityModifier(word)
 
     countChars : (arg, c) ->
       count = 0

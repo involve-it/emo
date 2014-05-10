@@ -26,7 +26,7 @@ define [], () ->
         emotion = $('element').emo().context().emotion(); # set context to element, and parse one emotion, w/o context
 
         #processing:
-        @synesthesiator = new global.Engine.Emotion.SynesthesiatorEmotion()
+        @synesthesiator = new global.core.api.SynesthesiatorEmotion()
         @synesthesiator.synesthesize(text)
         #output:
         emotion.out(); # output one emotion from text, equal to 'art' (default value)
@@ -37,7 +37,7 @@ define [], () ->
         emotion.chart('bar'); #
         emotion.emoticon(); #
         emotion.emoticon('myOwnPics'); #
-        #@applet = new global.art.sketch.synemania($canvas)
+        #@applet = new global.output.art.sketch.synemania($canvas)
         #results = $canvas.tetamo().output('applet').draw();
         #results = @applet.draw()
 

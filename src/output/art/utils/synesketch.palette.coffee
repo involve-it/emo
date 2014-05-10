@@ -9,7 +9,7 @@ class SynesketchPalette
   randomiser = null
 
   constructor: (paletteName) ->
-    pm = new global.core.helpers.propertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
+    pm = new global.core.helpers.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
     happinessColors = pm.getIntArrayProperty('happiness.palette')
     sadnessColors = pm.getIntArrayProperty('sadness.palette')
     angerColors = pm.getIntArrayProperty('anger.palette')
@@ -45,5 +45,5 @@ class SynesketchPalette
 
 define [], () ->
   global.core.helpers.MakeGlobalNamespaceAndObject
-    path: 'output.art.utils.synesketchPalette'
+    path: 'output.art.utils.SynesketchPalette'
     object: SynesketchPalette
