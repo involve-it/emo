@@ -1,3 +1,9 @@
+###*
+* @param {String} asdf
+* @param {bool} THe asdfa
+* @return {String}
+*###
+
 requirejs.config
   paths:
     'underscore' : './libs/underscore-1.6.0',
