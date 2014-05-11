@@ -1,16 +1,32 @@
-define [
-  #'engine.emotion/empathy-scope.js'
-],()->
-  ###
-  * Returns a random number between min and max
-  ###
+define [],()->
+  #empathyScope = global.core.api.EmpathyScope.getInstance()
+  $.fn.emo = (contextName)->
+    if(!contextName || contextName == '' || contextName == 'default')
+      text = @text()
+      @process(text, contextName)
+    else if(contextName=='user1')
+      debugger
+  ###$.fn.feel = ()->
+    empathyScope.feel(@val())###
+  $.fn.process = (text, contextName)->
+    #mediator = new global.core.api.EmotionMediator(context)
+    #mediator.synesthesize(text)
 
-  empathyScope = global.core.api.EmpathyScope.getInstance()
+    context = global.core.api.Context.getInstance(contextName)
+    current = context.feel(text)
 
-  $.fn.emo = ()->
-    applet = new global.output.art.sketch.Synemania($('canvas'))
-    text = @text()
-    synesthesiator = new global.core.api.SynesthesiatorEmotion(applet)
-    synesthesiator.synesthesize(text)
-  $.fn.feel = ()->
-    empathyScope.feel(@val())
+
+  $.fn.art = (contextName, moduleName) ->
+    ret = null
+    if(!moduleName || moduleName == '' || moduleName == 'synemania')
+      #synemania effect:
+      ret = new global.output.art.sketch.Synemania(@, contextName)
+      $(window).on 'context:feel:' + contextName, (e, state)->
+        ret.update(state)
+
+    else if (moduleName == 'splash')
+      #show user waves!
+      debugger
+    else
+      debugger
+    ret

@@ -18,6 +18,8 @@ requirejs.config
     #other
     'underscore':
       exports: ['_']
+    'core/api/main' :
+      deps : ['core/abstract/main']
   packages: [
     {
       name : 'libs',
@@ -44,27 +46,15 @@ require [
   require [
     'core', 'input', 'output'
   ], () ->
-    #empathyBox = new EmpathyBoxView($('#canvas'), $('#textArea'), $('#butt'))
-    #$('#butt').trigger('click')
-    # moved here from emplathy.box view:
+    synCanvas = $('#canvas').art('default')
+    #results = $('#canvas').art('context1')
     $('#butt').click (e)->
-      #input:
-      #emotion = tunder('#textArea').tunder('text').context().emotion(); # set context to element, and parse one emotion, w/o context
-      #or
       emotion = $('#textArea').emo() # <- jquery style
-      #or
-      #emotion = new emo.input.Emotion('elementId') # <- pure vanila style
+      results1 = synCanvas.draw();
 
-      #processing:
+    setInterval ()->
+      res = synCanvas.draw()
+      #console.log(res)
+    ,1
 
-      #@synesthesiator = new global.core.api.SynesthesiatorEmotion()
-      #@synesthesiator.synesthesize(text)
-      #output:
-      #@applet = new global.output.art.sketch.synemania($canvas)
 
-      results = $canvas.emotion(emotion, 'applet')    # <- jquery style
-      #or:
-      outputObject = new global.output.art.applet()  # <- pure vanila style
-      results = outputObject.draw();
-      #or
-      #results = @applet.draw()

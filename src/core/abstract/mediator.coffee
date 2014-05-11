@@ -3,7 +3,7 @@
 define [],()->
   class Mediator
     constructor:(@parent)->
-      @updateMethod = parent.synesketchUpdate
+      @updateMethod = parent.update
       @updateMethod ?= () ->
         throw 'abstract method!'
         console.log 'this is update method'

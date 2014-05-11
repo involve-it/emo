@@ -1,13 +1,15 @@
-define ['core/abstract/synesthesiator'], () ->
-  class SynesthesiatorEmotion extends global.core.abstract.Mediator
+define ['core/abstract/mediator'], () ->
+  class EmotionMediator extends global.core.abstract.Mediator
     EmotionStates = []
-    empathyScope = null
+    context = null
+    instance = null
     #constructor: (parentApplet) ->
-    constructor: () ->
-      empathyScope = global.core.api.EmpathyScope.getInstance()
+    constructor: (contextName) ->
+      context = global.core.api.Context.getInstance(contextName)
     synesthesize:(text)->
       window.EmotionStates = EmotionStates
-      current = empathyScope.feel(text)
+      debugger
+      current = context.feel(text)
       current.setPrevious(EmotionStates[EmotionStates.length - 1])  unless EmotionStates.length == 0
       EmotionStates.push current
       #: notify system, that the emotion is synesthesized:
@@ -16,5 +18,5 @@ define ['core/abstract/synesthesiator'], () ->
 
 
   global.core.helpers.MakeGlobalNamespaceAndObject
-    path: 'core.api.SynesthesiatorEmotion'
-    object: SynesthesiatorEmotion
+    path: 'core.api.EmotionMediator'
+    object: EmotionMediator

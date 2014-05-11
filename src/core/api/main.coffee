@@ -3,7 +3,7 @@ define [
   './affect.word',
   './emotion',
   './emotion.state',
-  './empathy.scope',
-  './emotion.mediator'
+  './context',
+  #'./emotion.mediator'
 ], () ->
   global.core.helpers.MakeGlobalNamespaceFromString('core.api')

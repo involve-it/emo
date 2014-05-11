@@ -1,12 +1,13 @@
 define [], () ->
-  class EmpathyScope
+  class Context extends global.core.abstract.Context
     lexUtil = null
-    @instance
-    constructor : () ->
+    @instances = []
+    constructor : (@name) ->
       lexUtil = global.core.helpers.Lexical.getInstance()
 
-    @getInstance : () ->
-      EmpathyScope.instance ?= new EmpathyScope()
+    @getInstance : (contextName) ->
+      contextName ?= 'default'
+      Context.instances[contextName] ?= new Context(contextName)
     feel : (text) ->
       text = text.replace('\n', ' ');
       affectWords = []
@@ -66,6 +67,8 @@ define [], () ->
               affectWords.push emoWord
             previousWord = word
       ret = @createEmotionState(text, affectWords)
+      $(window).trigger('context:feel:' + @name, ret)
+      ret
 
     createEmotionState : (text, affectWords) ->
       emotions = []
@@ -117,5 +120,5 @@ define [], () ->
       console.log(ret.toString())
       ret
   global.core.helpers.MakeGlobalNamespaceAndObject
-    path : 'core.api.EmpathyScope'
-    object : EmpathyScope
+    path : 'core.api.Context'
+    object : Context

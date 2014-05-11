@@ -370,7 +370,7 @@ define [
 
     currentText = null
 
-    constructor: (@$el, @dim) ->
+    constructor: (@$el, @context, @dim) ->
       #super()
       @setup()
     setup : ->
@@ -410,7 +410,7 @@ define [
       catch e
         e.printStackTrace()###
 
-    synesketchUpdate : (state) ->
+    update : (state) ->
       currentEmotionState = state
       currentParticles = @getCurrentParticles(currentEmotionState.getStrongestEmotion())
     draw : ->
