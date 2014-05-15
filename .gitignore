@@ -20,4 +20,5 @@ src/libs/_libs_.map
 ~$*.docx
 .~*.odt#
 
-#very long comment is this one;
+# ignore my own docs:
+docs/**/*.hidden.*

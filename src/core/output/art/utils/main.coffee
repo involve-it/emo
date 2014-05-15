@@ -1,5 +1,5 @@
 
 define [
-  'output/art/utils/synesketch.palette'
+  'core/output/art/utils/synesketch.palette'
 ], () ->
   global.core.helpers.MakeGlobalNamespaceFromString('output.art.utils')

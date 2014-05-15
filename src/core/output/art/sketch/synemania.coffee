@@ -4,7 +4,7 @@
 * @module Synemania
 *###
 define [
-  'output/art/utils/main'
+  'core/output/art/utils/main'
 ],() ->
   dim = 500
   TWO_PI = 6.28

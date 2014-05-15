@@ -9,32 +9,32 @@
   "main": "index.html",
   "directories": {
     "grunt": "automation/grunt",
-    "builds" : {
-      "src" : "builds/src",
-      "prod" : "builds/prod",
-      "dist" : "builds/dist",
-      "tmp" : "builds/tmp"
+    "builds": {
+      "src": "builds/src",
+      "prod": "builds/prod",
+      "dist": "builds/dist",
+      "tmp": "builds/tmp"
     },
-    "source" : "src",
-    "automation" : {
-      "grunt" : {
-        "tasks" : "automation/grunt/tasks"
+    "source": "src",
+    "automation": {
+      "grunt": {
+        "tasks": "automation/grunt/tasks"
       },
-      "rjs" : {
-        "build_files" : "automation/rjs/build-files"
+      "rjs": {
+        "build_files": "automation/rjs/build-files"
       }
     }
-
   },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "dependencies" : {
-    "connect" : "*",
-    "express" : "*"
+  "dependencies": {
+    "connect": "*",
+    "express": "*"
   },
   "devDependencies": {
     "grunt": "*",
+    "grunt-jsdoc": "*",
     "grunt-contrib-coffee": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-jshint": "*",
@@ -42,6 +42,8 @@
     "grunt-contrib-requirejs": "*",
     "grunt-contrib-sass": "*",
     "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*"
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-yuidoc": "^0.5.2",
+    "grunt-docco": "^0.3.3"
   }
 }

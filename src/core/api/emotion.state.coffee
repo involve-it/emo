@@ -1,6 +1,6 @@
 define [
   'core/api/emotion'
-  'core/abstract/synesketch.state'
+  'core/abstract/state'
 ], () ->
   class EmotionState extends global.core.abstract.State
       #pravates:

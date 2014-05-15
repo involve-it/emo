@@ -80,13 +80,17 @@ class Helpers
   @cutHex = (h) ->
     if (h.charAt(0)=="#") then h.substring(1,7) else h
 
-Helpers.MakeGlobalNamespaceFromString('core.helpers', global)
-global.core.helpers = Helpers
-define [
-  './properties.manager'
-  './file.reader'
+Helpers.MakeGlobalNamespaceAndObject {
+  path:'core.helpers',
+  object: Helpers,
+  global: global
+}
+
+define 'core/helpers/main', [
+  'core/helpers/properties.manager'
+  'core/helpers/file.reader'
   #emotions:
-  './heuristics'
-  './lexical'
-  './parsing'
-]
+  'core/helpers/heuristics'
+  'core/helpers/lexical'
+  'core/helpers/parsing'
+], ()->

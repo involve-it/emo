@@ -1,11 +1,14 @@
+
 ###define [
     #'cs!controller'
     #'cs!view'
     #'regular'
   ], () ->###
 #global.core.helpers.MakeGlobalNamespaceFromString('global.core.helpers.PropertiesManager')
+
 define [
-  'libs'
+  #'require'
+  #'libs'
 ], () ->
   class PropertiesManager
     properties = null
@@ -31,7 +34,7 @@ define [
       for string in strings
         values.push(parseInt(string, 16))
       values
-
   global.core.helpers.MakeGlobalNamespaceAndObject
     path : 'core.helpers.PropertiesManager'
     object : PropertiesManager
+

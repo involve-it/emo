@@ -10,6 +10,21 @@ module.exports = (grunt) ->
     '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
     '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>;\n' +
     ' Licensed under the <%= pkg.license %> */\n',
+    yuidoc:
+      compile:
+        name: '<%= pkg.name %>'
+        description: '<%= pkg.description %>'
+        version: '<%= pkg.version %>'
+        url: '<%= pkg.homepage %>'
+        options:
+          paths: '<%= pkg.directories.builds.src%>/'
+          themedir: 'path/to/custom/theme/'
+          outdir: '<%= pkg.directories.builds.dist %>/docs/'
+    docco:
+      debug:
+        src: ['<%= pkg.directories.builds.src%>/**/*.js']
+        options:
+          output: '<%= pkg.directories.builds.dist %>/docs1/'
 
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
@@ -19,6 +34,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-requirejs'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-sass'
+  #grunt.loadNpmTasks 'grunt-jsdoc'
+  grunt.loadNpmTasks 'grunt-contrib-yuidoc'
+  grunt.loadNpmTasks 'grunt-docco'
+
   grunt.loadTasks(pkgGlobal.directories.automation.grunt.tasks)
   # Default task which watches jade, sass and coffee.
   #grunt.registerTask('default', ['concat', 'uglify']);

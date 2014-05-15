@@ -1,9 +1,9 @@
 define [
   'core/helpers/main',
-  './affect.word',
-  './emotion',
-  './emotion.state',
-  './context',
+  'core/api/affect.word',
+  'core/api/emotion',
+  'core/api/emotion.state',
+  'core/api/context',
   #'./emotion.mediator'
 ], () ->
   global.core.helpers.MakeGlobalNamespaceFromString('core.api')

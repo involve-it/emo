@@ -16,6 +16,7 @@ define [],()->
     current = context.feel(text)
 
 
+###
   $.fn.art = (contextName, moduleName) ->
     ret = null
     if(!moduleName || moduleName == '' || moduleName == 'synemania')
@@ -29,4 +30,4 @@ define [],()->
       debugger
     else
       debugger
-    ret
+    ret###
