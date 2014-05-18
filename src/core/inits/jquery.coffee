@@ -2,7 +2,10 @@ define [],()->
   #empathyScope = global.core.api.EmpathyScope.getInstance()
   $.fn.emo = (contextName)->
     if(!contextName || contextName == '' || contextName == 'default')
-      text = @text()
+      if (@text()!='')
+        text = @text()
+      else
+        text = @val()
       @process(text, contextName)
     else if(contextName=='user1')
       debugger

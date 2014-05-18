@@ -18,7 +18,12 @@ define [
         async : false,
         crossDomain: true,
         success : (data)->
-          properties = global.libs.x2js.xml2json(data).properties.entry
+          try
+            properties = (global.libs.x2js).xml2json(data).properties.entry
+          catch e
+            properties = (new X2JS()).xml2json(data).properties.entry
+
+
         error : (e) ->
           console.log(e)
       })

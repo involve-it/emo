@@ -413,7 +413,7 @@ define [
     update : (state) ->
       currentEmotionState = state
       currentParticles = @getCurrentParticles(currentEmotionState.getStrongestEmotion())
-    draw : ->
+    draw : (contextName) ->
       strongest = currentEmotionState.getStrongestEmotion()
       weight = strongest.getWeight()
       saturationFactor =  Math.sqrt(weight)

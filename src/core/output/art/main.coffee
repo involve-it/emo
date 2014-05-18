@@ -12,6 +12,7 @@ define [
 ], (_$) ->
   #$ = window.$ || _$
   $.fn.art = (contextName, moduleName) ->
+    contextName = contextName || 'default'
     ret = null
     if(!moduleName || moduleName == '' || moduleName == 'synemania')
       #synemania effect:

@@ -1,4 +1,3 @@
-debugger
 define [
   'core/helpers/main'
   'core/api/main'
@@ -8,7 +7,6 @@ define [
   'core/input/main'
   'core/output/main'
 ], ()->
-  debugger
   class Core
   global.core.helpers.MakeGlobalNamespaceAndObject({
     path: 'core'

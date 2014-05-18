@@ -20,37 +20,33 @@ module.exports = (grunt) ->
         ]
       temp:
         files: [
-          {src: destDir + '/input/main.js', dest: 'builds/dist/js/_input_.js'}
-          {src: destDir + '/core/main.js', dest: 'builds/dist/js/_core_.js'}
-          {src: destDir + '/output/main.js', dest: 'builds/dist/js/_output_.js'}
+          {src: destDir + '/emo.js', dest: 'builds/dist/js/emo.js'}
+          #{src: destDir + '/input/main.js', dest: 'builds/dist/js/_input_.js'}
+          #{src: destDir + '/core/main.js', dest: 'builds/dist/js/_core_.js'}
+          #{src: destDir + '/output/main.js', dest: 'builds/dist/js/_output_.js'}
           #{src: destDir + '/engine/_engine_.js', dest: 'builds/dist/js/_engine_.js'}
           #{src: destDir + '/core/_core_.js', dest: 'builds/dist/js/_core_.js'}
-          #{src: destDir + '/libs/_libs_.js', dest: 'builds/dist/libs.js'}
+          {src: destDir + '/libs.js', dest: 'builds/dist/libs.js'}
         ]
-      all:
+      ###all:
         src: [destDir + '/core/main.js', destDir + '/input/main.js', destDir + '/output/main.js'],
-        dest: 'builds/dist/js/emo.js',
+        dest: 'builds/dist/js/emo.js',###
 
     requirejs:
       options:
         mainConfigFile: srcDir + '/main.build.js'
-      input:
-        options:
-          name: 'input/main',
-          baseUrl: srcDir + '/',
-          out: destDir + '/input/main.js',
-          optimize: optimizeConst
-      output:
-        options:
-          name: 'output/main',
-          baseUrl: srcDir + '/',
-          out: destDir + '/output/main.js',
-          optimize: optimizeConst
-      core:
+      emo:
         options:
           name: 'core/main',
           baseUrl: srcDir + '/',
-          out: destDir + '/core/main.js',
+          out: destDir + '/emo.js',
+          optimize: optimizeConst
+      libs:
+        options:
+          mainConfigFile: srcDir + '/main.js'
+          name: 'libs/main',
+          baseUrl: srcDir + '/',
+          out: destDir + '/libs.js',
           optimize: optimizeConst
       ###engine:
         options:
@@ -74,19 +70,19 @@ module.exports = (grunt) ->
   concat = grunt.config.get('requirejs') || {};
   concat['pacreq'] = confObj.concat.pacreq
   concat['temp'] = confObj.concat.temp
-  concat['all'] = confObj.concat.all
+  #concat['all'] = confObj.concat.all
   grunt.config.set('concat', concat)
 
-  #requirejs = grunt.config.get('requirejs') || {};
-  #requirejs1['require_main1'] = confObj.requirejs
+  requirejs = grunt.config.get('requirejs') || {};
+  requirejs['emo'] = confObj.requirejs.emo
+  requirejs['libs'] = confObj.requirejs.libs
   #requirejs = _.extend(requirejs, confObj.requirejs)
-  grunt.config.set('requirejs', confObj.requirejs)
+  grunt.config.set('requirejs', requirejs)
 
   #grunt.registerMultiTask 'requirejs', 'Builds all concatenated packages as  _[package]_.js for each package (see in main.js), puts it to prod', ()->
-  grunt.registerTask 'build-package-require', 'Builds all concatenated packages as  _[package]_.js for each package (see in main.js), puts it to prod', () ->
+  grunt.registerTask 'build-emo-require', 'Builds all concatenated packages as  _[package]_.js for each package (see in main.js), puts it to prod', () ->
     grunt.task.run('concat:pacreq')
+    grunt.task.run('requirejs:emo')
+    grunt.task.run('requirejs:libs')
     grunt.task.run('concat:temp')
-    grunt.task.run('concat:all')
-    grunt.task.run('requirejs:input')
-    grunt.task.run('requirejs:core')
-    grunt.task.run('requirejs:output')
+

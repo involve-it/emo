@@ -43,13 +43,15 @@ require [
     ], () ->###
     #synCanvas = $('#canvas').art('default')
     #results = $('#canvas').art('context1')
+    results1 = null
+    emotion = $('#textArea').emo()
+    canvasArt1 = $('#canvas').art();
     $('#butt').click (e)->
-      emotion = $('#textArea').emo() # <- jquery style
-      results1 = $('#canvas').art();
-
-    #setInterval ()->
+      emotion = $('#textArea').emo()
+    setInterval ()->
+      res = canvasArt1.draw('default')
       #res = synCanvas.draw()
       #console.log(res)
-    #,1
+    ,1
 
 
