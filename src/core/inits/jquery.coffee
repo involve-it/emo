@@ -1,17 +1,19 @@
 define [],()->
   #empathyScope = global.core.api.EmpathyScope.getInstance()
-  $.fn.emo = (contextName)->
+  $.fn.emo1 = (contextName)->
     if(!contextName || contextName == '' || contextName == 'default')
-      if (@text()!='')
+      ###if (@text()!='')
         text = @text()
       else
-        text = @val()
+        text = @val()###
+      text = @[0].value
+      debugger
       @process(text, contextName)
     else if(contextName=='user1')
       debugger
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
-  $.fn.process = (text, contextName)->
+  $.fn.process1 = (text, contextName)->
     #mediator = new global.core.api.EmotionMediator(context)
     #mediator.synesthesize(text)
 

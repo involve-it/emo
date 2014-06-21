@@ -158,8 +158,8 @@ define [
         ctx.fillRect(@x, @y - 1,1,1)
         ctx.fillStyle = '#000000' #todo: saturationFactor!!
         ctx.fillRect(0, @y + 1,1,1)
-        $('textarea').css('background-color', '#' + @color.toString(16))
-        $('div').css('background-color', '#' + @color.toString(16))
+        #$('textarea').css('background-color', '#' + @color.toString(16))
+        #$('div').css('background-color', '#' + @color.toString(16))
 
       @x += @vx
       @y += @vy
@@ -199,8 +199,8 @@ define [
         ctx.fillRect(@x, @y - 1,1,1)
         ctx.fillStyle = '#000000' #todo: saturationFactor!!
         ctx.fillRect(0, @y + 1,1,1)
-        $('textarea').css('background-color', '#' + @color.toString(16))
-        $('div').css('background-color', '#' + @color.toString(16))
+        #$('textarea').css('background-color', '#' + @color.toString(16))
+        #$('div').css('background-color', '#' + @color.toString(16))
 
       @x += @vx
       @y += @vy

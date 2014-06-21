@@ -2,6 +2,7 @@
 class Output
 define [
   'core/output/art/main'
+  'core/output/emoticon/emoticon'
 ], ()->
   global.core.helpers.MakeGlobalNamespaceAndObject({
     path: 'core.output'

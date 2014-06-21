@@ -46,6 +46,9 @@ require [
     results1 = null
     emotion = $('#textArea').emo()
     canvasArt1 = $('#canvas').art();
+
+    #set the emoticons:
+    $('#emoticons').emoticon()
     $('#butt').click (e)->
       emotion = $('#textArea').emo()
     setInterval ()->

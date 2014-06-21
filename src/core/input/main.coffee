@@ -1,6 +1,7 @@
 global.core.helpers.MakeGlobalNamespaceFromString('core.input', global)
 class Input
 define [
-  #'input/text/empathy.scope'
+  'core/input/text'
+  'core/input/touch'
 ]
 global.input = Input

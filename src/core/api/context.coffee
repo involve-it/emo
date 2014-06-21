@@ -1,9 +1,12 @@
 define [], () ->
   class Context extends global.core.abstract.Context
     lexUtil = null
-    @instances = []
+    @instances = {}
+    emotionStates : []
     constructor : (@name) ->
       lexUtil = global.core.helpers.Lexical.getInstance()
+      debugger
+      Context.instances[@name] = @
 
     @getInstance : (contextName) ->
       contextName ?= 'default'
@@ -67,6 +70,7 @@ define [], () ->
               affectWords.push emoWord
             previousWord = word
       ret = @createEmotionState(text, affectWords)
+      @emotionStates.push(ret)
       $(window).trigger('context:feel:' + @name, ret)
       ret
 
