@@ -45,16 +45,37 @@ require [
     #results = $('#canvas').art('context1')
     results1 = null
     emotion = $('#textArea').emo()
-    canvasArt1 = $('#canvas').art();
+    canvasArt1 = $('#canvas').art()
+    #canvasTouch1 = $('#canvas').emoTouch();
+
+    #set background of div with emos of the inner text:
+    $('#contentDiv').background('contentDiv')
+    $('#contentDiv').emo('contentDiv')
 
     #set the emoticons:
-    $('#emoticons').emoticon()
+    $('#emoticons').emoticon('default')
+    $('#d3').d3('default')
     $('#butt').click (e)->
       emotion = $('#textArea').emo()
+    $(window).on 'context:feel:default', (e, state)->
+      $('#parsingResult').text(state.toString())
     setInterval ()->
-      res = canvasArt1.draw('default')
-      #res = synCanvas.draw()
-      #console.log(res)
+      res1 = canvasArt1.draw('default')
     ,1
 
+    $('#addCanvasBtn').click((e)->
+      a = $('<canvas id="canvasOverlay"></canvas>')
+      b = $('#contentDiv')
+      b.append(a)
+      a.attr('style', 'width: ' + b.css('width') + '; height: ' + b.css('height') + ';position: absolute;top:0;')
+      #add emo functionality, touch:
+      a.emoTouch()
+      #setTimeout () ->
+        #a.remove()
+      #, 3000
+    )
+
+    #alternative of semantics:
+    #$('#contentDiv').input('text')
+    #$('#contentDiv').output('art.sketch.background')
 

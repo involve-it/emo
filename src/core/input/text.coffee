@@ -9,15 +9,21 @@ define [
           text = @text()
         else
           text = @val()###
-        text = @[0].value
-        @process(text, contextName)
+        text = @[0].value || @.text()
+        return @.process(text, contextName)
       else if(contextName=='user1')
+        debugger
+      else
+        text = @[0].value || @.text()
+        return @.process(text, contextName)
+
     @process : (text, contextName)->
       #mediator = new global.core.api.EmotionMediator(context)
       #mediator.synesthesize(text)
 
       context = global.core.api.Context.getInstance(contextName)
-      current = context.feel(text)
+      current = context.feelText(text)
+
   #jquery part:
   $.fn.emo = Text.emo #(contextName)->
 

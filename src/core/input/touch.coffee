@@ -3,28 +3,18 @@ define [
   #class:
   class Touch
     @emo : (contextName)->
-      debugger
-      if(!contextName || contextName == '' || contextName == 'default')
-        ###if (@text()!='')
-          text = @text()
-        else
-          text = @val()###
-        text = @[0].value
-        @process(text, contextName)
-      else if(contextName=='user1')
-        debugger
-    @process : (text, contextName)->
-      #mediator = new global.core.api.EmotionMediator(context)
-      #mediator.synesthesize(text)
-
       context = global.core.api.Context.getInstance(contextName)
-      current = context.feel(text)
-  #jquery part:
-  $.fn.touchEmo = Touch.emo #(contextName)->
 
+      @.on 'click', (e)->
+        current = context.feelTouch(e, this.getContext("2d"))
+    @destructor : () ->
+
+  #jquery part:
+  $.fn.emoTouch = Touch.emo #(contextName)->
+  $.fn.emoRemove = Touch.destructor
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
-  $.fn.process = Touch.process
+  $.fn.processTouch = Touch.process
   #add class to global:
   global.core.helpers.MakeGlobalNamespaceAndObject
     path: 'input.touch'

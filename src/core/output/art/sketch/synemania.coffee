@@ -9,8 +9,8 @@ define [
   dim = 500
   TWO_PI = 6.28
   palette = new global.output.art.utils.SynesketchPalette('standard');
-  ctx = null
-  window.testParticles = []
+  #ctx = null
+  window.testParticles = window.testParticles || []
   ###*
   * Class representing a particle
   *
@@ -29,7 +29,7 @@ define [
     @::thetaD = null
     @::thetaDD = null
 
-    constructor : ->
+    constructor : (@ctx)->
       @x = dim/2
       @y = dim/2
       testParticles.push(@)
@@ -39,8 +39,8 @@ define [
       throw 'abstract'
   class NeutralParticle extends Particle
     @::gray = null
-    constructor : ->
-      super()
+    constructor : (ctx)->
+      super(ctx)
       @gray = 0xFFFFFF
       #new staff:
       @count = 0
@@ -62,9 +62,8 @@ define [
       #ctx.fillStyle = @gray.toString(16)
       col16 = @gray.toString(16)
 
-      ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',0.2)'
-
-      ctx.fillRect(@x,@y-1,1,1)
+      @ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',0.2)'
+      @ctx.fillRect(@x,@y-1,1,1)
 
       @x += @vx
       @y += @vy
@@ -102,21 +101,16 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
           #debugger
 
         fillst = '#000000, {a}'.replace('{a}', 1/@speed)
-        #console.log(fillst)
-        ctx.fillStyle = fillst;
+        @ctx.fillStyle = fillst
+        @ctx.fillRect(0, @y + 1,1,1)
 
-        #console.log('speed: ' + @speed+ ', count: ' + @count)
-        if(@speed<0.01)
-          console.log('speed small now');
-
-        ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -154,10 +148,10 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
-        ctx.fillRect(0, @y + 1,1,1)
+        @ctx.fillStyle = @color.toString(16)
+        @ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -172,9 +166,10 @@ define [
         @speedD = 1.0
         @thetaDD = 0.00001
         if Math.random() * 100 > 70
-          @x = dim/2
-          @y = dim/2
+          #@x = dim/2
+          #@y = dim/2
           @collide()
+      #if (@x < -dim/2) || (@x > dim/2) || (@y<-dim/2) || (@y>dim*2)
       if (@x < -dim) || (@x > dim*2) || (@y<-dim) || (@y>dim*2)
         @collide()
   class AngryParticle extends Particle
@@ -195,10 +190,10 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
-        ctx.fillRect(0, @y + 1,1,1)
+        @ctx.fillStyle = @color.toString(16)
+        @ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -236,10 +231,10 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
-        ctx.fillRect(0, @y + 1,1,1)
+        @ctx.fillStyle = @color.toString(16)
+        @ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -277,10 +272,10 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
-        ctx.fillRect(0, @y + 1,1,1)
+        @ctx.fillStyle = @color.toString(16)
+        @ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -318,10 +313,10 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        ctx.fillStyle = @color.toString(16)
-        ctx.fillRect(@x, @y - 1,1,1)
-        ctx.fillStyle = '#000000' #todo: saturationFactor!!
-        ctx.fillRect(0, @y + 1,1,1)
+        @ctx.fillStyle = @color.toString(16)
+        @ctx.fillRect(@x, @y - 1,1,1)
+        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -343,12 +338,12 @@ define [
         @collide()
   class Synemania
     @serialVersionUID = '1L'
-    maxHappies = 600
+    maxHappies = 800
     maxSaddies = 800
     maxAngries = 800
-    maxSurprises = 200
-    maxFearies = 400
-    maxDisgusties = 900
+    maxSurprises = 800
+    maxFearies = 800
+    maxDisgusties = 800
     maxNeutrals = 30
 
     currentEmotionState = new global.core.api.EmotionState()
@@ -381,27 +376,28 @@ define [
         #background(255)
         #noStroke()
 
-      ctx = @$el[0].getContext("2d")
+      @ctx = @$el[0].getContext("2d")
 
       for x in [0...maxNeutrals-1] by 1
-        neutrals[x] = new global.output.art.sketch.NeutralParticle()
+        neutrals[x] = new global.output.art.sketch.NeutralParticle(@ctx)
+      #for x in [0...1] by 1
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new global.output.art.sketch.SadParticle()
+        saddies[x] = new global.output.art.sketch.SadParticle(@ctx)
 
       for x in [0...maxHappies-1] by 1
-        happies[x] = new global.output.art.sketch.HappyParticle()
+        happies[x] = new global.output.art.sketch.HappyParticle(@ctx)
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new global.output.art.sketch.AngryParticle()
+        angries[x] = new global.output.art.sketch.AngryParticle(@ctx)
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new global.output.art.sketch.SupriseParticle()
+        surprises[x] = new global.output.art.sketch.SupriseParticle(@ctx)
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new global.output.art.sketch.FearParticle()
+        fearies[x] = new global.output.art.sketch.FearParticle(@ctx)
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new global.output.art.sketch.DisgustParticle()
+        disgusties[x] = new global.output.art.sketch.DisgustParticle(@ctx)
 
       sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals

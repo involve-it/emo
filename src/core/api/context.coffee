@@ -1,17 +1,18 @@
 define [], () ->
   class Context extends global.core.abstract.Context
+
     lexUtil = null
     @instances = {}
     emotionStates : []
     constructor : (@name) ->
       lexUtil = global.core.helpers.Lexical.getInstance()
-      debugger
       Context.instances[@name] = @
 
     @getInstance : (contextName) ->
       contextName ?= 'default'
       Context.instances[contextName] ?= new Context(contextName)
-    feel : (text) ->
+    feelText : (text) ->
+      t1 = Date.now()
       text = text.replace('\n', ' ');
       affectWords = []
       sentences = global.core.helpers.Parsing.parseSentences(text);
@@ -69,12 +70,23 @@ define [], () ->
               emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef)
               affectWords.push emoWord
             previousWord = word
-      ret = @createEmotionState(text, affectWords)
+      ret = @createEmotionState(text, affectWords, 'TEXT')
       @emotionStates.push(ret)
+
+      #log time:
+      t2 = Date.now()
+      window.t3 = t3 = t2-t1
+      console.log('Context feelText time: ' + t3/1000 + 's')
+
       $(window).trigger('context:feel:' + @name, ret)
       ret
+    feelTouch : (touchEvent, context) ->
+      affectWords = []
+      text = ''
+      ret = @createEmotionState(text, affectWords, 'TOUCH')
+      global.output.art.hearts.draw(touchEvent, context);
 
-    createEmotionState : (text, affectWords) ->
+    createEmotionState : (text, affectWords, TYPE) ->
       emotions = []
       generalValence = 0
       valence = 0.0
@@ -120,7 +132,7 @@ define [], () ->
         emotions.push(new global.core.api.Emotion(surpriseWeight, global.core.api.Emotion.SURPRISE))
       if emotions.length == 0
         emotions.push(new global.core.api.Emotion((0.2 + generalWeight) / 1.2, global.core.api.Emotion.NEUTRAL))
-      ret = new global.core.api.EmotionState(text, emotions, generalWeight, generalValence)
+      ret = new global.core.api.EmotionState(text, emotions, generalWeight, generalValence, TYPE)
       console.log(ret.toString())
       ret
   global.core.helpers.MakeGlobalNamespaceAndObject

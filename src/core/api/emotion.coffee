@@ -2,6 +2,10 @@ define [
   'core/abstract/main'
 ], () ->
   class Emotion extends global.core.abstract.Emotion
+    @TYPES =
+      TEXT : "TEXT"
+      TOUCH : "TOUCH"
+
     constructor:(@weight, @type) ->
     compareTo:(arg0) ->
       value = 100 * (arg0.weight? - @weight)

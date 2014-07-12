@@ -17,7 +17,8 @@ define [
         @
 
       getStrongestEmotion:() ->
-        @_emotions[0]
+        _.max @_emotions, (emotion)->
+          return emotion.weight
       getFirstStrongestEmotions: (stop) ->
         value = []
         for e in @_emotions

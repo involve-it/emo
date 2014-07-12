@@ -1,6 +1,5 @@
 define [
 ], () ->
-  debugger
 
   #class:
   class Emoticon
@@ -11,7 +10,6 @@ define [
         else
           text = @val()###
         text = @[0].value
-        debugger
         @process(text, contextName)
       else if(contextName=='user1')
         debugger
@@ -37,7 +35,6 @@ define [
 
       emotion = _.max state._emotions, (emotion)->
         return emotion.weight
-      debugger
       if(emotion.type !=-1)
         $(el).css('display', 'block')
       else
