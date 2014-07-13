@@ -25,39 +25,39 @@ define [
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
   #$.fn.process = Emoticon.process
-  $.fn.emoticon = (contextName) ->
+  global.libs.$.fn.emoticon = (contextName) ->
     contextName = contextName || 'default'
     ret = null
     el = @[0]
     #ret = new global.output.art.sketch.Synemania(@, contextName)
-    $(window).on 'context:feel:' + contextName, (e, state)->
+    global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
       #get strongest emotion:
 
       emotion = _.max state._emotions, (emotion)->
         return emotion.weight
       if(emotion.type !=-1)
-        $(el).css('display', 'block')
+        global.libs.$(el).css('display', 'block')
       else
-        $(el).css('display', 'none')
+        global.libs.$(el).css('display', 'none')
 
       if(emotion.type ==0) #happy
-        $(el).css('background-position-x', '-100px')
-        $(el).css('background-position-y', '0')
+        global.libs.$(el).css('background-position-x', '-100px')
+        global.libs.$(el).css('background-position-y', '0')
       else if(emotion.type == 1 ) #sad
-        $(el).css('background-position-x', '-100px')
-        $(el).css('background-position-y', '130px')
+        global.libs.$(el).css('background-position-x', '-100px')
+        global.libs.$(el).css('background-position-y', '130px')
       else if(emotion.type == 2 ) #fear
-        $(el).css('background-position-x', '100px')
-        $(el).css('background-position-y', '130px')
+        global.libs.$(el).css('background-position-x', '100px')
+        global.libs.$(el).css('background-position-y', '130px')
       else if(emotion.type == 3 ) #anger
-        $(el).css('background-position-x', '0')
-        $(el).css('background-position-y', '0')
+        global.libs.$(el).css('background-position-x', '0')
+        global.libs.$(el).css('background-position-y', '0')
       else if(emotion.type == 4 ) #disgust
-        $(el).css('background-position-x', '0')
-        $(el).css('background-position-y', '130px')
+        global.libs.$(el).css('background-position-x', '0')
+        global.libs.$(el).css('background-position-y', '130px')
       else if(emotion.type == 5 ) #surprise
-        $(el).css('background-position-x', '100px')
-        $(el).css('background-position-y', '0')
+        global.libs.$(el).css('background-position-x', '100px')
+        global.libs.$(el).css('background-position-y', '0')
     ret
 
   #add class to global:

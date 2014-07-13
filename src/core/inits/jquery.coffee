@@ -1,6 +1,6 @@
 define [],()->
   #empathyScope = global.core.api.EmpathyScope.getInstance()
-  $.fn.emo1 = (contextName)->
+  global.libs.$.fn.emo1 = (contextName)->
     if(!contextName || contextName == '' || contextName == 'default')
       ###if (@text()!='')
         text = @text()
@@ -13,7 +13,7 @@ define [],()->
       debugger
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
-  $.fn.process1 = (text, contextName)->
+  global.libs.$.fn.process1 = (text, contextName)->
     #mediator = new global.core.api.EmotionMediator(context)
     #mediator.synesthesize(text)
 

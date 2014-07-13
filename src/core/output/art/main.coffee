@@ -12,13 +12,14 @@ define [
 ], (_$) ->
   #$ = window.$ || _$
 
-  $.fn.art = (contextName, moduleName) ->
+  global.libs.$.fn.art = (contextName, moduleName) ->
     contextName = contextName || 'default'
     ret = null
     if(!moduleName || moduleName == '' || moduleName == 'synemania')
       #synemania effect:
       ret = new global.output.art.sketch.Synemania(@, contextName)
-      $(window).on 'context:feel:' + contextName, (e, state)->
+      global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
+        a = contextName
         ret.update(state)
 
     else if (moduleName == 'splash')
@@ -28,10 +29,10 @@ define [
       debugger
     ret
 
-  $.fn.background = (contextName, moduleName) ->
+  global.libs.$.fn.background = (contextName, moduleName) ->
     that = this
-    $(window).on 'context:feel:' + contextName, (e, state)->
-      tempCanvasEl = $('<canvas id="canvasOverlay"></canvas>')
+    global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
+      tempCanvasEl = global.libs.$('<canvas id="canvasOverlay"></canvas>')
       tempCanvasEl.attr('style', 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';')
       tempCanvasEl[0].getContext('2d').globalAlpha = 0.4
 

@@ -13,7 +13,7 @@ define [
   class PropertiesManager
     properties = null
     constructor : (fileName) ->
-      $.ajax({
+      global.libs.$.ajax({
         url : fileName,
         async : false,
         crossDomain: true,

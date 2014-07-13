@@ -68,8 +68,14 @@ define [], () ->
               if hasNegation && lexUtil.inTheSamePartOfTheSentence(negation, emoWord.getWord(), sentence)
                 emoWord.flipValence()
               emoWord.adjustWeights(exclaminationQoef * capsLockCoef * modifierCoef)
+              console.groupCollapsed('affect word ', word)
+              console.dir(emoWord)
+
+              console.groupEnd()
+
               affectWords.push emoWord
             previousWord = word
+      console.dir('all affectWords: ' + affectWords)
       ret = @createEmotionState(text, affectWords, 'TEXT')
       @emotionStates.push(ret)
 
@@ -78,7 +84,7 @@ define [], () ->
       window.t3 = t3 = t2-t1
       console.log('Context feelText time: ' + t3/1000 + 's')
 
-      $(window).trigger('context:feel:' + @name, ret)
+      global.libs.$(window).trigger('context:feel:' + @name, ret)
       ret
     feelTouch : (touchEvent, context) ->
       affectWords = []

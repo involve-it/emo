@@ -25,11 +25,11 @@ define [
       current = context.feelText(text)
 
   #jquery part:
-  $.fn.emo = Text.emo #(contextName)->
+  global.libs.$.fn.emo = Text.emo #(contextName)->
 
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
-  $.fn.process = Text.process
+  global.libs.$.fn.process = Text.process
   #add class to global:
   global.core.helpers.MakeGlobalNamespaceAndObject
     path: 'input.text'

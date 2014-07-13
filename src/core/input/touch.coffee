@@ -10,11 +10,11 @@ define [
     @destructor : () ->
 
   #jquery part:
-  $.fn.emoTouch = Touch.emo #(contextName)->
-  $.fn.emoRemove = Touch.destructor
+  global.libs.$.fn.emoTouch = Touch.emo #(contextName)->
+  global.libs.$.fn.emoRemove = Touch.destructor
   ###$.fn.feel = ()->
     empathyScope.feel(@val())###
-  $.fn.processTouch = Touch.process
+  global.libs.$.fn.processTouch = Touch.process
   #add class to global:
   global.core.helpers.MakeGlobalNamespaceAndObject
     path: 'input.touch'

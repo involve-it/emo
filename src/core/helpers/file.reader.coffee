@@ -8,7 +8,7 @@ define [
   class FileReader
     @readFile : (fileName) ->
       file = null
-      $.ajax({
+      global.libs.$.ajax({
         url : fileName,
         async : false,
         crossDomain: true,

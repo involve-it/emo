@@ -89,8 +89,13 @@ define [
           ret = @text + separator + @getGeneralWeight() + separator + @getValence() +
           separator + @getHappinessWeight() + separator + @getSadnessWeight() + separator + @getAngerWeight() + separator + @getFearWeight() + separator + @getDisgustWeight() + separator + @getSurpriseWeight()
         else
-          ret = "Text: " + @text + "\nGeneral weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
+          ret = "Text: " + @text + "\n General weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
           "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"
+        ret
+      toHtml : () ->
+        ret = "<i>Input text:</i> <b>" + @text + "</b><br/> <i>General weight: </i>" + @getGeneralWeight() + "\n<i>Valence: </i>" + @getValence() +
+          "\n<i>Happiness weight: </i>" + @getHappinessWeight() + "\n<i>Sadness weight: </i>" + @getSadnessWeight() + "\n<i>Anger weight: </i>" + @getAngerWeight() +
+          "\n<i>Fear weight: </i>" + @getFearWeight() + "\n<i>Disgust weight: </i>" + @getDisgustWeight() + "\n<i>Surprise weight: </i>" + @getSurpriseWeight() + "\n"
         ret
   global.core.helpers.MakeGlobalNamespaceAndObject
     path: 'core.api.EmotionState'

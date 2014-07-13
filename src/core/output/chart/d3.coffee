@@ -8,11 +8,11 @@ define [
       context = global.core.api.Context.getInstance(contextName)
       current = context.feel(text)
   #jquery part:
-  $.fn.d3 = (contextName) ->
+  global.libs.$.fn.d3 = (contextName) ->
     contextName = contextName || 'default'
     ret = null
     el = @[0]
-    $(window).on 'context:feel:' + contextName, (e, state)->
+    global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
       #debugger
     ret
 
