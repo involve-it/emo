@@ -41,31 +41,31 @@ require [
     ###require [
       'input', 'output'
     ], () ->###
-    #synCanvas = $('#canvas').art('default')
-    #results = $('#canvas').art('context1')
+    #synCanvas = global.libs.$('#canvas').art('default')
+    #results = global.libs.$('#canvas').art('context1')
     results1 = null
-    emotion = $('#textArea').emo()
-    canvasArt1 = $('#canvas').art()
-    #canvasTouch1 = $('#canvas').emoTouch();
+    emotion = global.libs.$('#textArea').emo()
+    canvasArt1 = global.libs.$('#canvas').art()
+    #canvasTouch1 = global.libs.$('#canvas').emoTouch();
 
     #set background of div with emos of the inner text:
-    $('#contentDiv').background('contentDiv')
-    $('#contentDiv').emo('contentDiv')
+    #global.libs.$('#contentDiv').background('contentDiv')
+    #global.libs.$('#contentDiv').emo('contentDiv')
 
     #set the emoticons:
-    $('#emoticons').emoticon('default')
-    $('#d3').d3('default')
-    $('#butt').click (e)->
-      emotion = $('#textArea').emo()
-    $(window).on 'context:feel:default', (e, state)->
-      $('#parsingResult').text(state.toString())
+    global.libs.$('#emoticons').emoticon('default')
+    global.libs.$('#d3').d3('default')
+    global.libs.$('#butt').click (e)->
+      emotion = global.libs.$('#textArea').emo()
+    global.libs.$(window).on 'context:feel:default', (e, state)->
+      global.libs.$('#parsingResult').html(state.toHtml())
     setInterval ()->
       res1 = canvasArt1.draw('default')
     ,1
 
-    $('#addCanvasBtn').click((e)->
-      a = $('<canvas id="canvasOverlay"></canvas>')
-      b = $('#contentDiv')
+    global.libs.$('#addCanvasBtn').click((e)->
+      a = global.libs.$('<canvas id="canvasOverlay"></canvas>')
+      b = global.libs.$('#contentDiv')
       b.append(a)
       a.attr('style', 'width: ' + b.css('width') + '; height: ' + b.css('height') + ';position: absolute;top:0;')
       #add emo functionality, touch:
@@ -76,6 +76,6 @@ require [
     )
 
     #alternative of semantics:
-    #$('#contentDiv').input('text')
-    #$('#contentDiv').output('art.sketch.background')
+    #global.libs.$('#contentDiv').input('text')
+    #global.libs.$('#contentDiv').output('art.sketch.background')
 
