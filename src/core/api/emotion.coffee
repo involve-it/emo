@@ -2,9 +2,7 @@ define [
   'core/abstract/main'
 ], () ->
   class Emotion extends global.core.abstract.Emotion
-    @TYPES =
-      TEXT : "TEXT"
-      TOUCH : "TOUCH"
+
 
     constructor:(@weight, @type) ->
     compareTo:(arg0) ->
@@ -15,6 +13,23 @@ define [
     getType : ->
       @type
     setType : (@type) ->
+    getName : ->
+      switch(@type)
+        when -1
+          return 'NEUTRAL'
+        when 0
+          return 'HAPPINESS'
+        when 1
+          return 'SADNESS'
+        when 2
+          return 'FEAR'
+        when 3
+          return 'ANGER'
+        when 4
+          return 'DISGUST'
+        when 5
+          return 'SURPRISE'
+
     getWeight : ->
       @weight
     setWeight : (@weight) ->
@@ -29,6 +44,9 @@ define [
     @DISGUST = 4
     @SURPRISE = 5
 
+    @TYPES =
+      TEXT : "TEXT"
+      TOUCH : "TOUCH"
   global.core.helpers.MakeGlobalNamespaceAndObject
     path: 'core.api.Emotion'
     object: Emotion

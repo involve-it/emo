@@ -27,6 +27,10 @@ module.exports = (grunt) ->
           #{src: destDir + '/engine/_engine_.js', dest: 'builds/dist/js/_engine_.js'}
           #{src: destDir + '/core/_core_.js', dest: 'builds/dist/js/_core_.js'}
           {src: destDir + '/libs.js', dest: 'builds/dist/libs.js'}
+
+          {src: destDir + '/emo.js', dest: 'builds/prod/emo.js'}
+          {src: destDir + '/libs.js', dest: 'builds/prod/libs.js'}
+
         ]
       ###all:
         src: [destDir + '/core/main.js', destDir + '/input/main.js', destDir + '/output/main.js'],

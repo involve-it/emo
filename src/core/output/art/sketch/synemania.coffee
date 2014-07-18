@@ -409,8 +409,14 @@ define [
     update : (state) ->
       currentEmotionState = state
       currentParticles = @getCurrentParticles(currentEmotionState.getStrongestEmotion())
-    draw : (contextName) ->
-      strongest = currentEmotionState.getStrongestEmotion()
+#    drawSingle : (emotion) ->
+#      weight = emotion.getWeight()
+#      saturationFactor =  Math.sqrt(weight)
+#      numberOfParticles = Math.round(currentParticles.length * saturationFactor)
+#      for x in [0...numberOfParticles] by 1
+#        currentParticles[x].move()
+    draw : (contextName) -> #use context name!!
+      strongest = currentEmotionState.getStrongestEmotion() #?! review this, it has bad logic!
       weight = strongest.getWeight()
       saturationFactor =  Math.sqrt(weight)
       numberOfParticles = Math.round(currentParticles.length * saturationFactor)
