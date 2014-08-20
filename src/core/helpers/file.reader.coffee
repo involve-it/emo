@@ -20,6 +20,6 @@ define [
       file
     @parseLine : (line) ->
       ret = null
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path : 'core.helpers.FileReader'
     object : FileReader

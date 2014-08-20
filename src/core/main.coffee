@@ -8,7 +8,7 @@ define [
   'core/output/main'
 ], ()->
   class Core
-  global.core.helpers.MakeGlobalNamespaceAndObject({
+  global.engine.helpers.MakeGlobalNamespaceAndObject({
     path: 'core'
     object : Core
   })

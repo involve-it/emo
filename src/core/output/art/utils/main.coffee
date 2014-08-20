@@ -2,4 +2,4 @@
 define [
   'core/output/art/utils/synesketch.palette'
 ], () ->
-  global.core.helpers.MakeGlobalNamespaceFromString('output.art.utils')
+  global.engine.helpers.MakeGlobalNamespaceFromString('output.art.utils')

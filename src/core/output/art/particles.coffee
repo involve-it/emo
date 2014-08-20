@@ -89,6 +89,6 @@ retObj =
   Spiral : SpiralParticle
   Snail  : SnailParticle
 
-global.core.helpers.MakeGlobalNamespaceAndObject
+global.engine.helpers.MakeGlobalNamespaceAndObject
   path: 'output.art.particles'
   object: retObj

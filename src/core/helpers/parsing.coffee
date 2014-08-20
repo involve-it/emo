@@ -37,6 +37,6 @@ define [], () ->
         return true
       else
         return false
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.helpers.Parsing'
     object : Parsing

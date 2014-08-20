@@ -1,10 +1,12 @@
 define [], () ->
   class Lexical
     instance = null
-    dataServerAddr = 'http://localhost:8899'
-    fileNameLexicon = dataServerAddr + '/lex/synesketch_lexicon.txt'
-    fileNameEmoticons = dataServerAddr + '/lex/synesketch_lexicon_emoticons.txt'
-    fileNameProperties = dataServerAddr + '/lex/keywords.xml'
+    lexiconFilePath = '/lex/lexicon'
+    emoticonsFilePath = '/lex/lexicon_emoticons'
+    keywordsFilePath = '/lex/keywords'
+    ###fileNameLexiconContent = global.modules.datafiles.files.synesketch_lexicon
+    fileNameEmoticonsContent = global.modules.datafiles.files.synesketch_lexicon_emoticons
+    fileNamePropertiesContent = global.modules.datafiles.files.keywords###
     affectWords = null
     emoticons = null
     negations = null
@@ -14,11 +16,11 @@ define [], () ->
     constructor : () ->
       #affectWords = []
       emoticons = []
-      pm = new global.core.helpers.PropertiesManager(fileNameProperties)
-      negations = global.core.helpers.Parsing.splitWords(pm.getProperty('negations'), ', ')
-      intensityModifiers = global.core.helpers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
-      affectWords = @parseLexiconFile(fileNameLexicon)
-      emoticons = @parseLexiconFile(fileNameEmoticons)
+      pm = new global.core.helpers.PropertiesManager paletteFilePath, ()->
+        #negations = global.core.helpers.Parsing.splitWords(pm.getProperty('negations'), ', ')
+        #intensityModifiers = global.core.helpers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
+        #affectWords = @parseLexiconFile(lexiconFilePath)
+        emoticons = @parseLexiconFile(emoticonsFilePath)
 
     @getInstance : () ->
       if instance == null
@@ -106,6 +108,6 @@ define [], () ->
         if ((sentence[k] == ',') || (sentence[k] == '.') || (sentence[k] == ';') || (sentence[k] == ':') || (sentence[k] == '-'))
           return false
       return true
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.helpers.Lexical'
     object : Lexical

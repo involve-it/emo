@@ -2,6 +2,7 @@ define [
   'jquery',
   'underscore',
   'xml2json',
+  'text'
 ], (_$) ->
   #turn off globals of jquery:
   _$.noConflict( true )

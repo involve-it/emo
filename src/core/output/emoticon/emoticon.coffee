@@ -61,6 +61,6 @@ define [
     ret
 
   #add class to global:
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.emoticon'
     object: Emoticon

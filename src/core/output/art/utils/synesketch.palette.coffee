@@ -1,4 +1,6 @@
-dataServerAddr = 'http://localhost:8899'
+#dataServerAddr = global.engine.controllers.Config.dataServerRoot
+paletteFilePath = '/palette/standard'
+#paletteFileContent = global.modules.datafiles.files.standard
 class SynesketchPalette
   fearColors = []
   angerColors = []
@@ -9,13 +11,14 @@ class SynesketchPalette
   randomiser = null
 
   constructor: (paletteName) ->
-    pm = new global.core.helpers.PropertiesManager(dataServerAddr + '/palette/' + paletteName.toLowerCase() + '.xml')
-    happinessColors = pm.getIntArrayProperty('happiness.palette')
-    sadnessColors = pm.getIntArrayProperty('sadness.palette')
-    angerColors = pm.getIntArrayProperty('anger.palette')
-    fearColors = pm.getIntArrayProperty('fear.palette')
-    disgustColors = pm.getIntArrayProperty('disgust.palette')
-    surpriseColors = pm.getIntArrayProperty('surprise.palette')
+    #pm = new global.core.helpers.PropertiesManager(global.modules.datafiles.files.standard)
+    pm = new global.core.helpers.PropertiesManager paletteFilePath, ()->
+      happinessColors = pm.getIntArrayProperty('happiness.palette')
+      sadnessColors = pm.getIntArrayProperty('sadness.palette')
+      angerColors = pm.getIntArrayProperty('anger.palette')
+      fearColors = pm.getIntArrayProperty('fear.palette')
+      disgustColors = pm.getIntArrayProperty('disgust.palette')
+      surpriseColors = pm.getIntArrayProperty('surprise.palette')
   #randomiser = new Math.random()
 
   getAngerColors: ->
@@ -44,6 +47,6 @@ class SynesketchPalette
     surpriseColors[Math.floor(Math.random() * surpriseColors.length)]
 
 define [], () ->
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.utils.SynesketchPalette'
     object: SynesketchPalette

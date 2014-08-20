@@ -6,4 +6,4 @@ define [
   'core/api/context',
   #'./emotion.mediator'
 ], () ->
-  global.core.helpers.MakeGlobalNamespaceFromString('core.api')
+  global.engine.helpers.MakeGlobalNamespaceFromString('core.api')

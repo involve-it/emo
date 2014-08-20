@@ -47,6 +47,6 @@ define [
     @TYPES =
       TEXT : "TEXT"
       TOUCH : "TOUCH"
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.api.Emotion'
     object: Emotion

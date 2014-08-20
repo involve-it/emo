@@ -10,6 +10,7 @@ requirejs.config
     'jquery' : './libs/jquery-2.1.0',
     'xml2json' : './libs/xml2json',
     'bootstrap' : './libs/bootstrap'
+    'text' : './libs/require/text'
     #'underscore' : 'empty:',
     #'jquery' : 'empty:',
     #'xml2json' : 'empty:'
@@ -27,23 +28,31 @@ requirejs.config
       location : './libs',
     }
     {
+      name : 'engine',
+      location : './engine',
+    }
+    {
       name : 'core',
       location : './core',
+    }
+    {
+      name : 'modules',
+      location : './modules',
     }
   ]
   timeout : 10000
 global = window.Emo = window.emo = {}
 require [
-  'libs'
+  'libs', 'engine'
 ], () ->
   #turn on jquery global:
   window.jQuery = window.$ = global.libs.$
 
   require [
-    'core', 'bootstrap'
+    'core'
   ], () ->
     ###require [
-      'input', 'output'
+      'modules'
     ], () ->###
     #synCanvas = global.libs.$('#canvas').art('default')
     #results = global.libs.$('#canvas').art('context1')

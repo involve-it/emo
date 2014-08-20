@@ -4,26 +4,39 @@
     #'cs!view'
     #'regular'
   ], () ->###
-#global.core.helpers.MakeGlobalNamespaceFromString('global.core.helpers.PropertiesManager')
-
+#global.engine.helpers.MakeGlobalNamespaceFromString('global.core.helpers.PropertiesManager')
+dataServerAddr = global.engine.controllers.Config.dataServerRoot
 define [
   #'require'
   #'libs'
 ], () ->
   class PropertiesManager
     properties = null
-    constructor : (fileName) ->
+    constructor : (fileName, callbackFunction) ->
+      ###try
+        properties = (global.libs.x2js).xml2json(fileContent).properties.entry
+      catch e
+        properties = (new X2JS()).xml2json(fileContent).properties.entry###
+      url = dataServerAddr + fileName + '?callback='
       global.libs.$.ajax({
-        url : fileName,
+        url : url,
         async : false,
-        crossDomain: true,
+        #crossDomain: true,
+        #jsonpCallback: 'jsonCallback',
+        contentType: "application/json",
+        dataType: 'jsonp',
         success : (data)->
           try
-            properties = (global.libs.x2js).xml2json(data).properties.entry
+            if typeof data != "string"
+              properties = (global.libs.x2js).xml2json(data).properties.entry
+            else
+              properties = (global.libs.x2js).xml_str2json(data).properties.entry
           catch e
-            properties = (new X2JS()).xml2json(data).properties.entry
-
-
+            if typeof data != "string"
+              properties = (new X2JS()).xml2json(data).properties.entry
+            else
+              properties = (new X2JS()).xml_str2json(data).properties.entry
+          callbackFunction()
         error : (e) ->
           console.log(e)
       })
@@ -39,7 +52,7 @@ define [
       for string in strings
         values.push(parseInt(string, 16))
       values
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path : 'core.helpers.PropertiesManager'
     object : PropertiesManager
 

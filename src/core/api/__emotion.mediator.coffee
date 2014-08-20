@@ -17,6 +17,6 @@ define ['core/abstract/mediator'], () ->
       $(window).trigger('core:emotion:synthesized')
 
 
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.api.EmotionMediator'
     object: EmotionMediator

@@ -141,6 +141,6 @@ define [], () ->
       ret = new global.core.api.EmotionState(text, emotions, generalWeight, generalValence, TYPE)
       console.log(ret.toString())
       ret
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path : 'core.api.Context'
     object : Context

@@ -31,6 +31,6 @@ define [
     empathyScope.feel(@val())###
   global.libs.$.fn.process = Text.process
   #add class to global:
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'input.text'
     object: Text

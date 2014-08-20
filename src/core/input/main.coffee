@@ -1,4 +1,4 @@
-global.core.helpers.MakeGlobalNamespaceFromString('core.input', global)
+global.engine.helpers.MakeGlobalNamespaceFromString('core.input', global)
 class Input
 define [
   'core/input/text'

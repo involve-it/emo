@@ -14,6 +14,6 @@ define [],()->
       @
 
     synesthesise:(text) -> throw 'abstract-has to be overriden!';
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.abstract.Mediator'
     object: Mediator

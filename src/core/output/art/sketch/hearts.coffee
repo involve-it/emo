@@ -25,6 +25,6 @@ define [
       , 1)###
 
   retObj = Hearts
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.hearts'
     object: retObj

@@ -1,4 +1,4 @@
-global.core.helpers.MakeGlobalNamespaceFromString('output.art')
+global.engine.helpers.MakeGlobalNamespaceFromString('output.art')
 ###confObj =
   shim:
     './sketch/_sketch_.js':

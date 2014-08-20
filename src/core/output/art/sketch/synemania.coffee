@@ -454,34 +454,34 @@ define [
     DisgustParticle : DisgustParticle
     Synemania : Synemania
   }
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch'
     object: retObj
   #put every class to global namespace:
-  ###global.core.helpers.MakeGlobalNamespaceAndObject
+  ###global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.Particle'
     object: Particle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.NeutralParticle'
     object: NeutralParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.HappyParticle'
     object: HappyParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.SadParticle'
     object: SadParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.AngryParticle'
     object: AngryParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.SupriseParticle'
     object: SupriseParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.FearParticle'
     object: FearParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.DisgustParticle'
     object: DisgustParticle
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch.Synemania'
     object: Synemania###

@@ -17,6 +17,6 @@ define [
     ret
 
   #add class to global:
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'output.d3'
     object: D3

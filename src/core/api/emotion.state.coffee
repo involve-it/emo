@@ -93,10 +93,10 @@ define [
           "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"
         ret
       toHtml : () ->
-        ret = "<i>Input text:</i> <b>" + @text + "</b><br/> <i>General weight: </i>" + @getGeneralWeight() + "\n<i>Valence: </i>" + @getValence() +
+        ret = "<i>Input text:</i> <b class='htmlText'>" + @text + "</b><br/> <i>General weight: </i>" + @getGeneralWeight() + "\n<i>Valence: </i>" + @getValence() +
           "\n<i>Happiness weight: </i>" + @getHappinessWeight() + "\n<i>Sadness weight: </i>" + @getSadnessWeight() + "\n<i>Anger weight: </i>" + @getAngerWeight() +
           "\n<i>Fear weight: </i>" + @getFearWeight() + "\n<i>Disgust weight: </i>" + @getDisgustWeight() + "\n<i>Surprise weight: </i>" + @getSurpriseWeight() + "\n"
         ret
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path: 'core.api.EmotionState'
     object: EmotionState

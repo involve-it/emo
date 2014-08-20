@@ -132,6 +132,6 @@ define [], () ->
 
     getWeightSum : () ->
       ret = @happinessWeight + @sadnessWeight + @angerWeight + @fearWeight + @disgustWeight + @surpriseWeight
-  global.core.helpers.MakeGlobalNamespaceAndObject
+  global.engine.helpers.MakeGlobalNamespaceAndObject
     path : 'core.api.AffectWord'
     object : AffectWord
