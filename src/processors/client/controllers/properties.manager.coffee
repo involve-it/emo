@@ -35,4 +35,3 @@ define [
   global.engine.core.helpers.MakeGlobalNamespaceAndObject
     path : 'engine.processors.client.controllers.PropertiesManager'
     object : PropertiesManager
-

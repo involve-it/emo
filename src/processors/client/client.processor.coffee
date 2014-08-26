@@ -7,7 +7,9 @@ class ClientProcessor extends global.engine.classes.AbstractProcessor
   lexUtil = null
   @instances = {}
   emotionStates : []
-  @app = null
+  #@app = emojs.runtime.app
+  #@app.emit('processor:loaded')
+
 
   constructor:(app)->
     @app = app
@@ -15,12 +17,11 @@ class ClientProcessor extends global.engine.classes.AbstractProcessor
     @.on 'lexical:ready', ()->
       @app.emit('processor:ready')
       @.ready.call()
-
     lexUtil = new global.engine.processors.client.controllers.Lexical(@)
     #let's add the lexical to the runtime helpers:
 
     global.engine.core.helpers.MakeGlobalNamespaceAndObject
-      path:'runtime.helpers.Lexical'
+      path:'runtime.helpers.lexical'
       object: lexUtil
       global: global
       shortcut: 'e$rhl'
@@ -61,7 +62,6 @@ class ClientProcessor extends global.engine.classes.AbstractProcessor
 
           if (emoticonCoef == 1.0)
             emoticonCoef = global.engine.processors.client.controllers.Heuristics.computeEmoticonCoef(splittedWord.toLowerCase(), emoWord);
-
 
           emoWord.adjustWeights(exclaminationQoef * emoticonCoef)
           affectWords.push(emoWord)
@@ -162,14 +162,11 @@ class ClientProcessor extends global.engine.classes.AbstractProcessor
   ready : (callback)->
     super
 
-
-
-global.engine.core.helpers.MakeGlobalNamespaceAndObject {
-  path:'engine.processors.client.ClientProcessor'
+emojs.engine.core.helpers.MakeGlobalNamespaceAndObject
+  path:'processors.client.ClientProcessor'
   object: ClientProcessor
   global: global
-  shortcut: 'e$epcc'
-}
+  shortcut: 'e$pcc'
 
 define 'controllers/main', [
 ], ()->

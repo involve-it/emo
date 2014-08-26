@@ -34,14 +34,13 @@ class App extends global.engine.classes.AbstractController
       @setProcessorInstance(@staticConfig.processor)
     else
       #set default processor:
-      @setProcessorInstance('global.engine.processors.client.ServerProcessor')
+      @setProcessorInstance('emojs.processors.client.ClientProcessor')
 
-global.engine.core.helpers.MakeGlobalNamespaceAndObject {
+global.engine.core.helpers.MakeGlobalNamespaceAndObject
   path:'engine.controllers.App'
   object: App
   global: global
   shortcut: 'e$eca'
-}
 
 define [
 ], ()->

@@ -7,4 +7,3 @@ define [
   'processors/client/controllers/parsing'
   'processors/client/controllers/properties.manager'
 ], ()->
-

@@ -17,6 +17,10 @@ emojsRequire = requirejs.config
       deps: [
         'libs'
       ]
+    'processors':
+      deps: [
+        'libs', 'engine'
+      ]
     'modules':
       deps: [
         'libs', 'engine'
@@ -35,11 +39,15 @@ emojsRequire = requirejs.config
       name : 'modules',
       location : './modules',
     }
+    {
+      name : 'processors',
+      location : './processors',
+    }
   ]
   timeout : 10000
 global = window.emojs = window.emo = {}
 emojsRequire [
-  'libs', 'engine', 'modules'
+  'libs', 'engine', 'processors', 'modules'
 ], () ->
   #add all necessary conditions to start using library
   window.document.addEventListener 'app:ready', ()->

@@ -7,9 +7,9 @@ requirejs.config
     ###'input':
       deps: ['processors']
     'output':
-      deps: ['processors']###
+      deps: ['processors']
     'modules' :
-      deps : ['processors']
+      deps : ['processors']###
   packages: [
     {
       name : 'classes',
@@ -23,10 +23,6 @@ requirejs.config
       name : 'core',
       location : './engine/core',
     }
-    {
-      name : 'processors',
-      location : './engine/processors',
-    }
   ]
 define [
   'core'
@@ -34,25 +30,28 @@ define [
   'controllers'
 ], () ->
   #all things are loaded, so let's start the show by creating global object for runtime and engine objects:
-  global.engine.core.helpers.MakeGlobalNamespaceFromString('engine', global, 'e$e')
+  emojs.engine.core.helpers.MakeGlobalNamespaceAndObject
+    path:'engine'
+    object: @
+    global: global
+    shortcut: 'e$e'
   global.engine.core.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r')
 
   #init new app, setting it's config:
-  app = new emo.engine.controllers.App
+  app = new emojs.engine.controllers.App
     #processor: 'global.engine.processors.server.ServerProcessor'
-    processor: 'global.engine.processors.client.ClientProcessor'
+    processor: 'emojs.processors.client.ClientProcessor'
     modules : [
 
     ]
   global.runtime.app = app
-  require [
-    'processors'
-    #'modules'
-  ], () ->
+  ###require [
+  ], () ->###
 
-    #wait for all necessary conditions to start using library and notify all the app is ready:
-    app.once 'processor:ready', ()->
-      appReadyEvent = new Event('app:ready')
-      window.document.dispatchEvent(appReadyEvent)
+  #wait for all necessary conditions to start using library and notify all the app is ready:
+  app.once 'processor:ready', ()->
+    appReadyEvent = new Event('app:ready')
+    window.document.dispatchEvent(appReadyEvent)
     #runtime is fully initialized - in/out/proc modules are loaded, so we can kick off the application:
+  #app.once 'processor:loaded', ()->
     app.start()
