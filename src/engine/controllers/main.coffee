@@ -1,5 +1,4 @@
+global.engine.core.helpers.MakeGlobalNamespaceFromString 'engine.controllers'
 define [
-  'engine.controllers/config'
-], (DAO) ->
-  class Controllers
-  global.engine.helpers.MakeGlobalNamespaceFromString('engine.controllers')
+  'controllers/app'
+], ()->

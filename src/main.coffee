@@ -9,7 +9,8 @@ requirejs.config
     'underscore' : './libs/underscore-1.6.0',
     'jquery' : './libs/jquery-2.1.0',
     'xml2json' : './libs/xml2json',
-    'bootstrap' : './libs/bootstrap'
+    'emitter' : './libs/emitter',
+    'bootstrap' : './libs/bootstrap'#???
     'text' : './libs/require/text'
     #'underscore' : 'empty:',
     #'jquery' : 'empty:',
@@ -20,8 +21,10 @@ requirejs.config
     #other
     'underscore':
       exports: ['_']
-    'core/api/main' :
-      deps : ['core/abstract/main']
+    'engine':
+      deps: [
+        'libs'
+      ]
   packages: [
     {
       name : 'libs',
@@ -31,26 +34,21 @@ requirejs.config
       name : 'engine',
       location : './engine',
     }
-    {
-      name : 'core',
-      location : './core',
-    }
-    {
-      name : 'modules',
-      location : './modules',
-    }
   ]
   timeout : 10000
 global = window.Emo = window.emo = {}
 require [
-  'libs', 'engine'
+  'libs', 'engine', 'jquery'
 ], () ->
   #turn on jquery global:
-  window.jQuery = window.$ = global.libs.$
-
-  require [
+  window.jQuery = window.$
+  ###require [
     'core'
-  ], () ->
+  ], () ->###
+  $('#butt').click (e)->
+    t1 =  $('#textArea').text()
+    emotion = global.engine.input.text.emo(t1)
+  ()->
     ###require [
       'modules'
     ], () ->###
@@ -126,14 +124,12 @@ require [
       , 1
       global.libs.$(this).urlEmotion(global.libs.$(this).attr('href'), 'hoverUrl1')
       global.libs.$(window).on 'context:feel:hoverUrl1', (e, state)->
-        debugger
         i++
         if (i<2)
           createTooltip(event, canvas1);
     )
     global.libs.$('#testHoverA1').mouseout((e)->
       setTimeout ()->
-        debugger
         global.libs.$('#tooltip1').remove()
       , 2000
     )
@@ -142,7 +138,6 @@ require [
     global.libs.$('#testHoverA2').hover((e)->
       global.libs.$(this).urlEmotion(global.libs.$(this).attr('href'), 'hoverUrl2')
       global.libs.$(window).on 'context:feel:hoverUrl2', (e, state)->
-        debugger
     )
 
     # todo: alternative of semantics:

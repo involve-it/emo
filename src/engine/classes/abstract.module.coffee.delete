@@ -1,0 +1,5 @@
+global.engine.helpers.MakeGlobalNamespaceAndObject
+  path: 'core.abstract.AbstractModule'
+  object: class Context
+    constructor: (@val) ->
+define [], () ->
