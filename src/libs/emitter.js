@@ -35,6 +35,9 @@ define(['module'], function(module) {
     return obj;
   }
 
+  // let's add stack of ALL triggered events:
+  var triggererWithEmitterEventsGlobal = []
+
   /**
    * Listen on the given `event` with `fn`.
    *
@@ -61,7 +64,6 @@ define(['module'], function(module) {
    * @return {Emitter}
    * @api public
    */
-
   Emitter.prototype.once = function(event, fn){
     var self = this;
     this._callbacks = this._callbacks || {};
@@ -75,7 +77,33 @@ define(['module'], function(module) {
     this.on(event, on);
     return this;
   };
+  /**
+   * Adds an `event` listener that will be invoked a single
+   * time then automatically removed OR if event was already triggered before, the function gets executed.
+   *
+   * @param {String} event
+   * @param {Function} fn
+   * @return {Emitter}
+   * @api public
+   */
+  Emitter.prototype.runOrWait = function(event, fn){
+    if (triggererWithEmitterEventsGlobal.indexOf(event) === -1) {
+      var self = this;
+      this._callbacks = this._callbacks || {};
 
+      function on() {
+        self.off(event, on);
+        fn.apply(this, arguments);
+      }
+
+      on.fn = fn;
+      this.on(event, on);
+      return this;
+    } else {
+      fn.apply(this, arguments);
+    }
+
+  };
   /**
    * Remove the given callback for `event` or all
    * registered callbacks.
@@ -145,7 +173,8 @@ define(['module'], function(module) {
         callbacks[i].apply(this, args);
       }
     }
-
+    // add event to global event stack:
+    triggererWithEmitterEventsGlobal.push(event);
     return this;
   };
 

@@ -1,4 +1,4 @@
-global.engine.helpers.MakeGlobalNamespaceFromString('output.art')
+emojs.runtime.helpers.MakeGlobalNamespaceFromString('output.art')
 ###confObj =
   shim:
     './sketch/_sketch_.js':
@@ -6,13 +6,13 @@ global.engine.helpers.MakeGlobalNamespaceFromString('output.art')
 
 requirejs.config(confObj)###
 define [
-  '../../../../../builds/prod/core/api/emotion.state.js'
-  '../../../builds/src/core/output/art/sketch/main'
-  'core/output/art/utils/main'
+#  '../../../../../builds/prod/core/api/emotion.state.js'
+#  '../../../builds/src/core/output/art/sketch/main'
+#  'core/output/art/utils/main'
 ], (_$) ->
   #$ = window.$ || _$
 
-  global.libs.$.fn.art = (contextName, moduleName) ->
+  $.fn.art = (contextName, moduleName) ->
     contextName = contextName || 'default'
     ret = null
     if(!moduleName || moduleName == '' || moduleName == 'synemania')
@@ -29,7 +29,7 @@ define [
       debugger
     ret
 
-  global.libs.$.fn.backgroundContext = (contextName, moduleName) ->
+  $.fn.backgroundContext = (contextName, moduleName) ->
     that = this
     global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
       tempCanvasEl = global.libs.$('<canvas id="canvasOverlay"></canvas>')
@@ -54,7 +54,7 @@ define [
       imgData = tempCanvasEl[0].toDataURL()
       that.css('background', 'url("data:' + imgData + '")')
       that.css('background-size', '100% 100%')
-  global.libs.$.fn.backgroundEmotion = (contextName) ->
+  $.fn.backgroundEmotion = (contextName) ->
     contextName = contextName || 'default'
 
     that = this
@@ -83,7 +83,7 @@ define [
       global.libs.$(that[i]).prevBackground = global.libs.$(that[i]).css('background-image')
       global.libs.$(that[i]).css('background-image', 'url("data:' + imgData + '")')
       global.libs.$(that[i]).css('background-size', '100% 100%')
-  global.libs.$.fn.clearBackground = () ->
+  $.fn.clearBackground = () ->
     #that = this
     #for i in [0.. this.length-1] by 1
     global.libs.$(this).css('background-image', global.libs.$(this).prevBackground || 'none')

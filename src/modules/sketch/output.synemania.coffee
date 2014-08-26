@@ -4,7 +4,7 @@
 * @module Synemania
 *###
 define [
-  '../../../../../../builds/src/core/output/art/utils/main'
+  'modules.sketch/helper.palette'
 ],() ->
   dim = 500
   TWO_PI = 6.28
@@ -346,7 +346,7 @@ define [
     maxDisgusties = 800
     maxNeutrals = 30
 
-    currentEmotionState = new global.core.api.EmotionState()
+    currentEmotionState = new emojs.engine.classes.EmotionState()
 
     syne = null
 
@@ -424,17 +424,17 @@ define [
         currentParticles[x].move()
     getCurrentParticles : (e) ->
       currentEmotion = e.getType()
-      if currentEmotion == global.core.api.Emotion.HAPPINESS
+      if currentEmotion == emojs.engine.classes.Emotion.HAPPINESS
         return happies
-      else if currentEmotion == global.core.api.Emotion.SADNESS
+      else if currentEmotion == emojs.engine.classes.Emotion.SADNESS
         return saddies
-      else if currentEmotion == global.core.api.Emotion.ANGER
+      else if currentEmotion == emojs.engine.classes.Emotion.ANGER
         return angries
-      else if currentEmotion == global.core.api.Emotion.FEAR
+      else if currentEmotion == emojs.engine.classes.Emotion.FEAR
         return fearies
-      else if currentEmotion == global.core.api.Emotion.DISGUST
+      else if currentEmotion == emojs.engine.classes.Emotion.DISGUST
         return disgusties
-      else if currentEmotion == global.core.api.Emotion.SURPRISE
+      else if currentEmotion == emojs.engine.classes.Emotion.SURPRISE
         return surprises
       else
         return neutrals
@@ -454,7 +454,7 @@ define [
     DisgustParticle : DisgustParticle
     Synemania : Synemania
   }
-  global.engine.helpers.MakeGlobalNamespaceAndObject
+  global.engine.core.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.sketch'
     object: retObj
   #put every class to global namespace:

@@ -46,11 +46,11 @@ emojsRequire = requirejs.config
   ]
   timeout : 10000
 global = window.emojs = window.emo = {}
+#add all necessary conditions to start using library
+window.document.addEventListener 'app:ready', ()->
+  emojsReadyEvent = new Event('emojs:ready')
+  document.dispatchEvent(emojsReadyEvent)
+  window.document.removeEventListener('emojs:ready')
 emojsRequire [
   'libs', 'engine', 'processors', 'modules'
 ], () ->
-  #add all necessary conditions to start using library
-  window.document.addEventListener 'app:ready', ()->
-    emojsReadyEvent = new Event('emojs:ready')
-    document.dispatchEvent(emojsReadyEvent)
-    window.document.removeEventListener('emojs:ready')

@@ -5,6 +5,10 @@ requirejs.config
       location : './modules/core',
     }
     {
+      name : 'modules.sketch',
+      location : './modules/sketch',
+    }
+    {
       name : 'modules.datafiles',
       location : './modules/datafiles',
     }
@@ -16,6 +20,7 @@ requirejs.config
 emojs.engine.core.helpers.MakeGlobalNamespaceFromString('modules')
 define [
   'modules.core'
+  'modules.sketch'
 ], () ->
 ###if global.engine.controllers.Config.isFullyClientSide
   define [

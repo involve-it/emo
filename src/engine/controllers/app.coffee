@@ -26,8 +26,10 @@ class App extends global.engine.classes.AbstractController
   getProcessorInstance : ()->
     processor
   setProcessorInstance : (ProcessorClassObjectName)->
-    processorClass = eval(ProcessorClassObjectName)
+    ###processorClass = eval(ProcessorClassObjectName)
     processor = new processorClass(@)
+    processor.ready ()->###
+    processor = emojs.runtime.app.processor
     processor.ready ()->
   start : ()->
     if (typeof @staticConfig.processor != 'undefined')

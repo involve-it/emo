@@ -39,11 +39,9 @@ define [
 
   #init new app, setting it's config:
   app = new emojs.engine.controllers.App
-    #processor: 'global.engine.processors.server.ServerProcessor'
-    processor: 'emojs.processors.client.ClientProcessor'
-    modules : [
-
-    ]
+    #processor: 'global.processors.server.ServerProcessor'
+    #processor: 'emojs.processors.client.ClientProcessor'
+    #modules : []
   global.runtime.app = app
   ###require [
   ], () ->###

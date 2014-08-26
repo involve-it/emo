@@ -5,8 +5,10 @@
 * @class ServerProcessor
 *###
 
-class ServerProcessor extends global.engine.classes.AbstractProcessor
-  constructor:()->
+class ServerProcessor extends emojs.engine.classes.AbstractProcessor
+  constructor:(app)->
+    @app = app
+
   ###*
   * For trigger events, that will be listened/casted in any part of program.
   * Format of the triggered event:
@@ -15,13 +17,15 @@ class ServerProcessor extends global.engine.classes.AbstractProcessor
   * @return {String} DESCRIPTION
   *###
   trigger: (name, action)->
+  feelText : (text, context) ->
+    debugger
+    super
 
-
-global.engine.core.helpers.MakeGlobalNamespaceAndObject {
-  path:'engine.processors.client.controllers.Processor'
+emojs.engine.core.helpers.MakeGlobalNamespaceAndObject {
+  path:'processors.server.ServerProcessor'
   object: ServerProcessor
   global: global
-  shortcut: 'e$epcs'
+  shortcut: 'e$pcs'
 }
 
 define 'controllers/main', [

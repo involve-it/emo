@@ -13,7 +13,7 @@ define [
       url = dataServerAddr + fileName
       d = null
       #url = dataServerAddr + fileName + '?callback='
-      global.engine.processors.client.controllers.FileReader.readFile(url, (data)->
+      emojs.engine.controllers.FileReader.readFile(url, (data)->
         properties = global.libs.x2js(data).properties.entry
         callbackFunction(data)
         #callback
@@ -33,5 +33,5 @@ define [
         values.push(parseInt(string, 16))
       values
   global.engine.core.helpers.MakeGlobalNamespaceAndObject
-    path : 'engine.processors.client.controllers.PropertiesManager'
+    path : 'engine.controllers.PropertiesManager'
     object : PropertiesManager

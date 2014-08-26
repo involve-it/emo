@@ -5,5 +5,4 @@ define [
   'processors/client/controllers/heuristics'
   'processors/client/controllers/lexical'
   'processors/client/controllers/parsing'
-  'processors/client/controllers/properties.manager'
 ], ()->

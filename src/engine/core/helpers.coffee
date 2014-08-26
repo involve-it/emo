@@ -86,6 +86,12 @@ Helpers.MakeGlobalNamespaceAndObject {
   object: Helpers,
   global: global
 }
+# static, so instead of creating instance, just assign to runtime:
+Helpers.MakeGlobalNamespaceAndObject {
+  path:'runtime.helpers',
+  object: Helpers,
+  global: global
+}
 `
 var ajax = {};
 ajax.x = function() {

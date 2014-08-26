@@ -1,14 +1,12 @@
 define [
-  '../../../builds/prod/core/helpers/main'
-  '../../../../builds/src/core/api/main'
-  'core/abstract/main'
-  'core/inits/main'
-
-  'core/input/main'
-  'core/output/main'
+  'processors/server/server.processor'
+  'processors/server/controllers/main'
+  #'processors/server/classes/affect.word'
 ], ()->
-  class Core
-  global.engine.helpers.MakeGlobalNamespaceAndObject({
-    path: 'core'
-    object : Core
-  })
+  processor = new emojs.processors.server.ServerProcessor(emojs.runtime.app)
+  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+    path:'runtime.app.processor'
+    object: processor
+    global: global
+    shortcut: 'e$rp'
+  emojs.runtime.app.emit('processor:ready')

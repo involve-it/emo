@@ -1,8 +1,8 @@
 define [
 ], () ->
-  class Dao extends global.core.abstract.Controller
+  class Dao extends emojs.engine.classes.AbstractController
     @name = 'DAO'
 
-  global.engine.helpers.MakeGlobalNamespaceAndObject
-    path: 'modules.dao'
+  emojs.engine.core.helpers.MakeGlobalNamespaceAndObject
+    path: 'runtime.helpers.dao'
     object: Dao

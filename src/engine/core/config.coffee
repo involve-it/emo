@@ -10,6 +10,9 @@ define [
 
     # this flag shows if this is a fully client-side running (all processing and rendering etc. is done in JS) app
     @fullyClientSide = true
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.core.Config'
+    object: Config
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
+    path: 'runtime.config'
     object: Config

@@ -13,10 +13,9 @@ class ClientProcessor extends global.engine.classes.AbstractProcessor
 
   constructor:(app)->
     @app = app
-    #Context.instances[@name] = @
-    @.on 'lexical:ready', ()->
+    ###@.on 'lexical:ready', ()->
       @app.emit('processor:ready')
-      @.ready.call()
+      @.ready.call()###
     lexUtil = new global.engine.processors.client.controllers.Lexical(@)
     #let's add the lexical to the runtime helpers:
 

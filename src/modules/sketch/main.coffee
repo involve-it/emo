@@ -1,8 +1,8 @@
 global.engine.core.helpers.MakeGlobalNamespaceFromString('engine.input', global)
 class Input
 define [
-  'modules/input.text'
-  'modules/ui.jquery'
-  'modules/output.logger'
+  'modules.sketch/class.particle'
+  'modules.sketch/ui.jquery'
+  'modules.sketch/output.synemania'
 ]
 #global.input = Input
