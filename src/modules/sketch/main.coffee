@@ -1,7 +1,8 @@
 global.engine.core.helpers.MakeGlobalNamespaceFromString('engine.input', global)
 class Input
 define [
-  'input/text'
-  'input/ui.jquery'
+  'modules/input.text'
+  'modules/ui.jquery'
+  'modules/output.logger'
 ]
 #global.input = Input

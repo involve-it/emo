@@ -7,11 +7,11 @@
 
 class App extends global.engine.classes.AbstractController
   processor = null
-  @config = null
+  @staticConfig = null
   #@contextsPool = new global.run
 
   constructor:(config)->
-    @config = config ?= {}
+    @staticConfig = config ?= {}
     #create context pool and default context in the context pool:
     #contextsPool = new global.engine.
 
@@ -30,8 +30,8 @@ class App extends global.engine.classes.AbstractController
     processor = new processorClass(@)
     processor.ready ()->
   start : ()->
-    if (typeof @config.processor != 'undefined')
-      @setProcessorInstance(@config.processor)
+    if (typeof @staticConfig.processor != 'undefined')
+      @setProcessorInstance(@staticConfig.processor)
     else
       #set default processor:
       @setProcessorInstance('global.engine.processors.client.ServerProcessor')

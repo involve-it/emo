@@ -13,15 +13,16 @@ define [], () ->
     constructor : (processor) ->
       affectWords = []
       emoticons = []
+      that = @
       pm = new global.engine.processors.client.controllers.PropertiesManager keywordsFilePath, (data)->
         negations = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty('negations'), ', ')
         intensityModifiers = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
-
-      @parseLexiconFile lexiconFilePath, (data)->
-        affectWords = data
-
-      @parseLexiconFile emoticonsFilePath, (data)->
-        emoticons = data
+        #todo: make this async by adding method 'waitForStart/eventsStack' to controller:
+        that.parseLexiconFile lexiconFilePath, (data)->
+          affectWords = data
+          that.parseLexiconFile emoticonsFilePath, (data)->
+            emoticons = data
+            processor.emit('lexical:ready')
 
     @getInstance : () ->
       if instance == null

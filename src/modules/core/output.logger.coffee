@@ -7,6 +7,7 @@ define [], ()->
     console.log(state.toString())
     #server-side logging:
       #ajax request here..
+
   global.engine.core.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.output.Logger'
     object : Logger

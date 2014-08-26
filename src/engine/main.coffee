@@ -1,14 +1,15 @@
-engineRequire = requirejs.config
+requirejs.config
   shim:
     'classes':
       deps: ['core'],
     'controllers':
       deps: ['core', 'classes'],
-    'input':
+    ###'input':
       deps: ['processors']
     'output':
-      deps: ['processors']
-
+      deps: ['processors']###
+    'modules' :
+      deps : ['processors']
   packages: [
     {
       name : 'classes',
@@ -26,16 +27,8 @@ engineRequire = requirejs.config
       name : 'processors',
       location : './engine/processors',
     }
-    {
-      name : 'input',
-      location : './engine/input',
-    }
-    {
-      name : 'output',
-      location : './engine/output',
-    }
   ]
-engineRequire [
+define [
   'core'
   'classes'
   'controllers'
@@ -46,15 +39,20 @@ engineRequire [
 
   #init new app, setting it's config:
   app = new emo.engine.controllers.App
+    #processor: 'global.engine.processors.server.ServerProcessor'
     processor: 'global.engine.processors.client.ClientProcessor'
+    modules : [
 
+    ]
   global.runtime.app = app
   require [
     'processors'
-    'input'
-    'output'
+    #'modules'
   ], () ->
+
+    #wait for all necessary conditions to start using library and notify all the app is ready:
+    app.once 'processor:ready', ()->
+      appReadyEvent = new Event('app:ready')
+      window.document.dispatchEvent(appReadyEvent)
     #runtime is fully initialized - in/out/proc modules are loaded, so we can kick off the application:
     app.start()
-
-

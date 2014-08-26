@@ -8,7 +8,23 @@
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <script type="text/javascript" src="./libs/jquery-2.1.0.js"></script>
+  <script type="text/javascript">
+    $(document).on('emojs:ready', function(){
+      debugger
+      //provide client settings here (if needed in future):
+      /*app.start({
+        global : 'emojs'
+      });*/
+      $('#butt').click(function(e) {
+        var emotion, t1;
+        t1 = $('#textArea').text();
+        return emotion = emojs.engine.input.text.emo(t1);
+      });
+    })
+  </script>
   <script type="text/javascript" data-main="main" src="./libs/require/require-2.1.8.js"></script>
+
   <style>
     p {
       font: 16px/1.5em "Helvetica Neue", Helvetica, sans-serif;

@@ -1,6 +1,10 @@
 requirejs.config
   packages: [
     {
+      name : 'modules.core',
+      location : './modules/core',
+    }
+    {
       name : 'modules.datafiles',
       location : './modules/datafiles',
     }
@@ -9,13 +13,15 @@ requirejs.config
       location : './modules/dao',
     }
   ]
-global.engine.helpers.MakeGlobalNamespaceFromString('modules')
-
-if global.engine.controllers.Config.isFullyClientSide
+emojs.engine.core.helpers.MakeGlobalNamespaceFromString('modules')
+define [
+  'modules.core'
+], () ->
+###if global.engine.controllers.Config.isFullyClientSide
   define [
     'modules.dao'
   ], () ->
 else
   define [
     'modules.datafiles'
-  ], () ->
+  ], () ->###

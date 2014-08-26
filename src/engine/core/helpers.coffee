@@ -150,3 +150,5 @@ ajax.post = function(url, data, callback, sync) {
 }
 global.engine.core.helpers.ajax = ajax;
 `
+define [
+], ()->
