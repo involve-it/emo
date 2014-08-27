@@ -1,15 +1,11 @@
 requirejs.config
   shim:
+    'core' :
+      deps: ['libs']
     'classes':
       deps: ['core'],
     'controllers':
       deps: ['core', 'classes'],
-    ###'input':
-      deps: ['processors']
-    'output':
-      deps: ['processors']
-    'modules' :
-      deps : ['processors']###
   packages: [
     {
       name : 'classes',

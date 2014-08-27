@@ -11,7 +11,6 @@
   <script type="text/javascript" src="./libs/jquery-2.1.0.js"></script>
   <script type="text/javascript">
     $(document).on('emojs:ready', function(){
-      debugger
       //provide client settings here (if needed in future):
       /*app.start({
         global : 'emojs'
@@ -19,8 +18,11 @@
       $('#butt').click(function(e) {
         var emotion, t1;
         t1 = $('#textArea').text();
-        return emotion = emojs.engine.input.text.emo(t1);
+        emotion = emojs.modules.core.input.text.emo(t1);
+        //$.fn.backgroundEmotion
+        $('#contentDiv p:first').backgroundEmotion();
       });
+
     })
   </script>
   <script type="text/javascript" data-main="main" src="./libs/require/require-2.1.8.js"></script>
@@ -64,7 +66,6 @@
 <br/>
 <!--<div id="emoticons" style="display:none;height:130px; width:100px; background-image: url(http://localhost:8889/core/output/emoticon/emo.png)"></div>-->
 <div id="d3"></div>
-<div style="width: 500px; height: 500px;"></div>
 <div id="contentDiv">
   <p>Selectors are defined by the <a href="http://www.w3.org/TR/selectors-api/">W3C Selectors API</a> and supported natively by modern browsers. Backwards-compatibility for older browsers can be provided by <a href="http://sizzlejs.com/">Sizzle</a>. The above examples select nodes by tag name (<code class="javascript"><span class="string">"p"</span></code> and <code class="javascript"><span class="string">"body"</span></code>, respectively). Elements may be selected using a variety of predicates, including containment, attribute values, class and ID.
   </p>
@@ -81,5 +82,7 @@
         });</code></pre>
 </div>
 <input type="button" value="add canvas" id="addCanvasBtn"/>
+<div style="width: 500px; height: 500px;"></div>
+
 </body>
 </html>

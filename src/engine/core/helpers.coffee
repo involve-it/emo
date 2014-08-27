@@ -92,6 +92,15 @@ Helpers.MakeGlobalNamespaceAndObject {
   object: Helpers,
   global: global
 }
+
+Helpers.hexToR = (h) ->
+  parseInt((@cutHex(h)).substring(0,2),16)
+Helpers.hexToG = (h) ->
+  parseInt((@cutHex(h)).substring(2,4),16)
+Helpers.hexToB = (h) ->
+  parseInt((@cutHex(h)).substring(4,6),16)
+Helpers.cutHex = (h) ->
+  if (h.charAt(0)=="#") then h.substring(1,7) else h
 `
 var ajax = {};
 ajax.x = function() {

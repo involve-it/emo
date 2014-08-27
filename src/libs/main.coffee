@@ -1,3 +1,13 @@
+requirejs.config
+  paths:
+    'underscore' : './libs/underscore-1.6.0'
+    #'jquery' : './libs/jquery-2.1.0'
+    'xml2json' : './libs/xml2json'
+    'emitter' : './libs/emitter'
+    'text' : './libs/require/text'
+  shim :
+    'underscore':
+      exports: ['_']
 define [
   #'jquery',
   'underscore',

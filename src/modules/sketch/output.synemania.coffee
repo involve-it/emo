@@ -62,7 +62,7 @@ define [
       #ctx.fillStyle = @gray.toString(16)
       col16 = @gray.toString(16)
 
-      @ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',0.2)'
+      @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',0.2)'
       @ctx.fillRect(@x,@y-1,1,1)
 
       @x += @vx
@@ -101,7 +101,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ global.core.helpers.hexToR(col16) + ',' + global.core.helpers.hexToG(col16) + ',' + global.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -370,34 +370,31 @@ define [
       @setup()
     setup : ->
       if @$el?
-        @$el.css('width', dim)
-        @$el.css('height', dim)
-        #size(dim, dim, P3D)
-        #background(255)
-        #noStroke()
+        @$el.width = dim
+        @$el.height = dim
 
-      @ctx = @$el[0].getContext("2d")
+      @ctx = @$el.getContext("2d")
 
       for x in [0...maxNeutrals-1] by 1
-        neutrals[x] = new global.output.art.sketch.NeutralParticle(@ctx)
+        neutrals[x] = new emojs.modules.sketch.output.synemania.NeutralParticle(@ctx)
       #for x in [0...1] by 1
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new global.output.art.sketch.SadParticle(@ctx)
+        saddies[x] = new emojs.modules.sketch.output.synemania.SadParticle(@ctx)
 
       for x in [0...maxHappies-1] by 1
-        happies[x] = new global.output.art.sketch.HappyParticle(@ctx)
+        happies[x] = new emojs.modules.sketch.output.synemania.HappyParticle(@ctx)
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new global.output.art.sketch.AngryParticle(@ctx)
+        angries[x] = new emojs.modules.sketch.output.synemania.AngryParticle(@ctx)
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new global.output.art.sketch.SupriseParticle(@ctx)
+        surprises[x] = new emojs.modules.sketch.output.synemania.SupriseParticle(@ctx)
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new global.output.art.sketch.FearParticle(@ctx)
+        fearies[x] = new emojs.modules.sketch.output.synemania.FearParticle(@ctx)
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new global.output.art.sketch.DisgustParticle(@ctx)
+        disgusties[x] = new emojs.modules.sketch.output.synemania.DisgustParticle(@ctx)
 
       sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals
@@ -455,7 +452,7 @@ define [
     Synemania : Synemania
   }
   global.engine.core.helpers.MakeGlobalNamespaceAndObject
-    path: 'output.art.sketch'
+    path: 'modules.sketch.output.synemania'
     object: retObj
   #put every class to global namespace:
   ###global.engine.helpers.MakeGlobalNamespaceAndObject

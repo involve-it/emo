@@ -5,14 +5,14 @@
 *###
 emojsRequire = requirejs.config
   paths:
-    'underscore' : './libs/underscore-1.6.0'
+    #'underscore' : './libs/underscore-1.6.0'
     'jquery' : './libs/jquery-2.1.0'
-    'xml2json' : './libs/xml2json'
-    'emitter' : './libs/emitter'
-    'text' : './libs/require/text'
+    #'xml2json' : './libs/xml2json'
+    #'emitter' : './libs/emitter'
+    #'text' : './libs/require/text'
   shim :
-    'underscore':
-      exports: ['_']
+    #'underscore':
+    #  exports: ['_']
     'engine':
       deps: [
         'libs'
@@ -45,7 +45,7 @@ emojsRequire = requirejs.config
     }
   ]
   timeout : 10000
-global = window.emojs = window.emo = {}
+window.global = window.emojs = {}
 #add all necessary conditions to start using library
 window.document.addEventListener 'app:ready', ()->
   emojsReadyEvent = new Event('emojs:ready')

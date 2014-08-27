@@ -22,5 +22,5 @@ define [
       processedEmo = curProc.feelText(text)
 
   global.engine.core.helpers.MakeGlobalNamespaceAndObject
-    path: 'engine.input.text'
+    path: 'modules.core.input.text'
     object: Text
