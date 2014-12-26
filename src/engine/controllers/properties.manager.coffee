@@ -14,7 +14,7 @@ define [
       d = null
       #url = dataServerAddr + fileName + '?callback='
       emojs.engine.controllers.FileReader.readFile(url, (data)->
-        properties = global.libs.x2js(data).properties.entry
+        properties = global.libs.x2js(data).properties && global.libs.x2js(data).properties.entry
         callbackFunction(data)
         #callback
       )
