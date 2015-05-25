@@ -21,6 +21,6 @@ define [
       curProc = global.runtime.app.getProcessorInstance()
       processedEmo = curProc.feelText(text)
 
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'modules.core.input.text'
     object: Text

@@ -148,10 +148,23 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        @ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
-        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+        #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        @ctx.fillStyle = fillst
         @ctx.fillRect(0, @y + 1,1,1)
+#        @ctx.fillStyle = @color.toString(16)
+#        @ctx.fillRect(@x, @y - 1,1,1)
+#        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+#        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -190,10 +203,23 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        @ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
-        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+        #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        @ctx.fillStyle = fillst
         @ctx.fillRect(0, @y + 1,1,1)
+#        @ctx.fillStyle = @color.toString(16)
+#        @ctx.fillRect(@x, @y - 1,1,1)
+#        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+#        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -231,10 +257,23 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        @ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
-        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+        #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        @ctx.fillStyle = fillst
         @ctx.fillRect(0, @y + 1,1,1)
+#        @ctx.fillStyle = @color.toString(16)
+#        @ctx.fillRect(@x, @y - 1,1,1)
+#        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+#        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -272,10 +311,23 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        @ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
-        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+        #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        @ctx.fillStyle = fillst
         @ctx.fillRect(0, @y + 1,1,1)
+#        @ctx.fillStyle = @color.toString(16)
+#        @ctx.fillRect(@x, @y - 1,1,1)
+#        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+#        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -313,10 +365,23 @@ define [
       #stroke(0, 25*saturationFactor);
       #point(x,y+1);
       if (@color?)
-        @ctx.fillStyle = @color.toString(16)
+        col16 = @color.toString(16)
+        #debugger
+        @count = @count || 0
+        @count += 1;
+        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
-        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+        #if (@count>1000)
+        #debugger
+
+        fillst = '#000000, {a}'.replace('{a}', 1/@speed)
+        @ctx.fillStyle = fillst
         @ctx.fillRect(0, @y + 1,1,1)
+#        @ctx.fillStyle = @color.toString(16)
+#        @ctx.fillRect(@x, @y - 1,1,1)
+#        @ctx.fillStyle = '#000000' #todo: saturationFactor!!
+#        @ctx.fillRect(0, @y + 1,1,1)
         #$('textarea').css('background-color', '#' + @color.toString(16))
         #$('div').css('background-color', '#' + @color.toString(16))
 
@@ -451,7 +516,7 @@ define [
     DisgustParticle : DisgustParticle
     Synemania : Synemania
   }
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'modules.sketch.output.synemania'
     object: retObj
   #put every class to global namespace:

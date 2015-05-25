@@ -1,6 +1,6 @@
 #global.engine.helpers.MakeGlobalNamespaceFromString('global.output')
-class Logger extends global.engine.classes.AbstractController
 define [], ()->
+  class Logger extends global.engine.classes.AbstractController
   #get app, listen to new 'feelings' and add logger to runtime:
   global.runtime.app.on 'processor:feel', (state, contextName)->
     #client-side logging:
@@ -8,6 +8,6 @@ define [], ()->
     #server-side logging:
       #ajax request here..
 
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.output.Logger'
     object : Logger

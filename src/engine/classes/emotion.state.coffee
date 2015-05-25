@@ -89,13 +89,13 @@ define [
           separator + @getHappinessWeight() + separator + @getSadnessWeight() + separator + @getAngerWeight() + separator + @getFearWeight() + separator + @getDisgustWeight() + separator + @getSurpriseWeight()
         else
           ret = "Text: " + @text + "\n General weight: " + @getGeneralWeight() + "\nValence: " + @getValence() +
-          "\nHappiness weight: " + @getHappinessWeight() + "\nSadness weight: " + @getSadnessWeight() + "\nAnger weight: " + @getAngerWeight() + "\nFear weight: " + @getFearWeight() + "\nDisgust weight: " + @getDisgustWeight() + "\nSurprise weight: " + @getSurpriseWeight() + "\n"
+          "\nhappiness: " + @getHappinessWeight() + ",\nsadness: " + @getSadnessWeight() + ",\nanger: " + @getAngerWeight() + ",\nfear: " + @getFearWeight() + ",\ndisgust: " + @getDisgustWeight() + ",\nsurprise: " + @getSurpriseWeight() + "\n"
         ret
       toHtml : () ->
         ret = "<i>Input text:</i> <b class='htmlText'>" + @text + "</b><br/> <i>General weight: </i>" + @getGeneralWeight() + "\n<i>Valence: </i>" + @getValence() +
-          "\n<i>Happiness weight: </i>" + @getHappinessWeight() + "\n<i>Sadness weight: </i>" + @getSadnessWeight() + "\n<i>Anger weight: </i>" + @getAngerWeight() +
-          "\n<i>Fear weight: </i>" + @getFearWeight() + "\n<i>Disgust weight: </i>" + @getDisgustWeight() + "\n<i>Surprise weight: </i>" + @getSurpriseWeight() + "\n"
+          "\n<i>happiness: </i>" + @getHappinessWeight() + ",\n<i>sadness: </i>" + @getSadnessWeight() + ",\n<i>anger: </i>" + @getAngerWeight() +
+          ",\n<i>fear: </i>" + @getFearWeight() + ",\n<i>disgust: </i>" + @getDisgustWeight() + ",\n<i>surprise: </i>" + @getSurpriseWeight() + "\n"
         ret
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.classes.EmotionState'
     object: EmotionState

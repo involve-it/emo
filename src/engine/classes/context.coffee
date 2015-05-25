@@ -136,6 +136,6 @@ define [
       ret = new global.core.api.EmotionState(text, emotions, generalWeight, generalValence, TYPE)
       console.log(ret.toString())
       ret
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path : 'engine.classes.Context'
     object : Context

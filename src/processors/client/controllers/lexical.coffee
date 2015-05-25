@@ -1,5 +1,6 @@
-dataServerAddr = global.engine.core.Config.dataServerRoot
 define [], () ->
+  dataServerAddr = global.engine.core.Config.dataServerRoot
+
   class Lexical
     instance = null
     keywordsFilePath = '/lex/keywords'
@@ -112,6 +113,6 @@ define [], () ->
         if ((sentence[k] == ',') || (sentence[k] == '.') || (sentence[k] == ';') || (sentence[k] == ':') || (sentence[k] == '-'))
           return false
       return true
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.processors.client.controllers.Lexical'
     object : Lexical

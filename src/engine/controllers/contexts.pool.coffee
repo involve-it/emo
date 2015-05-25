@@ -28,7 +28,7 @@ class ContextsPool extends global.engine.classes.AbstractController
       #set default processor:
       @setProcessorInstance('global.engine.processors.client.ServerProcessor')
 
-global.engine.core.helpers.MakeGlobalNamespaceAndObject {
+global.runtime.helpers.MakeGlobalNamespaceAndObject {
   path:'engine.controllers.App'
   object: App
   global: global

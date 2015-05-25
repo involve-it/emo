@@ -37,7 +37,7 @@ define [], () ->
         return true
       else
         return false
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.processors.client.controllers.Parsing'
     object : Parsing
     shortcut: 'e$epccp'

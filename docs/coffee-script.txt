@@ -9,3 +9,6 @@ http://js2coffee.org/
 
 //CS command line options:
 http://coffeescript.org/documentation/docs/command.html
+
+// convert to ES6:
+https://github.com/eventualbuddha/decaffeinate

@@ -84,6 +84,6 @@ define [], () ->
         if (arg[i] == c)
           count++
       return count
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.processors.client.controllers.Heuristics'
     object : Heuristics

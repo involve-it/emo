@@ -38,7 +38,7 @@ class App extends global.engine.classes.AbstractController
       #set default processor:
       @setProcessorInstance('emojs.processors.client.ClientProcessor')
 
-global.engine.core.helpers.MakeGlobalNamespaceAndObject
+global.runtime.helpers.MakeGlobalNamespaceAndObject
   path:'engine.controllers.App'
   object: App
   global: global

@@ -1,6 +1,6 @@
-define [
-  #'engine.helpers'
-], () ->
+#define [
+#  #'engine.helpers'
+#], () ->
   class AbstractController
     constructor: () ->
     ###*
@@ -23,6 +23,6 @@ define [
       #stop things.
 
   _.extend(AbstractController.prototype, new global.libs.emitter())
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.classes.AbstractController'
     object: AbstractController

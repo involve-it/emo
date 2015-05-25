@@ -10,4 +10,4 @@ define [
   'classes/emotion.state'
   #'classes/context'
 ], () ->
-  global.engine.core.helpers.MakeGlobalNamespaceFromString('engine.classes')
+  global.runtime.helpers.MakeGlobalNamespaceFromString('engine.classes')

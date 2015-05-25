@@ -46,6 +46,15 @@ emojsRequire = requirejs.config
   ]
   timeout : 10000
 window.global = window.emojs = {}
+settings = {
+  dataServerRoot : '/data'
+  #dataServerRoot: 'http://127.0.0.1:1111/getfile'
+  #@dataServerRoot = 'http://iron-decorator-678.appspot.com/getfile'
+  #@dataServerRoot = 'http://localhost:8899'
+  #@dataServerRoot = 'https://tetamo.com/data'
+}
+window.emojs.settings = settings;
+
 #add all necessary conditions to start using library
 window.document.addEventListener 'app:ready', ()->
   emojsReadyEvent = new Event('emojs:ready')

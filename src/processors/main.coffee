@@ -5,7 +5,7 @@ define [
   'processors/client/main'
   #'processors/server/main'
 ], ()->
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject({
+  global.runtime.helpers.MakeGlobalNamespaceAndObject({
     path: 'engine.processors'
     object : Processor
   })

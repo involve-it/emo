@@ -31,7 +31,7 @@ define [
     object: @
     global: global
     shortcut: 'e$e'
-  global.engine.core.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r')
+  global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r')
 
   #init new app, setting it's config:
   app = new emojs.engine.controllers.App

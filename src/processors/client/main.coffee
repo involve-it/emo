@@ -7,7 +7,7 @@ define [
   processor.runOrWait 'lexical:ready', ()->
     emojs.runtime.app.emit('processor:ready')
     processor.ready.call()
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'runtime.app.processor'
     object: processor
     global: global

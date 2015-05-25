@@ -26,6 +26,6 @@ define [
       file
     @parseLine : (line) ->
       ret = null
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path : 'engine.controllers.FileReader'
     object : FileReader

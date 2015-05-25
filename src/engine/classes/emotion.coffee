@@ -45,6 +45,6 @@ define [
     @TYPES =
       TEXT : "TEXT"
       TOUCH : "TOUCH"
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.classes.Emotion'
     object: Emotion

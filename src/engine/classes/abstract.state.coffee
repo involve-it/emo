@@ -3,6 +3,6 @@ define [], () ->
     constructor: (@text) ->
     getText: ->
       @text
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'engine.classes.AbstractState'
     object: AbstractState

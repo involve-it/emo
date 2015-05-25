@@ -1,0 +1,7 @@
+(o) Create a system to measure timings and memory.
+
+(o) Add universal finalizer to output modules:
+    1. Delete all objects (e.g. particles)
+    2. Reset all properties (colors etc.)
+(o) Work on memory optimization.
+    1. Compare memory snapshots before/after visualizations.

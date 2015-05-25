@@ -1,8 +1,9 @@
-dataServerAddr = global.engine.core.Config.dataServerRoot
 define [
   #'require'
   #'libs'
 ], () ->
+  dataServerAddr = global.engine.core.Config.dataServerRoot
+
   class PropertiesManager
     properties = null
     constructor : (fileName, callbackFunction) ->
@@ -32,6 +33,6 @@ define [
       for string in strings
         values.push(parseInt(string, 16))
       values
-  global.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path : 'engine.controllers.PropertiesManager'
     object : PropertiesManager

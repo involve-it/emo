@@ -52,26 +52,19 @@ define [
         debugger
 
       imgData = tempCanvasEl[0].toDataURL()
-      that.css('background', 'url("data:' + imgData + '")')
+      that.css('background', 'url("' + imgData + '")')
+      #that.css('background', 'url("data:' + imgData + '")')
       that.css('background-size', '100% 100%')
-  $.fn.backgroundEmotion = (contextName) ->
+  # Function to draw emotion on canvas elements:
+  $.fn.drawEmotion = (contextName, sourceEmotionText) ->
     contextName = contextName || 'default'
-
     that = this
-
     for i in [0.. this.length-1] by 1
 
-      #tempCanvasEl = global.libs.$('<canvas id="canvasOverlay"></canvas>')
-      #tempCanvasEl.attr('style', 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';')
-
-      tempCanvasEl=document.createElement 'canvas'
-      tempCanvasEl.id = 'canvasOverlay'
-      attr = document.createAttribute('style');
-      attr.value = 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';';
-      tempCanvasEl.setAttributeNode(attr);
-      debugger
+      tempCanvasEl = that[i]
       #get the emotion for this element (remember to do this in the context):
-      emotion = emojs.modules.core.input.text.emo(that[i].innerText, contextName)
+      text = sourceEmotionText || that[i].innerText
+      emotion = emojs.modules.core.input.text.emo(text, contextName)
       if (emotion.getStrongestEmotion().getName() == 'HAPPINESS')
         tempCanvasEl.getContext('2d').globalAlpha = 0.4
       else if (emotion.getStrongestEmotion().getName() == 'SURPRISE')
@@ -82,21 +75,52 @@ define [
         tempCanvasEl.getContext('2d').globalAlpha = 0.1
 
       emotion.id = 'emo' + Math.floor(Math.random(2)*100)
-      ret = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
-      ret.update(emotion)
+      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
+      synemania.update(emotion)
       for x in [1..1000] by 1
-        ret.draw(contextName)
-      debugger
+        synemania.draw(contextName)
+
+
+  $.fn.backgroundEmotion = (contextName, sourceEmotionText) ->
+    contextName = contextName || 'default'
+    that = this
+    for i in [0.. this.length-1] by 1
+
+      #tempCanvasEl = global.libs.$('<canvas id="canvasOverlay"></canvas>')
+      #tempCanvasEl.attr('style', 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';')
+
+      tempCanvasEl=document.createElement 'canvas'
+      tempCanvasEl.id = 'canvasOverlay'
+      attr = document.createAttribute('style');
+      attr.value = 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';';
+      tempCanvasEl.setAttributeNode(attr);
+      #get the emotion for this element (remember to do this in the context):
+      text = sourceEmotionText || that[i].innerText
+      emotion = emojs.modules.core.input.text.emo(text, contextName)
+      if (emotion.getStrongestEmotion().getName() == 'HAPPINESS')
+        tempCanvasEl.getContext('2d').globalAlpha = 0.4
+      else if (emotion.getStrongestEmotion().getName() == 'SURPRISE')
+        tempCanvasEl.getContext('2d').globalAlpha = 0.3
+      else if (emotion.getStrongestEmotion().getName() == 'NEUTRAL')
+        tempCanvasEl.getContext('2d').globalAlpha = 0.1
+      else
+        tempCanvasEl.getContext('2d').globalAlpha = 0.1
+
+      emotion.id = 'emo' + Math.floor(Math.random(2)*100)
+      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
+      synemania.update(emotion)
+      for x in [1..1000] by 1
+        synemania.draw(contextName)
       window.tempCanvasEl = tempCanvasEl
       imgData = tempCanvasEl.toDataURL()
 
       $(that[i]).css('background-image', 'url("data:' + imgData + '")')
-      $(that[i]).css('background-size', '100% 100%')
+      $(that[i]).css('background-size', '100% 100%' )
       #that[i].prevBackground = that[i].style.backgroundImage
       #that[i].backgroundImage = 'url("data:' + imgData + '")'
       #that[i].backgroundSize = '100% 100%'
   $.fn.clearBackground = () ->
     #that = this
     #for i in [0.. this.length-1] by 1
-    global.libs.$(this).css('background-image', global.libs.$(this).prevBackground || 'none')
+    $(this).css('background-image', global.libs.$(this).prevBackground || 'none')
 
