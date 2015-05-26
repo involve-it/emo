@@ -1,5 +1,6 @@
 class Helpers
   global1 = window
+  _ = _ || window._
   @MakeGlobalNamespaceFromString : (path, _global, shortcut, initialObject) ->
     #g1 = global
     global = _global || global1 || {}
@@ -25,7 +26,7 @@ class Helpers
       retns = typeof ns[first]!='undefined' && ns[first] || {}
       ns[first] = buildFromName(paths, retns)
       if (l1 == l2)
-        retObj = global.libs._.extend(ns[first]?={}, retObj?={})
+        retObj = _.extend(ns[first]?={}, retObj?={})
       return ns
     namespace = buildFromName(subPaths, namespace)
     # need to assign the ns to the shortcut:
@@ -51,7 +52,7 @@ class Helpers
     namespace = global[first] = typeof global[first]!='undefined' && global[first] || {}
     if subPaths.length == 0
       if (typeof global[first] != 'undefined' && global[first])
-        global.libs._.extend(global[first], initialObject)
+        _.extend(global[first], initialObject)
       else
         global[first] = initialObject.object
       return namespace
@@ -66,8 +67,8 @@ class Helpers
       retns = typeof ns[first]!='undefined' && ns[first] || {}
       ns[first] = buildFromName(paths, retns)
       if (l1 == l2)
-        ns[foreverFirst] = global.libs._.extend(initialObject.object, ns[foreverFirst])
-        retObj = global.libs._.extend(ns[foreverFirst]?={}, retObj?={})
+        ns[foreverFirst] = _.extend(initialObject.object, ns[foreverFirst])
+        retObj = _.extend(ns[foreverFirst]?={}, retObj?={})
       #retObj = ns[foreverFirst] = initialObject.object
       l1 = l1-1
 
@@ -163,7 +164,7 @@ ajax.post = function(url, data, callback, sync) {
     }
     ajax.send(url, callback, 'POST', query.join('&'), sync)
 }
-global.engine.core.helpers.ajax = ajax;
+global.runtime.helpers.ajax = ajax;
 `
 define [
 ], ()->

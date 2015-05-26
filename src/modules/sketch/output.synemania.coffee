@@ -62,7 +62,7 @@ define [
       #ctx.fillStyle = @gray.toString(16)
       col16 = @gray.toString(16)
 
-      @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',0.2)'
+      @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',0.2)'
       @ctx.fillRect(@x,@y-1,1,1)
 
       @x += @vx
@@ -101,7 +101,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -152,7 +152,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -207,7 +207,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -261,7 +261,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -315,7 +315,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -369,7 +369,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.engine.core.helpers.hexToR(col16) + ',' + emojs.engine.core.helpers.hexToG(col16) + ',' + emojs.engine.core.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)

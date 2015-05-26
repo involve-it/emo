@@ -7,7 +7,6 @@
 
 class Processor extends global.engine.classes.AbstractController
   constructor:()->
-    debugger
   ###*
   * For trigger events, that will be listened/casted in any part of program.
   * Format of the triggered event:

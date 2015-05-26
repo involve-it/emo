@@ -2,6 +2,7 @@ module.exports = (grunt) ->
   #grunt.registerTask 'build-src', '', () ->
   srcDir = '<%= pkg.directories.builds.src %>'
   destDir = '<%= pkg.directories.builds.prod %>'
+  distrDir = '<%= pkg.directories.builds.dist %>'
   optimizeConst = 'none'
   #optimizeConst = 'uglify'
   confObj =
@@ -36,6 +37,10 @@ module.exports = (grunt) ->
           #{src: destDir + '/libs.js', dest: 'builds/prod/libs.js'}
 
         ]
+      all:
+        src: [distrDir + '/js/libs.js', distrDir + '/js/engine.js', distrDir + '/js/processors.js', distrDir + '/js/modules.js'],
+        dest: distrDir + '/js/emojs.js'
+
       ###all:
         src: [destDir + '/core/main.js', destDir + '/input/main.js', destDir + '/output/main.js'],
         dest: 'builds/dist/js/emo.js',###
@@ -50,7 +55,7 @@ module.exports = (grunt) ->
           out: destDir + '/engine.js',
           optimize: optimizeConst
           mainConfigFile: srcDir + '/engine/main.js'
-
+          insertRequire: ['engine/main']
       libs:
         options:
           mainConfigFile: srcDir + '/libs/main.js'
@@ -67,7 +72,7 @@ module.exports = (grunt) ->
           out: destDir + '/processors.js',
           optimize: optimizeConst
           mainConfigFile: srcDir + '/processors/main.js'
-          #insertRequire: ['processors/main']
+          insertRequire: ['processors/main']
 
       modules:
         options:
@@ -76,8 +81,7 @@ module.exports = (grunt) ->
           out: destDir + '/modules.js',
           optimize: optimizeConst
           mainConfigFile: srcDir + '/modules/main.js'
-          #insertRequire: ['modules/main']
-
+          insertRequire: ['modules/main']
 
 #      modules:
 #        options:
@@ -111,6 +115,7 @@ module.exports = (grunt) ->
   concat = grunt.config.get('requirejs') || {};
   concat['pacreq'] = confObj.concat.pacreq
   concat['temp'] = confObj.concat.temp
+  concat['all'] = confObj.concat.all
   #concat['all'] = confObj.concat.all
   grunt.config.set('concat', concat)
 
@@ -123,10 +128,11 @@ module.exports = (grunt) ->
   grunt.config.set('requirejs', requirejs)
 
   #grunt.registerMultiTask 'requirejs', 'Builds all concatenated packages as  _[package]_.js for each package (see in main.js), puts it to prod', ()->
-  grunt.registerTask 'build-emo-require', 'Builds all concatenated packages as  main.js for each package (see in main.js), puts it to prod', () ->
+  grunt.registerTask 'build-emojs-require', 'Builds all concatenated packages as  main.js for each package (see in main.js), puts it to prod', () ->
     grunt.task.run('concat:pacreq')
     grunt.task.run('requirejs:engine')
     grunt.task.run('requirejs:libs')
     grunt.task.run('requirejs:processors')
     grunt.task.run('requirejs:modules')
     grunt.task.run('concat:temp')
+    grunt.task.run('concat:all')

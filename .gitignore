@@ -1,6 +1,6 @@
 # ignore dist folder:
-builds/
-dist/
+builds/prod
+builds/src
 prod/
 node_modules/
 

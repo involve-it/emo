@@ -163,7 +163,7 @@ define [
     ready : (callback)->
       super
 
-  emojs.engine.core.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'processors.client.ClientProcessor'
     object: ClientProcessor
     global: global

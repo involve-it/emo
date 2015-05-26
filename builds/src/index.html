@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+
+  <title>Synesketch Test</title>
+
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script type="text/javascript" src="./libs/jquery-2.1.0.js"></script>
+  <script type="text/javascript">
+
+    window.settings = {
+
+    }
+    $(document).on('emojs:ready', function(){
+      //provide client settings here (if needed in future):
+      /*app.start({
+        global : 'emojs'
+      });*/
+      $('#butt').click(function(e) {
+        //var emotion, t1;
+        //$.fn.backgroundEmotion
+        //$('#contentDiv p:first').backgroundEmotion();
+        $('#canvas').backgroundEmotion('default', $('#textArea').val());
+      });
+      $('#butt1').click(function(e) {
+        //var emotion, t1;
+        //$.fn.backgroundEmotion
+        $('#contentDiv p:first').backgroundEmotion();
+        //$('#canvas').backgroundEmotion('default', $('#textArea').val());
+      });
+
+    })
+  </script>
+  <script type="text/javascript" data-main="main" src="./libs/require/require-2.1.8.js"></script>
+
+  <style>
+    p {
+      font: 16px/1.5em "Helvetica Neue", Helvetica, sans-serif;
+      margin: 1em 0 4em 0;
+    }
+    pre {
+      border-left: solid 2px #ccc;
+      padding-left: 18px;
+      margin: 2em 0 2em -20px;
+      font-family: "Menlo", monospace;
+      -webkit-text-size-adjust: 100%;
+    }
+    code {
+      line-height: 1em;
+    }
+    #contentDiv {
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+<h1>Input</h1>
+
+<textarea id="textArea" style="border: 1px solid black"  rows="4" cols="50">
+  and Very sad.
+</textarea>
+<br/>
+<input id="butt" style="border: 1px solid black" type="button" name="textArea" value="Show background"/>
+
+<hr/>
+<h1>Processing</h1>
+<span id="parsingResult"></span>
+<hr/>
+<h1>Output</h1>
+<canvas id="canvas" style="border:1px solid #000000; height:500px;width:500px;"></canvas>
+<br/>
+<!--<div id="emoticons" style="display:none;height:130px; width:100px; background-image: url(http://localhost:8889/core/output/emoticon/emo.png)"></div>-->
+<div id="d3"></div>
+<div id="contentDiv">
+
+  <p>Selectors are defined by the <a href="http://www.w3.org/TR/selectors-api/">W3C Selectors API</a> and supported natively by modern browsers. Backwards-compatibility for older browsers can be provided by <a href="http://sizzlejs.com/">Sizzle</a>. The above examples select nodes by tag name (<code class="javascript"><span class="string">"p"</span></code> and <code class="javascript"><span class="string">"body"</span></code>, respectively). Elements may be selected using a variety of predicates, including containment, attribute values, class and ID.
+  </p>
+  <input id="butt1" style="border: 1px solid black" type="button" name="textArea" value="Show background"/>
+
+  <p>D3 provides numerous methods for mutating nodes: setting attributes or styles; registering event listeners; adding, removing or sorting nodes; and changing HTML or text content. These suffice for the vast majority of needs. Direct access to the underlying DOM is also possible, as each D3 selection is simply an array of nodes.
+  </p>
+  <p>Readers familiar with other DOM frameworks such as <a href="http://jquery.com/">jQuery</a> or <a href="http://www.prototypejs.org/">Prototype</a> should immediately recognize similarities with D3. Yet styles, attributes, and other properties can be specified as <i>functions of data</i> in D3, not just simple constants. Despite their apparent simplicity, these functions can be surprisingly powerful; the <code class="javascript">d3.geo.path</code> function, for example, projects <a href="http://geojson.org/">geographic coordinates</a> into SVG <a href="http://www.w3.org/TR/SVG/paths.html#PathData">path data</a>. D3 provides many built-in reusable functions and function factories, such as <a href="https://github.com/mbostock/d3/wiki/SVG-Shapes">graphical primitives</a> for area, line and pie charts.
+
+  </p>
+  <p>
+    Very bad!!
+  </p>
+      <pre><code class="javascript">d3.selectAll(<span class="string">"p"</span>).style(<span class="string">"color"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        <span class="keyword">return</span> <span class="string">"hsl("</span> + Math.random() * <span class="number">360</span> + <span class="string">",100%,50%)"</span>;
+        });</code></pre>
+</div>
+<input type="button" value="add canvas" id="addCanvasBtn"/>
+<div style="width: 500px; height: 500px;"></div>
+
+</body>
+</html>

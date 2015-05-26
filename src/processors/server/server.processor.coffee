@@ -21,7 +21,7 @@ class ServerProcessor extends emojs.engine.classes.AbstractProcessor
     debugger
     super
 
-emojs.engine.core.helpers.MakeGlobalNamespaceAndObject {
+global.runtime.helpers.MakeGlobalNamespaceAndObject {
   path:'processors.server.ServerProcessor'
   object: ServerProcessor
   global: global

@@ -1,4 +1,3 @@
-debugger
 requirejs.config
   packages: [
     {
@@ -18,7 +17,6 @@ requirejs.config
 #      location : './modules/dao',
 #    }
   ]
-debugger
 emojs.runtime.helpers.MakeGlobalNamespaceFromString('modules')
 define [
   'modules.core'

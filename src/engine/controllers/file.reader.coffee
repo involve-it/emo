@@ -5,7 +5,7 @@ define [
       file = null
       #url, data, callback, sync
       d=null
-      global.engine.core.helpers.ajax.get(
+      global.runtime.helpers.ajax.get(
         fileName
         {}
         (data)->

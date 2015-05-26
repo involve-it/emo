@@ -44,7 +44,7 @@ module.exports = (grunt) ->
   #grunt.registerTask('build-engine', ['_concat_']); # this questionable task takes all js files from [dir] and concatenates them into _[dir]_.js in the [dir] :)
   #run this for development (src->builds/src)
   #grunt.registerTask('default', ['concat:src', 'coffee:src']);  #  src to builds/src-> localhost:8889,
-  grunt.registerTask('default', ['concat:src', 'coffee:src', 'build-emo-require']); # src to builds/dist ->  localhost:8666
+  grunt.registerTask('default', ['concat:src', 'coffee:src', 'build-emojs-require']); # src to builds/dist ->  localhost:8666
   grunt.registerTask('build-src-coffee', ['concat:src', 'coffee:src']);
   #run this for production (builds/dist->builds/prod):
   grunt.registerTask('build-prod-uglify', ['concat:prod', 'coffee:prod', 'uglify:prod']);

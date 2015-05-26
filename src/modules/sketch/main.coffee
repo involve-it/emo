@@ -1,4 +1,3 @@
-debugger
 global.runtime.helpers.MakeGlobalNamespaceFromString('engine.input', global)
 class Input
 define [

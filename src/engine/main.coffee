@@ -26,7 +26,7 @@ define [
   'controllers'
 ], () ->
   #all things are loaded, so let's start the show by creating global object for runtime and engine objects:
-  emojs.engine.core.helpers.MakeGlobalNamespaceAndObject
+  emojs.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'engine'
     object: @
     global: global
