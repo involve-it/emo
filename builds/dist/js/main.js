@@ -48,6 +48,9 @@ window.document.addEventListener('app:ready', function() {
   return window.document.removeEventListener('emojs:ready');
 });
 
-emojsRequire(['emojs'], function() {
+emojsRequire(['libs', 'engine', 'processors', 'modules'], function() {
   debugger;
 });
+/*emojsRequire(['emojs'], function() {
+  debugger;
+});*/

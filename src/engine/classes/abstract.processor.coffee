@@ -16,6 +16,7 @@ define [
         message: 'abstract createEmotionState: '
         affectWords : affectWords
         TYPE : TYPE
+    ready : (callback)->
 
     ###*
     * For trigger events, that will be listened/casted in any part of program.

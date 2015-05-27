@@ -28,6 +28,8 @@ define(['classes/abstract.controller'], function() {
       });
     };
 
+    AbstractProcessor.prototype.ready = function(callback) {};
+
 
     /**
     * For trigger events, that will be listened/casted in any part of program.
