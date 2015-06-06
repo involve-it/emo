@@ -9,5 +9,3 @@ if (typeof global.engine === 'undefined') {
 }
 
 global.engine.core = {};
-
-define(['core/config', 'core/helpers', 'core/init.javascript'], function() {});

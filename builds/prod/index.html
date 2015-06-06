@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8" />
 
-  <title>Synesketch Test</title>
+  <title>Synesketch Plain</title>
 
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script type="text/javascript" src="./libs/jquery-2.1.0.js"></script>
   <script type="text/javascript">
-
-    window.settings = {
-
-    }
-    $(document).on('emojs:ready', function(){
+    debugger;
+    window.ej$ = window.emojs = {
+      settings : {
+        dataServerRoot: '/data'
+      }
+    };
+    document.addEventListener('emojs:ready', function(){
       //provide client settings here (if needed in future):
       /*app.start({
         global : 'emojs'
@@ -32,9 +33,9 @@
         //$('#canvas').backgroundEmotion('default', $('#textArea').val());
       });
 
-    })
+    });
   </script>
-  <script type="text/javascript" data-main="main" src="./libs/require/require-2.1.8.js"></script>
+  <script type="text/javascript" src="./engine.js"></script>
 
   <style>
     p {

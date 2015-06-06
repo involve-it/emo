@@ -1,48 +1,26 @@
-requirejs.config({
-  shim: {
-    'core': {
-      deps: ['libs']
-    },
-    'classes': {
-      deps: ['core']
-    },
-    'controllers': {
-      deps: ['core', 'classes']
-    }
-  },
-  packages: [
-    {
-      name: 'classes',
-      location: './engine/classes'
-    }, {
-      name: 'controllers',
-      location: './engine/controllers'
-    }, {
-      name: 'core',
-      location: './engine/core'
-    }
-  ]
+var app;
+
+emojs.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'engine',
+  object: this,
+  global: global,
+  shortcut: 'e$e'
 });
 
-define(['core', 'classes', 'controllers'], function() {
-  var app;
-  emojs.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'engine',
-    object: this,
-    global: global,
-    shortcut: 'e$e'
-  });
-  global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r');
-  app = new emojs.engine.controllers.App;
-  global.runtime.app = app;
+global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r');
 
-  /*require [
-  ], () ->
-   */
-  return app.once('processor:ready', function() {
-    var appReadyEvent;
-    appReadyEvent = new Event('app:ready');
-    window.document.dispatchEvent(appReadyEvent);
-    return app.start();
-  });
+app = new emojs.engine.controllers.App;
+
+global.runtime.app = app;
+
+
+/*require [
+], () ->
+ */
+
+app.once('processor:ready', function() {
+  var appReadyEvent;
+  appReadyEvent = new Event('app:ready');
+  window.document.dispatchEvent(appReadyEvent);
+  return app.start();
 });

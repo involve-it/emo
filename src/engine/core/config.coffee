@@ -1,6 +1,6 @@
-define [
-  'core/helpers'
-], () ->
+  #define [
+  #  'core/helpers'
+  #], () ->
   class Config
     # flat files url
     @dataServerRoot = emojs.settings.dataServerRoot

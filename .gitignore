@@ -1,6 +1,7 @@
 # ignore dist folder:
 builds/prod
 builds/src
+builds/emo-plain
 prod/
 node_modules/
 

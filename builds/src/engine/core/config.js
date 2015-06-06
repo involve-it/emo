@@ -1,21 +1,22 @@
-define(['core/helpers'], function() {
-  var Config;
-  Config = (function() {
-    function Config() {}
+var Config;
 
-    Config.dataServerRoot = emojs.settings.dataServerRoot;
+Config = (function() {
+  function Config() {}
 
-    Config.fullyClientSide = true;
+  Config.dataServerRoot = emojs.settings.dataServerRoot;
 
-    return Config;
+  Config.fullyClientSide = true;
 
-  })();
-  global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'engine.core.Config',
-    object: Config
-  });
-  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'runtime.config',
-    object: Config
-  });
+  return Config;
+
+})();
+
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'engine.core.Config',
+  object: Config
+});
+
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'runtime.config',
+  object: Config
 });

@@ -1,30 +1,3 @@
-requirejs.config
-  shim:
-    'core' :
-      deps: ['libs']
-    'classes':
-      deps: ['core'],
-    'controllers':
-      deps: ['core', 'classes'],
-  packages: [
-    {
-      name : 'classes',
-      location : './engine/classes',
-    }
-    {
-      name : 'controllers',
-      location : './engine/controllers',
-    }
-    {
-      name : 'core',
-      location : './engine/core',
-    }
-  ]
-define [
-  'core'
-  'classes'
-  'controllers'
-], () ->
   #all things are loaded, so let's start the show by creating global object for runtime and engine objects:
   emojs.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'engine'

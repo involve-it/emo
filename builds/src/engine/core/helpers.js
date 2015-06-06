@@ -1,116 +1,179 @@
-var Helpers;
+var Helpers, global1;
 
-Helpers = (function() {
-  var global1, _;
+global1 = window;
 
-  function Helpers() {}
+Helpers = {};
 
-  global1 = window;
 
-  _ = _ || window._;
+Helpers.isPlainObject = function(a) {
+  var b;
+  if (!a || "object" !== m.type(a) || a.nodeType || m.isWindow(a))
+    return !1;
+  try {
+    if (a.constructor && !j.call(a, "constructor") && !j.call(a.constructor.prototype, "isPrototypeOf"))
+      return !1
+  } catch (c) {
+    return !1
+  }
+  if (k.ownLast)
+    for (b in a)
+      return j.call(a, b);
+  for (b in a)
+    ;
+  return void 0 === b || j.call(a, b)
+}
 
-  Helpers.MakeGlobalNamespaceFromString = function(path, _global, shortcut, initialObject) {
-    var buildFromName, first, global, l1, l2, namespace, retObj, sc, subPaths;
-    global = _global || global1 || {};
-    if (global !== window) {
-      global1 = global;
-    }
-    if (typeof global === 'string') {
-      global = eval(global);
-    }
-    subPaths = path.split('.').reverse();
-    first = subPaths.pop();
-    namespace = global[first] = typeof global[first] !== 'undefined' && global[first] || {};
-    if (subPaths.length === 0) {
-      namespace;
-      return namespace;
-    }
-    retObj = null;
-    l1 = l2 = subPaths.length;
-    buildFromName = function(paths, ns) {
-      var retns;
-      if (paths.length <= 0) {
-        return ns;
+Helpers.extend = function () {
+  var options, name, src, copy, copyIsArray, clone,
+    target = arguments[0] || {},
+    i = 1,
+    length = arguments.length,
+    deep = false;
+
+  // Handle a deep copy situation
+  if ( typeof target === "boolean" ) {
+    deep = target;
+
+    // Skip the boolean and the target
+    target = arguments[ i ] || {};
+    i++;
+  }
+
+  // Handle case when target is a string or something (possible in deep copy)
+  if ( typeof target !== "object" && typeof target !== 'function' ) {
+    target = {};
+  }
+
+  if ( i === length ) {
+    target = this;
+    i--;
+  }
+
+  for ( ; i < length; i++ ) {
+    // Only deal with non-null/undefined values
+    if ( (options = arguments[ i ]) != null ) {
+      // Extend the base object
+      for ( name in options ) {
+        src = target[ name ];
+        copy = options[ name ];
+
+        // Prevent never-ending loop
+        if ( target === copy ) {
+          continue;
+        }
+
+        // Recurse if we're merging plain objects or arrays
+        if ( deep && copy && ( helpers.isPlainObject(copy) || (copyIsArray = Array.isArray(copy)) ) ) {
+          if ( copyIsArray ) {
+            copyIsArray = false;
+            clone = src && Array.isArray(src) ? src : [];
+
+          } else {
+            clone = src && helpers.isPlainObject(src) ? src : {};
+          }
+
+          // Never move original objects, clone them
+          target[ name ] = helpers.extend( deep, clone, copy );
+
+          // Don't bring in undefined values
+        } else if ( copy !== undefined ) {
+          target[ name ] = copy;
+        }
       }
-      first = subPaths.pop();
-      retns = typeof ns[first] !== 'undefined' && ns[first] || {};
-      ns[first] = buildFromName(paths, retns);
-      if (l1 === l2) {
-        retObj = _.extend(ns[first] != null ? ns[first] : ns[first] = {}, retObj != null ? retObj : retObj = {});
-      }
+    }
+  }
+
+  // Return the modified object
+  return target;
+};
+;
+
+Helpers.MakeGlobalNamespaceFromString = function(path, _global, shortcut, initialObject) {
+  var buildFromName, first, global, l1, l2, namespace, retObj, sc, subPaths;
+  global = _global || global1 || {};
+  if (global !== window) {
+    global1 = global;
+  }
+  if (typeof global === 'string') {
+    global = eval(global);
+  }
+  subPaths = path.split('.').reverse();
+  first = subPaths.pop();
+  namespace = global[first] = typeof global[first] !== 'undefined' && global[first] || {};
+  if (subPaths.length === 0) {
+    namespace;
+    return namespace;
+  }
+  retObj = null;
+  l1 = l2 = subPaths.length;
+  buildFromName = function(paths, ns) {
+    var retns;
+    if (paths.length <= 0) {
       return ns;
-    };
-    namespace = buildFromName(subPaths, namespace);
-    if (shortcut) {
-      sc = this.MakeGlobalNamespaceFromString(shortcut, window);
-      global[shortcut] = retObj;
-      sc = retObj;
     }
-    return retObj;
-  };
-
-  Helpers.MakeGlobalNamespaceAndObject = function(initialObject) {
-    var buildFromName, first, foreverFirst, global, l1, l2, namespace, retObj, sc, subPaths;
-    global = initialObject.global || global1 || {};
-    if (global !== window) {
-      global1 = global;
-    }
-    if (typeof global === 'string') {
-      global = eval(global);
-    }
-    subPaths = initialObject.path.split('.').reverse();
-    foreverFirst = subPaths[0];
     first = subPaths.pop();
-    namespace = global[first] = typeof global[first] !== 'undefined' && global[first] || {};
-    if (subPaths.length === 0) {
-      if (typeof global[first] !== 'undefined' && global[first]) {
-        _.extend(global[first], initialObject);
-      } else {
-        global[first] = initialObject.object;
-      }
-      return namespace;
+    retns = typeof ns[first] !== 'undefined' && ns[first] || {};
+    ns[first] = buildFromName(paths, retns);
+    if (l1 === l2) {
+      retObj = Helpers.extend(ns[first] != null ? ns[first] : ns[first] = {}, retObj != null ? retObj : retObj = {});
     }
-    retObj = null;
-    l1 = l2 = subPaths.length;
-    buildFromName = function(paths, ns) {
-      var retns;
-      if (paths.length <= 0) {
-        return ns;
-      }
-      first = subPaths.pop();
-      retns = typeof ns[first] !== 'undefined' && ns[first] || {};
-      ns[first] = buildFromName(paths, retns);
-      if (l1 === l2) {
-        ns[foreverFirst] = _.extend(initialObject.object, ns[foreverFirst]);
-        retObj = _.extend(ns[foreverFirst] != null ? ns[foreverFirst] : ns[foreverFirst] = {}, retObj != null ? retObj : retObj = {});
-      }
-      l1 = l1 - 1;
-      return ns;
-    };
-    namespace = buildFromName(subPaths, namespace);
-    if (initialObject.shortcut) {
-      sc = this.MakeGlobalNamespaceFromString(initialObject.shortcut, window);
-      global[initialObject.shortcut] = retObj;
-      sc = retObj;
-    }
-    return retObj;
+    return ns;
   };
+  namespace = buildFromName(subPaths, namespace);
+  if (shortcut) {
+    sc = this.MakeGlobalNamespaceFromString(shortcut, window);
+    global[shortcut] = retObj;
+    sc = retObj;
+  }
+  return retObj;
+};
 
-  return Helpers;
-
-})();
-
-Helpers.MakeGlobalNamespaceAndObject({
-  path: 'engine.core.helpers',
-  object: Helpers,
-  global: global
-});
-
-Helpers.MakeGlobalNamespaceAndObject({
-  path: 'runtime.helpers',
-  object: Helpers,
-  global: global
-});
+Helpers.MakeGlobalNamespaceAndObject = function(initialObject) {
+  var buildFromName, first, foreverFirst, global, l1, l2, namespace, retObj, sc, subPaths;
+  global = initialObject.global || global1 || {};
+  if (global !== window) {
+    global1 = global;
+  }
+  if (typeof global === 'string') {
+    global = eval(global);
+  }
+  subPaths = initialObject.path.split('.').reverse();
+  foreverFirst = subPaths[0];
+  first = subPaths.pop();
+  namespace = global[first] = typeof global[first] !== 'undefined' && global[first] || {};
+  if (subPaths.length === 0) {
+    if (typeof global[first] !== 'undefined' && global[first]) {
+      Helpers.extend(global[first], initialObject);
+    } else {
+      global[first] = initialObject.object;
+    }
+    return namespace;
+  }
+  retObj = null;
+  l1 = l2 = subPaths.length;
+  buildFromName = function(paths, ns) {
+    var retns;
+    if (paths.length <= 0) {
+      return ns;
+    }
+    first = subPaths.pop();
+    retns = typeof ns[first] !== 'undefined' && ns[first] || {};
+    ns[first] = buildFromName(paths, retns);
+    if (l1 === l2) {
+      ns[foreverFirst] = Helpers.extend(initialObject.object, ns[foreverFirst]);
+      retObj = Helpers.extend(ns[foreverFirst] != null ? ns[foreverFirst] : ns[foreverFirst] = {}, retObj != null ? retObj : retObj = {});
+    }
+    l1 = l1 - 1;
+    return ns;
+  };
+  namespace = buildFromName(subPaths, namespace);
+  if (initialObject.shortcut) {
+    sc = this.MakeGlobalNamespaceFromString(initialObject.shortcut, window);
+    global[initialObject.shortcut] = retObj;
+    sc = retObj;
+  }
+  return retObj;
+};
 
 Helpers.hexToR = function(h) {
   return parseInt((this.cutHex(h)).substring(0, 2), 16);
@@ -194,7 +257,14 @@ ajax.post = function(url, data, callback, sync) {
     }
     ajax.send(url, callback, 'POST', query.join('&'), sync)
 }
-global.runtime.helpers.ajax = ajax;
+Helpers.ajax = ajax;
 ;
 
-define([], function() {});
+debugger;
+
+Helpers.MakeGlobalNamespaceAndObject({
+  path: 'runtime.helpers',
+  object: Helpers,
+  global: global,
+  shortcut: 'e$h'
+});

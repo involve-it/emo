@@ -5,8 +5,8 @@ if (typeof global.engine == 'undefined')
   global.engine = {}
 global.engine.core = {}
 
-define [
-  'core/config'
-  'core/helpers'
-  'core/init.javascript'
-], ()->
+#define [
+#  'core/config'
+#  'core/helpers'
+#  'core/init.javascript'
+#], ()->

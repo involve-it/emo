@@ -29,7 +29,7 @@ define(['classes/abstract.context'], function() {
     };
 
     Context.prototype.feelText = function(text) {
-      var affectWords, capsLockCoef, emoWord, emoWordSurprise, emoticonCoef, exclaminationQoef, hasNegation, modifierCoef, negation, previousWord, ret, sentence, sentences, splittedWord, splittedWords, t1, t2, t3, word, words, _i, _j, _k, _len, _len1, _len2;
+      var affectWords, capsLockCoef, emoWord, emoWordSurprise, emoticonCoef, event, exclaminationQoef, hasNegation, modifierCoef, negation, previousWord, ret, sentence, sentences, splittedWord, splittedWords, t1, t2, t3, word, words, _i, _j, _k, _len, _len1, _len2;
       t1 = Date.now();
       text = text.replace('\n', ' ');
       affectWords = [];
@@ -95,7 +95,20 @@ define(['classes/abstract.context'], function() {
       t2 = Date.now();
       window.t3 = t3 = t2 - t1;
       console.log('Context feelText time: ' + t3 / 1000 + 's');
-      global.libs.$(window).trigger('context:feel:' + this.name, ret);
+      event;
+      if (document.createEvent) {
+        event = document.createEvent("HTMLEvents");
+        event.initEvent("name-of-custom-event", true, true);
+      } else {
+        event = document.createEventObject();
+        event.eventType = "name-of-custom-event";
+      }
+      event.eventName = "name-of-custom-event";
+      if (document.createEvent) {
+        window.dispatchEvent(event);
+      } else {
+        window.fireEvent("on" + event.eventType, event);
+      }
       return ret;
     };
 

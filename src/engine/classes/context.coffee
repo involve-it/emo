@@ -85,7 +85,22 @@ define [
       window.t3 = t3 = t2-t1
       console.log('Context feelText time: ' + t3/1000 + 's')
 
-      global.libs.$(window).trigger('context:feel:' + @name, ret)
+      #global.libs.$(window).trigger('context:feel:' + @name, ret)
+
+      event; # The custom event that will be created
+
+      if (document.createEvent)
+        event = document.createEvent("HTMLEvents")
+        event.initEvent("name-of-custom-event", true, true)
+      else
+        event = document.createEventObject();
+        event.eventType = "name-of-custom-event";
+      event.eventName = "name-of-custom-event";
+      if (document.createEvent)
+        window.dispatchEvent(event)
+      else
+        window.fireEvent("on" + event.eventType, event)
+
       ret
     createEmotionState : (text, affectWords, TYPE) ->
       emotions = []
