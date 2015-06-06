@@ -3,9 +3,9 @@ define [
     'processors/client/controllers/main'
     'processors/client/classes/affect.word'
 ], ()->
-  processor = new emojs.processors.client.ClientProcessor(emojs.runtime.app)
+  processor = new global.processors.client.ClientProcessor(global.runtime.app)
   processor.runOrWait 'lexical:ready', ()->
-    emojs.runtime.app.emit('processor:ready')
+    global.runtime.app.emit('processor:ready')
     processor.ready.call()
   global.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'runtime.app.processor'

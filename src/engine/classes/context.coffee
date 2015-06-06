@@ -1,6 +1,6 @@
-define [
-  'classes/abstract.context'
-], () ->
+#define [
+#  'classes/abstract.context'
+#], () ->
   class Context extends global.engine.classes.AbstractContext
     lexUtil = null
     @instances = {}

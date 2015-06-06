@@ -1,19 +1,19 @@
-define([], function() {
-  var AbstractState;
-  AbstractState = (function() {
-    function AbstractState(text) {
-      this.text = text;
-    }
+var AbstractState;
 
-    AbstractState.prototype.getText = function() {
-      return this.text;
-    };
+AbstractState = (function() {
+  function AbstractState(text) {
+    this.text = text;
+  }
 
-    return AbstractState;
+  AbstractState.prototype.getText = function() {
+    return this.text;
+  };
 
-  })();
-  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'engine.classes.AbstractState',
-    object: AbstractState
-  });
+  return AbstractState;
+
+})();
+
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'engine.classes.AbstractState',
+  object: AbstractState
 });

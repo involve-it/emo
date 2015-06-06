@@ -1,4 +1,4 @@
-emojs.runtime.helpers.MakeGlobalNamespaceFromString('output.art')
+global.runtime.helpers.MakeGlobalNamespaceFromString('output.art')
 ###confObj =
   shim:
     './sketch/_sketch_.js':
@@ -64,7 +64,7 @@ define [
       tempCanvasEl = that[i]
       #get the emotion for this element (remember to do this in the context):
       text = sourceEmotionText || that[i].innerText
-      emotion = emojs.modules.core.input.text.emo(text, contextName)
+      emotion = global.modules.core.input.text.emo(text, contextName)
       if (emotion.getStrongestEmotion().getName() == 'HAPPINESS')
         tempCanvasEl.getContext('2d').globalAlpha = 0.4
       else if (emotion.getStrongestEmotion().getName() == 'SURPRISE')
@@ -75,7 +75,7 @@ define [
         tempCanvasEl.getContext('2d').globalAlpha = 0.1
 
       emotion.id = 'emo' + Math.floor(Math.random(2)*100)
-      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
+      synemania = new global.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
       synemania.update(emotion)
       for x in [1..1000] by 1
         synemania.draw(contextName)
@@ -96,7 +96,7 @@ define [
       tempCanvasEl.setAttributeNode(attr);
       #get the emotion for this element (remember to do this in the context):
       text = sourceEmotionText || that[i].innerText
-      emotion = emojs.modules.core.input.text.emo(text, contextName)
+      emotion = global.modules.core.input.text.emo(text, contextName)
       if (emotion.getStrongestEmotion().getName() == 'HAPPINESS')
         tempCanvasEl.getContext('2d').globalAlpha = 0.4
       else if (emotion.getStrongestEmotion().getName() == 'SURPRISE')
@@ -107,7 +107,7 @@ define [
         tempCanvasEl.getContext('2d').globalAlpha = 0.1
 
       emotion.id = 'emo' + Math.floor(Math.random(2)*100)
-      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
+      synemania = new global.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName)
       synemania.update(emotion)
       for x in [1..1000] by 1
         synemania.draw(contextName)

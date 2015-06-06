@@ -1,6 +1,6 @@
-define [
-  'classes/emotion'
-], () ->
+#define [
+#  'classes/emotion'
+#], () ->
   class EmotionState
       #pravates:
       _Emotion = global.engine.classes.Emotion

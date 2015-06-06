@@ -1,4 +1,4 @@
-define [], () ->
+#define [], () ->
   class AffectWord
     @::word = null
     @::generalWeight = 0.0

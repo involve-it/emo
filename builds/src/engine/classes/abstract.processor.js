@@ -6,47 +6,45 @@
 * @class AbstractProcessor
 *
  */
-var __hasProp = {}.hasOwnProperty,
+var AbstractProcessor,
+  __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define(['classes/abstract.controller'], function() {
-  var AbstractProcessor;
-  AbstractProcessor = (function(_super) {
-    __extends(AbstractProcessor, _super);
+AbstractProcessor = (function(_super) {
+  __extends(AbstractProcessor, _super);
 
-    function AbstractProcessor() {}
+  function AbstractProcessor() {}
 
-    AbstractProcessor.prototype.feelText = function(text, context) {
-      return console.log('abstract feelText: ' + text);
-    };
+  AbstractProcessor.prototype.feelText = function(text, context) {
+    return console.log('abstract feelText: ' + text);
+  };
 
-    AbstractProcessor.prototype.createEmotionState = function(text, affectWords, TYPE) {
-      return console.dir({
-        message: 'abstract createEmotionState: ',
-        affectWords: affectWords,
-        TYPE: TYPE
-      });
-    };
+  AbstractProcessor.prototype.createEmotionState = function(text, affectWords, TYPE) {
+    return console.dir({
+      message: 'abstract createEmotionState: ',
+      affectWords: affectWords,
+      TYPE: TYPE
+    });
+  };
 
-    AbstractProcessor.prototype.ready = function(callback) {};
+  AbstractProcessor.prototype.ready = function(callback) {};
 
 
-    /**
-    * For trigger events, that will be listened/casted in any part of program.
-    * Format of the triggered event:
-    *   'global:{name}:{action}'
-    * @param {String} DESCRIPTION
-    * @return {String} DESCRIPTION
-    *
-     */
+  /**
+  * For trigger events, that will be listened/casted in any part of program.
+  * Format of the triggered event:
+  *   'global:{name}:{action}'
+  * @param {String} DESCRIPTION
+  * @return {String} DESCRIPTION
+  *
+   */
 
-    return AbstractProcessor;
+  return AbstractProcessor;
 
-  })(global.engine.classes.AbstractController);
-  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'engine.classes.AbstractProcessor',
-    object: AbstractProcessor,
-    global: global,
-    shortcut: 'e$ecp'
-  });
+})(global.engine.classes.AbstractController);
+
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'engine.classes.AbstractProcessor',
+  object: AbstractProcessor,
+  global: global
 });

@@ -1,9 +1,4 @@
-#define [
-#  #'engine.helpers'
-#], () ->
-
-define [], () ->
-  class AbstractController
+class AbstractController
   constructor: () ->
     ###*
     * For trigger events, that will be listened/casted in any part of program.
@@ -13,18 +8,18 @@ define [], () ->
     * @return {String} DESCRIPTION
     *###
   trigger: (name, action)->
-#event = new Event(name);
-#elem.addEventListener('build', function (e) { ... }, false);
+  #event = new Event(name);
+  #elem.addEventListener('build', function (e) { ... }, false);
     @.emit(name);
   ready: (callback)->
     if (typeof callback != 'undefined')
       callback.call()
   start: ()->
-#kick off things!
+  #kick off things!
   stop: ()->
-#stop things.
+  #stop things.
 
-  _.extend(AbstractController.prototype, new global.libs.emitter())
-  global.runtime.helpers.MakeGlobalNamespaceAndObject
-    path: 'engine.classes.AbstractController'
-    object: AbstractController
+ej$h.extend(AbstractController.prototype, new global.libs.emitter())
+ej$h.MakeGlobalNamespaceAndObject
+  path: 'engine.classes.AbstractController'
+  object: AbstractController

@@ -15,7 +15,7 @@ define [], () ->
       affectWords = []
       emoticons = []
       that = @
-      pm = new emojs.engine.controllers.PropertiesManager keywordsFilePath, (data)->
+      pm = new global.engine.controllers.PropertiesManager keywordsFilePath, (data)->
         negations = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty('negations'), ', ')
         intensityModifiers = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ")
         #todo: make this async by adding method 'waitForStart/eventsStack' to controller:
@@ -34,7 +34,7 @@ define [], () ->
     parseLexiconFile : (fileName, callback) ->
       wordList = []
       that = @
-      parsedFile = emojs.engine.controllers.FileReader.readFile fileName, (file)->
+      parsedFile = global.engine.controllers.FileReader.readFile fileName, (file)->
         lines = file.split('\n')
         for line in lines
           record = that.parseLine(line)

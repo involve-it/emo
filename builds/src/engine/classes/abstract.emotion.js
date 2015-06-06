@@ -11,5 +11,3 @@ global.runtime.helpers.MakeGlobalNamespaceAndObject({
 
   })()
 });
-
-define([], function() {});

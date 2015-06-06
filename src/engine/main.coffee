@@ -1,5 +1,5 @@
   #all things are loaded, so let's start the show by creating global object for runtime and engine objects:
-  emojs.runtime.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path:'engine'
     object: @
     global: global
@@ -7,9 +7,9 @@
   global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r')
 
   #init new app, setting it's config:
-  app = new emojs.engine.controllers.App
+  app = new global.engine.controllers.App
     #processor: 'global.processors.server.ServerProcessor'
-    #processor: 'emojs.processors.client.ClientProcessor'
+    #processor: 'global.processors.client.ClientProcessor'
     #modules : []
   global.runtime.app = app
   ###require [

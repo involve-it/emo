@@ -36,7 +36,7 @@ ServerProcessor = (function(_super) {
 
   return ServerProcessor;
 
-})(emojs.engine.classes.AbstractProcessor);
+})(global.engine.classes.AbstractProcessor);
 
 global.runtime.helpers.MakeGlobalNamespaceAndObject({
   path: 'processors.server.ServerProcessor',

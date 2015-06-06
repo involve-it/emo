@@ -3,7 +3,7 @@ var Config;
 Config = (function() {
   function Config() {}
 
-  Config.dataServerRoot = emojs.settings.dataServerRoot;
+  Config.dataServerRoot = global.settings.dataServerRoot;
 
   Config.fullyClientSide = true;
 

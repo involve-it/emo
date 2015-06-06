@@ -62,7 +62,7 @@ define [
       #ctx.fillStyle = @gray.toString(16)
       col16 = @gray.toString(16)
 
-      @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',0.2)'
+      @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',0.2)'
       @ctx.fillRect(@x,@y-1,1,1)
 
       @x += @vx
@@ -101,7 +101,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -152,7 +152,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -207,7 +207,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -261,7 +261,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -315,7 +315,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -369,7 +369,7 @@ define [
         #debugger
         @count = @count || 0
         @count += 1;
-        @ctx.fillStyle = 'rgba('+ emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
+        @ctx.fillStyle = 'rgba('+ global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50/@count) + ')'
         #ctx.fillStyle = @color.toString(16)
         @ctx.fillRect(@x, @y - 1,1,1)
         #if (@count>1000)
@@ -411,7 +411,7 @@ define [
     maxDisgusties = 800
     maxNeutrals = 30
 
-    currentEmotionState = new emojs.engine.classes.EmotionState()
+    currentEmotionState = new global.engine.classes.EmotionState()
 
     syne = null
 
@@ -441,25 +441,25 @@ define [
       @ctx = @$el.getContext("2d")
 
       for x in [0...maxNeutrals-1] by 1
-        neutrals[x] = new emojs.modules.sketch.output.synemania.NeutralParticle(@ctx)
+        neutrals[x] = new global.modules.sketch.output.synemania.NeutralParticle(@ctx)
       #for x in [0...1] by 1
       for x in [0...maxSaddies-1] by 1
-        saddies[x] = new emojs.modules.sketch.output.synemania.SadParticle(@ctx)
+        saddies[x] = new global.modules.sketch.output.synemania.SadParticle(@ctx)
 
       for x in [0...maxHappies-1] by 1
-        happies[x] = new emojs.modules.sketch.output.synemania.HappyParticle(@ctx)
+        happies[x] = new global.modules.sketch.output.synemania.HappyParticle(@ctx)
 
       for x in [0...maxAngries-1] by 1
-        angries[x] = new emojs.modules.sketch.output.synemania.AngryParticle(@ctx)
+        angries[x] = new global.modules.sketch.output.synemania.AngryParticle(@ctx)
 
       for x in [0...maxSurprises-1] by 1
-        surprises[x] = new emojs.modules.sketch.output.synemania.SupriseParticle(@ctx)
+        surprises[x] = new global.modules.sketch.output.synemania.SupriseParticle(@ctx)
 
       for x in [0...maxFearies-1] by 1
-        fearies[x] = new emojs.modules.sketch.output.synemania.FearParticle(@ctx)
+        fearies[x] = new global.modules.sketch.output.synemania.FearParticle(@ctx)
 
       for x in [0...maxDisgusties-1] by 1
-        disgusties[x] = new emojs.modules.sketch.output.synemania.DisgustParticle(@ctx)
+        disgusties[x] = new global.modules.sketch.output.synemania.DisgustParticle(@ctx)
 
       sadTheta = Math.random() * TWO_PI
       currentParticles = neutrals
@@ -486,17 +486,17 @@ define [
         currentParticles[x].move()
     getCurrentParticles : (e) ->
       currentEmotion = e.getType()
-      if currentEmotion == emojs.engine.classes.Emotion.HAPPINESS
+      if currentEmotion == global.engine.classes.Emotion.HAPPINESS
         return happies
-      else if currentEmotion == emojs.engine.classes.Emotion.SADNESS
+      else if currentEmotion == global.engine.classes.Emotion.SADNESS
         return saddies
-      else if currentEmotion == emojs.engine.classes.Emotion.ANGER
+      else if currentEmotion == global.engine.classes.Emotion.ANGER
         return angries
-      else if currentEmotion == emojs.engine.classes.Emotion.FEAR
+      else if currentEmotion == global.engine.classes.Emotion.FEAR
         return fearies
-      else if currentEmotion == emojs.engine.classes.Emotion.DISGUST
+      else if currentEmotion == global.engine.classes.Emotion.DISGUST
         return disgusties
-      else if currentEmotion == emojs.engine.classes.Emotion.SURPRISE
+      else if currentEmotion == global.engine.classes.Emotion.SURPRISE
         return surprises
       else
         return neutrals

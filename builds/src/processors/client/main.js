@@ -1,8 +1,8 @@
 define(['processors/client/client.processor', 'processors/client/controllers/main', 'processors/client/classes/affect.word'], function() {
   var processor;
-  processor = new emojs.processors.client.ClientProcessor(emojs.runtime.app);
+  processor = new global.processors.client.ClientProcessor(global.runtime.app);
   processor.runOrWait('lexical:ready', function() {
-    emojs.runtime.app.emit('processor:ready');
+    global.runtime.app.emit('processor:ready');
     return processor.ready.call();
   });
   return global.runtime.helpers.MakeGlobalNamespaceAndObject({

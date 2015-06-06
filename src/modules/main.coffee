@@ -17,7 +17,7 @@ requirejs.config
 #      location : './modules/dao',
 #    }
   ]
-emojs.runtime.helpers.MakeGlobalNamespaceFromString('modules')
+global.runtime.helpers.MakeGlobalNamespaceFromString('modules')
 define [
   'modules.core'
   'modules.sketch'

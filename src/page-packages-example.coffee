@@ -6,9 +6,9 @@
 
 requirejs.config
   paths:
-    'emojs.libs' : './libs',
-    'emojs.engine' : './engine',
-    'emojs.modules' : './modules',
+    'global.libs' : './libs',
+    'global.engine' : './engine',
+    'global.modules' : './modules',
     'jquery' : './libs/jquery-2.1.0',
     'bootstrap' : './libs/bootstrap'
   shim :

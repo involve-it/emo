@@ -12,7 +12,7 @@ class SynesketchPalette
 
   constructor: (paletteName) ->
     #pm = new global.core.helpers.PropertiesManager(global.modules.datafiles.files.standard)
-    pm = new emojs.engine.controllers.PropertiesManager paletteFilePath, ()->
+    pm = new global.engine.controllers.PropertiesManager paletteFilePath, ()->
       happinessColors = pm.getIntArrayProperty('happiness.palette')
       sadnessColors = pm.getIntArrayProperty('sadness.palette')
       angerColors = pm.getIntArrayProperty('anger.palette')
@@ -47,6 +47,6 @@ class SynesketchPalette
     surpriseColors[Math.floor(Math.random() * surpriseColors.length)]
 
 define [], () ->
-  emojs.runtime.helpers.MakeGlobalNamespaceAndObject
+  global.runtime.helpers.MakeGlobalNamespaceAndObject
     path: 'output.art.utils.SynesketchPalette'
     object: SynesketchPalette

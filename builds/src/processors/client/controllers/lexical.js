@@ -27,7 +27,7 @@ define([], function() {
       affectWords = [];
       emoticons = [];
       that = this;
-      pm = new emojs.engine.controllers.PropertiesManager(keywordsFilePath, function(data) {
+      pm = new global.engine.controllers.PropertiesManager(keywordsFilePath, function(data) {
         negations = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty('negations'), ', ');
         intensityModifiers = global.engine.processors.client.controllers.Parsing.splitWords(pm.getProperty("intensity.modifiers"), ", ");
         return that.parseLexiconFile(lexiconFilePath, function(data) {
@@ -51,7 +51,7 @@ define([], function() {
       var parsedFile, that, wordList;
       wordList = [];
       that = this;
-      return parsedFile = emojs.engine.controllers.FileReader.readFile(fileName, function(file) {
+      return parsedFile = global.engine.controllers.FileReader.readFile(fileName, function(file) {
         var line, lines, record, _i, _len;
         lines = file.split('\n');
         for (_i = 0, _len = lines.length; _i < _len; _i++) {

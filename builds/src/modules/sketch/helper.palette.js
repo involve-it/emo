@@ -21,7 +21,7 @@ SynesketchPalette = (function() {
 
   function SynesketchPalette(paletteName) {
     var pm;
-    pm = new emojs.engine.controllers.PropertiesManager(paletteFilePath, function() {
+    pm = new global.engine.controllers.PropertiesManager(paletteFilePath, function() {
       happinessColors = pm.getIntArrayProperty('happiness.palette');
       sadnessColors = pm.getIntArrayProperty('sadness.palette');
       angerColors = pm.getIntArrayProperty('anger.palette');
@@ -84,7 +84,7 @@ SynesketchPalette = (function() {
 })();
 
 define([], function() {
-  return emojs.runtime.helpers.MakeGlobalNamespaceAndObject({
+  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
     path: 'output.art.utils.SynesketchPalette',
     object: SynesketchPalette
   });

@@ -1,6 +1,6 @@
-define [
-  'classes/abstract.emotion'
-], () ->
+#define [
+#  'classes/abstract.emotion'
+#], () ->
   class Emotion extends global.engine.classes.AbstractEmotion
     constructor:(@weight, @type) ->
     compareTo:(arg0) ->

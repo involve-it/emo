@@ -1,21 +1,11 @@
-/**
- * Created by arutu_000 on 8/24/2014.
- * Event Emitter library for using custom Object as event listener/dispatcher
- * https://github.com/component/emitter
- */
-
-
-define(['module'], function(module) {
-  /**
-   * Expose `Emitter`.
-   */
-  module.exports = Emitter;
 
   /**
    * Initialize a new `Emitter`.
    *
    * @api public
    */
+
+(function(global){
   function Emitter(obj) {
     if (obj) return mixin(obj);
   };
@@ -202,4 +192,5 @@ define(['module'], function(module) {
   Emitter.prototype.hasListeners = function(event){
     return !! this.listeners(event).length;
   };
-})
+  global.emitter = Emitter;
+})(global.libs)

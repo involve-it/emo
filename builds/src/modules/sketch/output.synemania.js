@@ -91,7 +91,7 @@ define(['modules.sketch/helper.palette'], function() {
     NeutralParticle.prototype.move = function() {
       var col16;
       col16 = this.gray.toString(16);
-      this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',0.2)';
+      this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',0.2)';
       this.ctx.fillRect(this.x, this.y - 1, 1, 1);
       this.x += this.vx;
       this.y += this.vy;
@@ -143,7 +143,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -200,7 +200,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -255,7 +255,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -312,7 +312,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -369,7 +369,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -426,7 +426,7 @@ define(['modules.sketch/helper.palette'], function() {
         col16 = this.color.toString(16);
         this.count = this.count || 0;
         this.count += 1;
-        this.ctx.fillStyle = 'rgba(' + emojs.runtime.helpers.hexToR(col16) + ',' + emojs.runtime.helpers.hexToG(col16) + ',' + emojs.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
+        this.ctx.fillStyle = 'rgba(' + global.runtime.helpers.hexToR(col16) + ',' + global.runtime.helpers.hexToG(col16) + ',' + global.runtime.helpers.hexToB(col16) + ',' + (50 / this.count) + ')';
         this.ctx.fillRect(this.x, this.y - 1, 1, 1);
         fillst = '#000000, {a}'.replace('{a}', 1 / this.speed);
         this.ctx.fillStyle = fillst;
@@ -475,7 +475,7 @@ define(['modules.sketch/helper.palette'], function() {
 
     maxNeutrals = 30;
 
-    currentEmotionState = new emojs.engine.classes.EmotionState();
+    currentEmotionState = new global.engine.classes.EmotionState();
 
     syne = null;
 
@@ -516,25 +516,25 @@ define(['modules.sketch/helper.palette'], function() {
       }
       this.ctx = this.$el.getContext("2d");
       for (x = _i = 0, _ref = maxNeutrals - 1; _i < _ref; x = _i += 1) {
-        neutrals[x] = new emojs.modules.sketch.output.synemania.NeutralParticle(this.ctx);
+        neutrals[x] = new global.modules.sketch.output.synemania.NeutralParticle(this.ctx);
       }
       for (x = _j = 0, _ref1 = maxSaddies - 1; _j < _ref1; x = _j += 1) {
-        saddies[x] = new emojs.modules.sketch.output.synemania.SadParticle(this.ctx);
+        saddies[x] = new global.modules.sketch.output.synemania.SadParticle(this.ctx);
       }
       for (x = _k = 0, _ref2 = maxHappies - 1; _k < _ref2; x = _k += 1) {
-        happies[x] = new emojs.modules.sketch.output.synemania.HappyParticle(this.ctx);
+        happies[x] = new global.modules.sketch.output.synemania.HappyParticle(this.ctx);
       }
       for (x = _l = 0, _ref3 = maxAngries - 1; _l < _ref3; x = _l += 1) {
-        angries[x] = new emojs.modules.sketch.output.synemania.AngryParticle(this.ctx);
+        angries[x] = new global.modules.sketch.output.synemania.AngryParticle(this.ctx);
       }
       for (x = _m = 0, _ref4 = maxSurprises - 1; _m < _ref4; x = _m += 1) {
-        surprises[x] = new emojs.modules.sketch.output.synemania.SupriseParticle(this.ctx);
+        surprises[x] = new global.modules.sketch.output.synemania.SupriseParticle(this.ctx);
       }
       for (x = _n = 0, _ref5 = maxFearies - 1; _n < _ref5; x = _n += 1) {
-        fearies[x] = new emojs.modules.sketch.output.synemania.FearParticle(this.ctx);
+        fearies[x] = new global.modules.sketch.output.synemania.FearParticle(this.ctx);
       }
       for (x = _o = 0, _ref6 = maxDisgusties - 1; _o < _ref6; x = _o += 1) {
-        disgusties[x] = new emojs.modules.sketch.output.synemania.DisgustParticle(this.ctx);
+        disgusties[x] = new global.modules.sketch.output.synemania.DisgustParticle(this.ctx);
       }
       sadTheta = Math.random() * TWO_PI;
       return currentParticles = neutrals;
@@ -567,17 +567,17 @@ define(['modules.sketch/helper.palette'], function() {
     Synemania.prototype.getCurrentParticles = function(e) {
       var currentEmotion;
       currentEmotion = e.getType();
-      if (currentEmotion === emojs.engine.classes.Emotion.HAPPINESS) {
+      if (currentEmotion === global.engine.classes.Emotion.HAPPINESS) {
         return happies;
-      } else if (currentEmotion === emojs.engine.classes.Emotion.SADNESS) {
+      } else if (currentEmotion === global.engine.classes.Emotion.SADNESS) {
         return saddies;
-      } else if (currentEmotion === emojs.engine.classes.Emotion.ANGER) {
+      } else if (currentEmotion === global.engine.classes.Emotion.ANGER) {
         return angries;
-      } else if (currentEmotion === emojs.engine.classes.Emotion.FEAR) {
+      } else if (currentEmotion === global.engine.classes.Emotion.FEAR) {
         return fearies;
-      } else if (currentEmotion === emojs.engine.classes.Emotion.DISGUST) {
+      } else if (currentEmotion === global.engine.classes.Emotion.DISGUST) {
         return disgusties;
-      } else if (currentEmotion === emojs.engine.classes.Emotion.SURPRISE) {
+      } else if (currentEmotion === global.engine.classes.Emotion.SURPRISE) {
         return surprises;
       } else {
         return neutrals;

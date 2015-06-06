@@ -1,7 +1,7 @@
-define [
-  #'require'
-  #'libs'
-], () ->
+#define [
+#  #'require'
+#  #'libs'
+#], () ->
   dataServerAddr = global.engine.core.Config.dataServerRoot
 
   class PropertiesManager
@@ -14,7 +14,7 @@ define [
       url = dataServerAddr + fileName
       d = null
       #url = dataServerAddr + fileName + '?callback='
-      emojs.engine.controllers.FileReader.readFile(url, (data)->
+      global.engine.controllers.FileReader.readFile(url, (data)->
         properties = global.libs.x2js(data).properties && global.libs.x2js(data).properties.entry
         callbackFunction(data)
         #callback

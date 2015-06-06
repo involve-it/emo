@@ -1,4 +1,4 @@
-emojs.runtime.helpers.MakeGlobalNamespaceFromString('output.art');
+global.runtime.helpers.MakeGlobalNamespaceFromString('output.art');
 
 
 /*confObj =
@@ -62,7 +62,7 @@ define([], function(_$) {
     for (i = _i = 0, _ref = this.length - 1; _i <= _ref; i = _i += 1) {
       tempCanvasEl = that[i];
       text = sourceEmotionText || that[i].innerText;
-      emotion = emojs.modules.core.input.text.emo(text, contextName);
+      emotion = global.modules.core.input.text.emo(text, contextName);
       if (emotion.getStrongestEmotion().getName() === 'HAPPINESS') {
         tempCanvasEl.getContext('2d').globalAlpha = 0.4;
       } else if (emotion.getStrongestEmotion().getName() === 'SURPRISE') {
@@ -73,7 +73,7 @@ define([], function(_$) {
         tempCanvasEl.getContext('2d').globalAlpha = 0.1;
       }
       emotion.id = 'emo' + Math.floor(Math.random(2) * 100);
-      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName);
+      synemania = new global.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName);
       synemania.update(emotion);
       _results.push((function() {
         var _j, _results1;
@@ -98,7 +98,7 @@ define([], function(_$) {
       attr.value = 'width: ' + that.css('width') + '; height: ' + that.css('height') + ';';
       tempCanvasEl.setAttributeNode(attr);
       text = sourceEmotionText || that[i].innerText;
-      emotion = emojs.modules.core.input.text.emo(text, contextName);
+      emotion = global.modules.core.input.text.emo(text, contextName);
       if (emotion.getStrongestEmotion().getName() === 'HAPPINESS') {
         tempCanvasEl.getContext('2d').globalAlpha = 0.4;
       } else if (emotion.getStrongestEmotion().getName() === 'SURPRISE') {
@@ -109,7 +109,7 @@ define([], function(_$) {
         tempCanvasEl.getContext('2d').globalAlpha = 0.1;
       }
       emotion.id = 'emo' + Math.floor(Math.random(2) * 100);
-      synemania = new emojs.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName);
+      synemania = new global.modules.sketch.output.synemania.Synemania(tempCanvasEl, contextName);
       synemania.update(emotion);
       for (x = _j = 1; _j <= 1000; x = _j += 1) {
         synemania.draw(contextName);

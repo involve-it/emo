@@ -9,7 +9,7 @@ define [
     lexUtil = null
     @instances = {}
     emotionStates : []
-    #@app = emojs.runtime.app
+    #@app = global.runtime.app
     #@app.emit('processor:loaded')
 
 

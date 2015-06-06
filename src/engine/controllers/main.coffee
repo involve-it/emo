@@ -1,6 +1,6 @@
-global.runtime.helpers.MakeGlobalNamespaceFromString 'engine.controllers'
-define [
-  'controllers/app'
-  'controllers/properties.manager'
-  'controllers/file.reader'
-], ()->
+ej$h.MakeGlobalNamespaceFromString 'engine.controllers'
+#define [
+#  'controllers/app'
+#  'controllers/properties.manager'
+#  'controllers/file.reader'
+#], ()->

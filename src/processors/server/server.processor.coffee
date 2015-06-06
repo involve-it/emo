@@ -5,7 +5,7 @@
 * @class ServerProcessor
 *###
 
-class ServerProcessor extends emojs.engine.classes.AbstractProcessor
+class ServerProcessor extends global.engine.classes.AbstractProcessor
   constructor:(app)->
     @app = app
 

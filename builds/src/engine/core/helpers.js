@@ -122,7 +122,7 @@ Helpers.MakeGlobalNamespaceFromString = function(path, _global, shortcut, initia
   namespace = buildFromName(subPaths, namespace);
   if (shortcut) {
     sc = this.MakeGlobalNamespaceFromString(shortcut, window);
-    global[shortcut] = retObj;
+    window[shortcut] = retObj;
     sc = retObj;
   }
   return retObj;
@@ -169,7 +169,7 @@ Helpers.MakeGlobalNamespaceAndObject = function(initialObject) {
   namespace = buildFromName(subPaths, namespace);
   if (initialObject.shortcut) {
     sc = this.MakeGlobalNamespaceFromString(initialObject.shortcut, window);
-    global[initialObject.shortcut] = retObj;
+    window[initialObject.shortcut] = retObj;
     sc = retObj;
   }
   return retObj;
@@ -260,11 +260,9 @@ ajax.post = function(url, data, callback, sync) {
 Helpers.ajax = ajax;
 ;
 
-debugger;
-
 Helpers.MakeGlobalNamespaceAndObject({
   path: 'runtime.helpers',
   object: Helpers,
   global: global,
-  shortcut: 'e$h'
+  shortcut: 'ej$h'
 });

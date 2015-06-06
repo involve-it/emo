@@ -1,6 +1,6 @@
 var app;
 
-emojs.runtime.helpers.MakeGlobalNamespaceAndObject({
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
   path: 'engine',
   object: this,
   global: global,
@@ -9,7 +9,7 @@ emojs.runtime.helpers.MakeGlobalNamespaceAndObject({
 
 global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r');
 
-app = new emojs.engine.controllers.App;
+app = new global.engine.controllers.App;
 
 global.runtime.app = app;
 

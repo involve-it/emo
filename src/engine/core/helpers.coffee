@@ -85,7 +85,6 @@ Helpers.extend = function () {
   return target;
 };
 `
-
 Helpers.MakeGlobalNamespaceFromString = (path, _global, shortcut, initialObject) ->
     #g1 = global
     global = _global || global1 || {}
@@ -117,7 +116,7 @@ Helpers.MakeGlobalNamespaceFromString = (path, _global, shortcut, initialObject)
     # need to assign the ns to the shortcut:
     if (shortcut)
       sc = this.MakeGlobalNamespaceFromString(shortcut, window)
-      global[shortcut] = retObj
+      window[shortcut] = retObj
       sc = retObj
     #todo: finish to assign to initial object (based on eval of the path)
     #if (initialObject)
@@ -165,7 +164,7 @@ Helpers.MakeGlobalNamespaceAndObject = (initialObject) ->
     # need to assign the ns to the shortcut:
     if (initialObject.shortcut)
       sc = this.MakeGlobalNamespaceFromString(initialObject.shortcut, window)
-      global[initialObject.shortcut] = retObj
+      window[initialObject.shortcut] = retObj
       sc = retObj
     return retObj
 
@@ -241,11 +240,11 @@ ajax.post = function(url, data, callback, sync) {
 }
 Helpers.ajax = ajax;
 `
-debugger
+
 # static, so instead of creating instance, just assign to runtime:
 Helpers.MakeGlobalNamespaceAndObject {
   path:'runtime.helpers',
   object: Helpers,
   global: global,
-  shortcut: 'e$h'
+  shortcut: 'ej$h'
 }

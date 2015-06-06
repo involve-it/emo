@@ -14,7 +14,7 @@ define([], function() {
 
     return Dao;
 
-  })(emojs.engine.classes.AbstractController);
+  })(global.engine.classes.AbstractController);
   return global.runtime.helpers.MakeGlobalNamespaceAndObject({
     path: 'runtime.helpers.dao',
     object: Dao

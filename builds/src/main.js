@@ -46,7 +46,7 @@ settings = {
   dataServerRoot: '/data'
 };
 
-window.emojs.settings = settings;
+window.global.settings = settings;
 
 window.document.addEventListener('app:ready', function() {
   var emojsReadyEvent;

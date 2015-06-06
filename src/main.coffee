@@ -53,7 +53,7 @@ settings = {
   #@dataServerRoot = 'http://localhost:8899'
   #@dataServerRoot = 'https://tetamo.com/data'
 }
-window.emojs.settings = settings;
+window.global.settings = settings;
 
 #add all necessary conditions to start using library
 window.document.addEventListener 'app:ready', ()->
