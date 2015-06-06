@@ -7,6 +7,7 @@
   global.runtime.helpers.MakeGlobalNamespaceFromString('runtime', global, 'e$r')
 
   #init new app, setting it's config:
+
   app = new global.engine.controllers.App
     #processor: 'global.processors.server.ServerProcessor'
     #processor: 'global.processors.client.ClientProcessor'

@@ -7,9 +7,7 @@ Processor = (function() {
 
 })();
 
-define(['processors/client/main'], function() {
-  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'engine.processors',
-    object: Processor
-  });
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'engine.processors',
+  object: Processor
 });

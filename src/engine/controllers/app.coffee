@@ -16,6 +16,7 @@ class App extends global.engine.classes.AbstractController
 
   constructor:(config)->
     @staticConfig = config ?= {}
+
   #create context pool and default context in the context pool:
   #contextsPool = new global.engine.
 

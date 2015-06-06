@@ -14,30 +14,38 @@
         dataServerRoot: '/data'
       }
     };
-    document.addEventListener('emojs:ready', function(){
+    document.addEventListener('app:ready', function(){
       //provide client settings here (if needed in future):
       /*app.start({
         global : 'emojs'
       });*/
-      $('#butt').click(function(e) {
+      document.getElementById('butt').addEventListener('click', function(e) {
         //var emotion, t1;
         //$.fn.backgroundEmotion
         //$('#contentDiv p:first').backgroundEmotion();
-        $('#canvas').backgroundEmotion('default', $('#textArea').val());
-      });
-      $('#butt1').click(function(e) {
-        //var emotion, t1;
-        //$.fn.backgroundEmotion
-        $('#contentDiv p:first').backgroundEmotion();
+
         //$('#canvas').backgroundEmotion('default', $('#textArea').val());
+        var text = document.getElementById('textArea').value;
+        var curProc = ej$.runtime.app.getProcessorInstance()
+        var processedEmo = curProc.feelText(text);
+        alert(processedEmo.toString());
       });
+//      $('#butt1').click(function(e) {
+//        //var emotion, t1;
+//        //$.fn.backgroundEmotion
+//        $('#contentDiv p:first').backgroundEmotion();
+//        //$('#canvas').backgroundEmotion('default', $('#textArea').val());
+//      });
 
     });
   </script>
-  <script type="text/javascript" src="./libs.js"></script>
-  <script type="text/javascript" src="./engine.core.js"></script>
-  <script type="text/javascript" src="./engine.classes.js"></script>
-  <script type="text/javascript" src="./engine.controllers.js"></script>
+  <!--<script type="text/javascript" src="./libs.js"></script>-->
+  <!--<script type="text/javascript" src="./engine.core.js"></script>-->
+  <!--<script type="text/javascript" src="./engine.classes.js"></script>-->
+  <!--<script type="text/javascript" src="./engine.controllers.js"></script>-->
+  <!--<script type="text/javascript" src="./engine.js"></script>-->
+  <!--<script type="text/javascript" src="./processors.js"></script>-->
+  <script type="text/javascript" src="./emojs.js"></script>
 
   <style>
     p {

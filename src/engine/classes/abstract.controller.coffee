@@ -18,8 +18,7 @@ class AbstractController
   #kick off things!
   stop: ()->
   #stop things.
-
-ej$h.extend(AbstractController.prototype, new global.libs.emitter())
+ej$h.extend(AbstractController.prototype, new ej$l.emitter())
 ej$h.MakeGlobalNamespaceAndObject
   path: 'engine.classes.AbstractController'
   object: AbstractController
