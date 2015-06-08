@@ -46,7 +46,7 @@ class SynesketchPalette
   getRandomSurpriseColor: ->
     surpriseColors[Math.floor(Math.random() * surpriseColors.length)]
 
-define [], () ->
-  global.runtime.helpers.MakeGlobalNamespaceAndObject
-    path: 'output.art.utils.SynesketchPalette'
-    object: SynesketchPalette
+#define [], () ->
+global.runtime.helpers.MakeGlobalNamespaceAndObject
+  path: 'output.art.utils.SynesketchPalette'
+  object: SynesketchPalette

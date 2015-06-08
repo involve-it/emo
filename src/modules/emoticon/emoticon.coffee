@@ -33,7 +33,7 @@ define [
     global.libs.$(window).on 'context:feel:' + contextName, (e, state)->
       #get strongest emotion:
 
-      emotion = _.max state._emotions, (emotion)->
+      emotion = ej$h.max state._emotions, (emotion)->
         return emotion.weight
       if(emotion.type !=-1)
         global.libs.$(el).css('display', 'block')

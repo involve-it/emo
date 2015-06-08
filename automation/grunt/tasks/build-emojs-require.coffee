@@ -70,14 +70,28 @@ module.exports = (grunt) ->
                  srcDir + '/processors/client/controllers/heuristics.js', srcDir + '/processors/client/controllers/parsing.js', srcDir + '/processors/client/main.js' ]
           dest: destDir + '/processors.js'
         ]
+      modules:
+        options:
+          process: (src, filepath)->
+            return src;
+          banner: '(function(global) { \n'
+          footer: '\n })(ej$);'
+        files: [
+          src: [ srcDir + '/modules/core/input.text.js', srcDir + '/modules/core/output.logger.js',
+                 srcDir + '/modules/core/ui.jquery.js',
+                 srcDir + '/modules/sketch/input.text.js', srcDir + '/modules/sketch/helper.palette.js', srcDir + '/modules/sketch/output.synemania.js',
+                 srcDir + '/modules/sketch/ui.jquery.js'
+          ]
+          dest: destDir + '/modules.js'
+        ]
       all:
         options:
           process: (src, filepath)->
             return src;
           banner: '(function(global) { \n'
           footer: '\n })(ej$);'
-        src: [destDir + '/libs.js', destDir + '/engine.js', destDir + '/processors.js'],
-        dest: destDir + '/emojs.js'
+        src: [ destDir + '/libs.js', destDir + '/engine.js', destDir + '/processors.js', destDir + '/modules.js' ],
+        dest:  destDir + '/emojs.js'
     uglify:
       main:
         static_mappings:
@@ -91,6 +105,7 @@ module.exports = (grunt) ->
   concat['engine.controllers'] = confObj.concat.engine.controllers
   concat['engine.all'] = confObj.concat.engine.all
   concat['processors'] = confObj.concat.processors
+  concat['modules'] = confObj.concat.modules
   concat['all'] = confObj.concat.all
   grunt.config.set('concat', concat)
 
@@ -104,6 +119,7 @@ module.exports = (grunt) ->
     grunt.task.run('concat:engine.controllers')
     grunt.task.run('concat:engine.all')
     grunt.task.run('concat:processors')
+    grunt.task.run('concat:modules')
     grunt.task.run('concat:all')
     #grunt.task.run('uglify:main')
 

@@ -83,9 +83,7 @@ SynesketchPalette = (function() {
 
 })();
 
-define([], function() {
-  return global.runtime.helpers.MakeGlobalNamespaceAndObject({
-    path: 'output.art.utils.SynesketchPalette',
-    object: SynesketchPalette
-  });
+global.runtime.helpers.MakeGlobalNamespaceAndObject({
+  path: 'output.art.utils.SynesketchPalette',
+  object: SynesketchPalette
 });

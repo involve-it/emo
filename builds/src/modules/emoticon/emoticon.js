@@ -39,7 +39,7 @@ define([], function() {
     el = this[0];
     global.libs.$(window).on('context:feel:' + contextName, function(e, state) {
       var emotion;
-      emotion = _.max(state._emotions, function(emotion) {
+      emotion = ej$h.max(state._emotions, function(emotion) {
         return emotion.weight;
       });
       if (emotion.type !== -1) {

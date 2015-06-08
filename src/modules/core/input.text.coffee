@@ -1,26 +1,23 @@
-define [
-], () ->
-  #class:
-  class Text
-    @emo : (value, contextName)->
-      if(!contextName || contextName == '' || contextName == 'default')
-        ###if (@text()!='')
-          text = @text()
-        else
-          text = @val()###
-        contextName = 'default'
-        return @.process(value, contextName)
+class Text
+  @emo : (value, contextName)->
+    if(!contextName || contextName == '' || contextName == 'default')
+      ###if (@text()!='')
+        text = @text()
       else
-        return @.process(value, contextName)
+        text = @val()###
+      contextName = 'default'
+      return @.process(value, contextName)
+    else
+      return @.process(value, contextName)
 
-    @process : (text, contextName)->
-      #mediator = new global.core.api.EmotionMediator(context)
-      #mediator.synesthesize(text)
+  @process : (text, contextName)->
+    #mediator = new global.core.api.EmotionMediator(context)
+    #mediator.synesthesize(text)
 
-      #context = global.core.api.Context.getInstance(contextName)
-      curProc = global.runtime.app.getProcessorInstance()
-      processedEmo = curProc.feelText(text)
+    #context = global.core.api.Context.getInstance(contextName)
+    curProc = global.runtime.app.getProcessorInstance()
+    processedEmo = curProc.feelText(text)
 
-  global.runtime.helpers.MakeGlobalNamespaceAndObject
-    path: 'modules.core.input.text'
-    object: Text
+ej$h.MakeGlobalNamespaceAndObject
+  path: 'modules.core.input.text'
+  object: Text

@@ -1,24 +1,24 @@
-define [],()->
-  $ = global.libs && global.libs.$ || window.$
-  #empathyScope = global.core.api.EmpathyScope.getInstance()
-  $.fn.emo1 = (contextName)->
-    if(!contextName || contextName == '' || contextName == 'default')
-      ###if (@text()!='')
-        text = @text()
-      else
-        text = @val()###
-      text = @[0].value
-      @process(text, contextName)
-    else if(contextName=='user1')
-      {}
-  ###$.fn.feel = ()->
-    empathyScope.feel(@val())###
-  $.fn.process1 = (text, contextName)->
-    #mediator = new global.core.api.EmotionMediator(context)
-    #mediator.synesthesize(text)
 
-    context = global.core.api.Context.getInstance(contextName)
-    current = context.feel(text)
+$ = global.libs && global.libs.$ || window.$
+#empathyScope = global.core.api.EmpathyScope.getInstance()
+$.fn.emo1 = (contextName)->
+  if(!contextName || contextName == '' || contextName == 'default')
+    ###if (@text()!='')
+      text = @text()
+    else
+      text = @val()###
+    text = @[0].value
+    @process(text, contextName)
+  else if(contextName=='user1')
+    {}
+###$.fn.feel = ()->
+  empathyScope.feel(@val())###
+$.fn.process1 = (text, contextName)->
+  #mediator = new global.core.api.EmotionMediator(context)
+  #mediator.synesthesize(text)
+
+  context = global.core.api.Context.getInstance(contextName)
+  current = context.feel(text)
 
 
 ###

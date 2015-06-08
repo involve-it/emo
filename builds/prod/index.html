@@ -24,11 +24,14 @@
         //$.fn.backgroundEmotion
         //$('#contentDiv p:first').backgroundEmotion();
 
-        //$('#canvas').backgroundEmotion('default', $('#textArea').val());
-        var text = document.getElementById('textArea').value;
+
+        /*var text = document.getElementById('textArea').value;
         var curProc = ej$.runtime.app.getProcessorInstance()
         var processedEmo = curProc.feelText(text);
-        alert(processedEmo.toString());
+        alert(processedEmo.toString());*/
+
+        $('#canvas').backgroundEmotion('default', $('#textArea').val());
+
       });
 //      $('#butt1').click(function(e) {
 //        //var emotion, t1;
@@ -45,6 +48,8 @@
   <!--<script type="text/javascript" src="./engine.controllers.js"></script>-->
   <!--<script type="text/javascript" src="./engine.js"></script>-->
   <!--<script type="text/javascript" src="./processors.js"></script>-->
+  <script type="text/javascript" src="./libs/jquery.js"></script>
+  <script type="text/javascript" src="./libs/underscore.js"></script>
   <script type="text/javascript" src="./emojs.js"></script>
 
   <style>
